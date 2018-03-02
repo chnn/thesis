@@ -1,5 +1,69 @@
 \documentclass[12pt,twoside]{reedthesis}
 
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{eucal}
+\usepackage{tikz-cd}
+\usepackage{mathtools}
+\usepackage{booktabs}
+\usepackage{hyperref}
+\usepackage{graphicx}
+\usepackage{braids}
+\usepackage{color}
+\usepackage[page]{appendix}
+\usepackage[shortlabels]{enumitem}
+\usepackage{minted}
+\usepackage[noend]{algpseudocode}
+
+\usepackage{caption}
+\usepackage{subcaption}
+\captionsetup[subfigure]{format=hang}
+
+\usepackage[backend=biber, style=numeric]{biblatex}
+\addbibresource{thesis.bib}
+
+\theoremstyle{definition}
+\newtheorem{thm}{Theorem}[section]
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem{conj}[thm]{Conjecture}
+\newtheorem{lemma}[thm]{Lemma}
+\newtheorem{defn}[thm]{Definition}
+\newtheorem*{notation}{Notation}
+\newtheorem{ex}[thm]{Example}
+\newtheorem{notex}[thm]{Non-Example}
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{claim}[thm]{Claim}
+\newtheorem*{note}{Note}
+\newtheorem{facts}[thm]{Facts}
+\newtheorem{fact}[thm]{Fact}
+\newcommand{\defnphrase}[1]{\textbf{#1}}
+\DeclarePairedDelimiter\ang{\langle}{\rangle}
+
+% Use line breaks, not indents, for distinguishing paragraphs.
+\setlength{\parindent}{0em}
+\setlength{\parskip}{1em}
+\setlist{topsep=0pt}
+
+\setlength{\parskip}{0pt}
+
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\LS}{\mathcal{L}}
+\newcommand{\SLZ}{\mathrm{SL}_2{\Z}}
+\newcommand{\PSLZ}{\mathrm{PSL}_2{\Z}}
+\newcommand{\PSLR}{\mathrm{PSL}_2{\R}}
+\DeclareMathOperator{\im}{im}
+\DeclareMathOperator{\sign}{sign}
+\newcommand{\into}{\xhookrightarrow{}}
+\newcommand{\wo}{\, \backslash \,}
+\definecolor{todopink}{RGB}{219, 48, 122}
+\newcommand{\TODO}[1]{{\color{todopink}\textsf{TODO: #1}}}
+\newcommand{\Id}{\mathrm{Id}}
+
 \title{}
 \author{}
 \date{}
@@ -7,41 +71,1229 @@
 \advisor{}
 \department{Mathematics}
 
-\setlength{\parskip}{0pt}
-
 \begin{document}
-  \maketitle
-  \frontmatter % this stuff will be roman-numbered
-  \pagestyle{empty} % this removes page numbers from the frontmatter
+\maketitle
+\setlength{\parskip}{0pt}
+\frontmatter % this stuff will be roman-numbered
+\pagestyle{empty} % this removes page numbers from the frontmatter
 
-  % \chapter*{Acknowledgements}
+% \chapter*{Acknowledgements}
 
-  % I want to thank a few people.
+% I want to thank a few people.
 
-  % \chapter*{List of Abbreviations}
+% \chapter*{List of Abbreviations}
 
-  % You can always change the way your abbreviations are formatted. Play around with it yourself, use tables, or come to CUS if you'd like to change the way it looks. You can also completely remove this chapter if you have no need for a list of abbreviations. Here is an example of what this could look like:
+% You can always change the way your abbreviations are formatted. Play around with it yourself, use tables, or come to CUS if you'd like to change the way it looks. You can also completely remove this chapter if you have no need for a list of abbreviations. Here is an example of what this could look like:
 
-  \tableofcontents
-  % \listoftables
-  % \listoffigures
+\tableofcontents
 
-  % \chapter*{Abstract}
+% \listoftables
+% \listoffigures
 
-  % The preface pretty much says it all.
+% \chapter*{Abstract}
+
+% The preface pretty much says it all.
+
+\setlength{\parskip}{1em}
+\mainmatter
+\pagestyle{fancyplain}
+
+\chapter*{Introduction}
+\addcontentsline{toc}{chapter}{Introduction}
+\chaptermark{Introduction}
+\markboth{Introduction}{Introduction}
+
+The 3-sphere, the space of unimodular lattices, and 1 to 3 point subsets of the circle---each of these spaces possesses a unique and rich structure.
+Remarkably, they are also homeomorphic, providing multiple perspectives of phenomenon occurring in each individual space.
+
+In this document, we examine the modular flow and its periodic orbits in the space of unimodular lattices.
+This is a simple dynamical system whose a periodic orbits can be described in terms of hyperbolic elements of the modular group, $\PSLZ$.
+Viewed in the 3-sphere, such a flow presents as a link with the trefoil knot.
+A basic property of these trefoil links, their linking number, can be described by a classic yet mysterious arithmetic function.
+Moreover, the knot-complement of the trefoil in the 3-sphere has fundamental group isomorphic to a famous group, the braid group on 3 strands, providing an additional viewpoint from which to consider periodic orbits of lattices and their associated trefoil links.
+
+The space of finite subsets of the circle is perhaps the most obscure of the aforementioned spaces, having been studied little in comparison to the space of lattices and the 3-sphere.
+The modular flow in this finite subset space begs a visual interpretation similar to that of the trefoil links in the 3-sphere.
+Here, we examine the group theoretic interpretation of finite subset loops as elements of the braid group.
+Additionally, we provide a conjecture for determining the linking number of a trefoil link from such a loop.
+
+This document will proceed by examining each homeomorphic space in turn.
+
+\chapter{The space of unimodular lattices}
+
+First, we recall some basic definitions. A \defnphrase{lattice in $\C$} is a set of points
+\begin{equation*}
+  \{ n \omega_1 + m \omega_2 : n,\, m \in \Z \}
+\end{equation*}
+where $\omega_1$ and $\omega_2$ are complex numbers.
+We call $\omega_1$ and $\omega_2$ the \defnphrase{lattice generators}, since each complex pair of numbers of $(\omega_1, \omega_2)$, defines a (not necessarily unique) lattice.
+There are three types of lattices: \defnphrase{degenerate} lattices, \defnphrase{non-degenerate} lattices, and the \defnphrase{zero lattice}.
+As additive subgroups of $\C$, degenerate and non-degenerate lattices are those isomorphic to $\Z$ and $\Z \oplus \Z$, respectively.
+The zero lattice is trivial, consisting of the single point at the origin (see Figure~\ref{fig:three_types_of_lattices}).
+The \defnphrase{determinant of a lattice} is the determinant of the matrix whose columns are the generators of the lattice, considered as pairs of real numbers---this quantity is the area of a single cell in the lattice.
+If a lattice has determinant 1 or $-1$, we say that the lattice is \defnphrase{unimodular}. 
+
+\begin{figure}[h]
+  \centering
+  \begin{subfigure}[t]{0.31\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{figures/degen_lattice.pdf}
+    \caption{A degenerate lattice.}
+  \end{subfigure}
+  \hfill
+  \begin{subfigure}[t]{0.31\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{figures/non_degen_lattice.pdf}
+    \caption{A non-degenerate lattice.}
+  \end{subfigure}
+  \hfill
+  \begin{subfigure}[t]{0.31\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{figures/zero_lattice.pdf}
+    \caption{The zero lattice.}
+  \end{subfigure}
+  \caption{The three types of lattices.}
+  \label{fig:three_types_of_lattices}
+\end{figure}
+
+We denote the space of all non-trivial unimodular lattices as $\LS = \LS_0 \cup \LS_1$, where $\LS_0$ and $\LS_1$ are the degenerate and non-degenerate lattices, respectively.
+This space can alternatively be defined as the quotient space of all lattices modulo a homothety relation.
+Two lattices are homothetic if one is the scalar multiple of the other, i.e. if the generators of one lattice is a multiple of the generators of the other lattice.
+
+\section{The modular flow of lattices}\label{subsec:lattice_flow}
+
+We now describe a dynamical flow in the space of lattices.
+We can think of a complex lattice $L \in \LS$ as sitting inside $\R^2 \cong \C$. Left multiplication of each point in the lattice by
+\begin{equation}\label{eq:delta_t}
+  \delta_t = \begin{pmatrix}
+    \exp(t) & 0 \\
+    0 & \exp(-t)
+  \end{pmatrix}
+\end{equation}
+produces another unimodular lattice.
+Thus as the time variable $t$ increases continuously, we obtain a flow in $\LS$.
   
-  \mainmatter
-  \pagestyle{fancyplain}
+Note that as $t$ increases, each individual point in the lattice moves towards $\pm \infty$ along a hyperbolic path, yet the lattice as a whole may move back to its original position.
+Thus we can study the periodic orbits of this flow. 
 
-  \chapter*{Introduction}
-  \addcontentsline{toc}{chapter}{Introduction}
-  \chaptermark{Introduction}
-  \markboth{Introduction}{Introduction}
+\begin{figure}[t]
+  \centering
+  \includegraphics[width=0.8\linewidth]{figures/periodic_orbits_lattice.pdf}
+  \caption{A periodic orbit of the modular flow in the space of lattices. As each point in the lattice is acted upon by $\delta_t$, it moves on a hyperbolic path towards infinity. At $t \approx 0.96$, we have that $\delta_t(L) = L$.}
+  \label{fig:periodic_orbits_lattice}
+\end{figure}
 
-  \appendix
-  \chapter{The First Appendix}
-  \chapter{The Second Appendix, for Fun}
+The periodic orbits can be described succinctly via a particular type of matrix.
+Recall that that the special linear group $\SLZ$ is the set of $2 \times 2$ matrices with integer entries and determinant 1.
+We say that a matrix
+\begin{equation*}
+  A = \begin{pmatrix}
+    a & b \\
+    c & d
+  \end{pmatrix} \in \SLZ
+\end{equation*}
+is \defnphrase{hyperbolic} if $|a + d| > 2$.
+Hyperbolic matrices are diagonalizable over the real numbers, so we can find a real $2 \times 2$ matrix $P$ such that
+\begin{equation*}
+  PAP^{-1} = \begin{pmatrix}
+    \exp(T) & 0 \\
+    0 & \exp(-T)
+  \end{pmatrix} = \delta_{T}
+\end{equation*}
+for some $T \in \R$. Let $L = P(\Z^2)$ be the image of the square lattice by $P$. Then
+\begin{align*}
+  \delta_{T}(L) &= PAP^{-1} P(\Z^2) \\
+  &= PA(\Z^2) \\
+  &= P(\Z^2) && \text{Since $\det(A) = 1$, so $A(\Z^2) = \Z^2$.} \\
+  &= L
+\end{align*}
+Thus the image of $P(\Z^2)$ by $\delta_t$ as $t \in [0, T]$ is a periodic orbit of orbit time $T$, and we have the following proposition: 
+
+\begin{prop}\label{prop:hyperbolic_defines_flow}
+  Every hyperbolic matrix defines a periodic orbit of the modular flow.
+\end{prop}
+
+An example periodic orbit corresponding to the hyperbolic matrix $\begin{psmallmatrix} 2 & 1 \\ 1 & 1 \end{psmallmatrix}$ is shown in Figure~\ref{fig:periodic_orbits_lattice}.
+
+\TODO{Show the periodic orbits are in bijection with conjugacy classes of hyperbolic elements.}
+
+\chapter{The 3-sphere and the trefoil complement}\label{sec:three_sphere}
+
+The \defnphrase{3-sphere} is the set of complex tuples
+\begin{equation*}
+  S^3 = \{ (u, v) \in \C : |u| + |v| = 1 \}
+\end{equation*}
+This set is endowed with the usual subspace topology, and is commonly employed in the study of knots or links.
+Technically speaking, we say that a \defnphrase{knot} is an embedding $S^1 \into S^3$, considered up to isotopy.
+Intuitively, a knot is a loop in 3-space with interesting twisting behavior and no self-intersections.
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=0.5\linewidth]{figures/trefoil.png}
+  \caption{A trefoil knot. While the knot is embedded inside $S^3$, we can stereographically project $S^3$ to $\R^3$ for visualization purposes.}
+  \label{fig:trefoil}
+\end{figure}
+
+In our case, we're interested in particular prototypical knot called the \defnphrase{trefoil} (visualized in Figure \ref{fig:trefoil}).
+This is the knot that, when laid on the surface of the torus, crosses the meridian of the torus three times and crosses longitudinal circles twice---as such it is also known as the \defnphrase{$(2, 3)$-torus knot}.
+While a knot technically refers to an \emph{isotopy class} of a loop, we can also work explicitly with a parameterization of a representative of this isotopy class.
+Doing so for the trefoil will be of use to us soon in understanding the correspondence between $\LS$ and $S^3$.
+
+\begin{prop}\label{prop:trefoil_intersection_curve}
+  Let $u,\, v \in \C$ and $a \in \R$ with $a \neq 0$.
+  The intersection of the of the complex curve $u^3 + a v^2 = 0$ with the 3-sphere is a trefoil knot.
+\end{prop}
+
+\TODO{Include proof of this fact.}
+
+For any knot $K : S^1 \into S^3$, we can also consider the \defnphrase{knot complement} space $S^3 \wo K$.
+Historically, such spaces have provided interesting examples of 3-manifolds, and their fundamental groups provide useful knot invariants.
+The fundamental group of the trefoil complement happens to be isomorphic to a famous group, which we will describe shortly.
+First, we provide an explicit computation of the fundamental group of the trefoil complement.
+For additional details, see~\cite[47--49]{hatcher2002} and~\cite[153--154]{stillwell1993}.
+
+\begin{prop}
+  Let $K$ be the trefoil knot.
+  Then
+  \begin{equation*}
+    \pi_1(S^3 \wo K) = \ang{x, y : x^2 = y^3}
+  \end{equation*}
+\end{prop}
+
+\begin{proof}
+  We proceed by two applications of the Seifert-van Kampen theorem.
+  First we compute $\pi_1(\R^3 \wo K)$, since it is slightly easier to compute than $\pi_1(S^3 \wo K)$.
+
+  Let $T \subset \R^3 \wo K$ be the solid torus with $K$ removed and $N$ be a thin tubular neighborhood of $K$.
+  Let $X = T \wo N$ and $Y = (\R^3 \wo T) \wo N$.
+  Then $X$ and $Y$ meet at a region $L$ that looks like the surface of the solid torus with $N$ removed.
+  As shown in Figure~\ref{fig:flat_annulus}, $L$ is an annulus.
+
+  \begin{figure}[h]
+    \centering
+    \includegraphics[width=0.7\textwidth]{figures/fundamental_group_flat.pdf}
+    \caption{The region $L$ is the torus with a thin tubular neighborhood of the trefoil $N$ removed. Here, $N$ is depicted in white and $L$ is shaded in gray on the flat torus. While still respecting the appropriate edge identifications, the pieces of the torus can be rearranged to form an annulus. The generator $\ell$ of this annulus is shown in blue.}
+    \label{fig:flat_annulus}
+  \end{figure}
+
+  Since $L$ is an annulus, its fundamental group is infinite cyclic with a single generator $\ell$.
+  The space $X$ is a solid torus with a neighborhood of the trefoil removed, which deformation retracts onto a circle.
+  So $\pi_1(X)$ is infinite cyclic as well, with generator $x$ corresponding to the loop around the axis of the solid torus.
+  In $X$, the generator $\ell$ is a trefoil loop around the torus that crosses longitudinal circles twice, so we have
+  \begin{equation*}
+    \ell \simeq x^2
+  \end{equation*}
+  The fundamental group of $Y$ is also infinite cyclic, with the generator $y$ corresponding to a loop that ``links'' the hole of the solid torus.
+  $\ell$ crosses meridian circles in the solid torus three times, so we have that
+  \begin{equation*}
+    \ell \simeq y^3
+  \end{equation*}
+  Now, we can expand $X$ and $Y$ slightly to open sets $X' \supseteq X$ and $Y' \supseteq$ such that $X' \cap Y'$ is an open neighborhood of $L$ and $X' \cup Y' = \R^3 \wo K$ (see Figure~\ref{fig:fundamental_group_side}). 
+
+  \begin{figure}[t]
+    \centering
+    \includegraphics[width=0.6\textwidth]{figures/fundamental_group_side.pdf}
+    \caption{The picture on the left shows a longitudinal slice of the torus $T$, with the absence of tubular neighborhood $N$ of the trefoil shown in white. The regions $X$ and $Y$ are depicted in blue and pink, respectively. On the right, $X$ and $Y$ have been expanded to $X'$ and $Y'$, respectively.}
+    \label{fig:fundamental_group_side}
+  \end{figure}
+
+  Then, applying Van Kampen, we have that
+  \begin{equation*}
+    \pi_1(\R^3 \wo K) = \ang{x, y : x^2 = y^3}
+  \end{equation*}
+  Now we show that $\pi_1(\R^3 \wo K) = \pi_1(S^3 \wo K)$ with another application of Van Kampen.
+  Decompose $S^3 \wo K$ into $(\R^3 \wo K) \cup B$, where $B$ is an open set containing the compactification point and the complement of a large closed ball containing $K$.
+  Both $B$ and $B \cap (\R^3 \wo K)$ are simply connected.
+  By Van Kampen, the inclusion $\R^3 \wo K \into S^3 - K$ induces an isomorphism of groups
+  \begin{equation*}
+    \Phi : \pi_1(R^3 \wo K) \to \pi_1(S^3 \wo K)
+  \end{equation*}
+  as shown by the following commutative diagram:
+  \begin{center}
+    \begin{tikzcd}
+      & \pi_1(\R^3 \wo K) \ar[dr,] \ar[d] & \\
+      \pi_1(B \cap (\R^3 \wo K)) \ar[ur] \ar[dr, "1"'] & \pi_1(B) \ast \pi_1(\R^3 \wo K) \ar[r, "\Phi"] & \pi_1(S^3 \wo K) \\
+      & \pi_1(B) = 1 \ar[ur, "1"'] \ar[u] &
+    \end{tikzcd}
+  \end{center}
+  Thus we have the desired result.
+\end{proof}
+
+The fundamental group of the trefoil complement is isomorphic to a well-known group, the \defnphrase{braid group on $3$ strands}.
+This group has presentation
+\begin{equation*}
+  B_3 = \ang{\sigma_1, \sigma_2 : \sigma_1 \sigma_2 \sigma_1 = \sigma_2 \sigma_1 \sigma_2}
+\end{equation*}
+The isomorphism $\pi_1(S^3 \wo K) \to B_3$ is given by sending generators
+\begin{align}\label{eq:iso_pi1_b3}
+  x &\mapsto \sigma_0 \sigma_1 \sigma_0 \\
+  y &\mapsto \sigma_0 \sigma_1
+\end{align}
+This group appears in many different contexts: it is the mapping class group of the thrice-punctured disk, the universal central extension of $\PSLZ$, and so forth.
+It also has a convenient visual interpretation, where the generators $\sigma_1$ and $\sigma_2$ are depicted and composed as in Figure~\ref{fig:visual_braid_group}.
+We will return to this visual interpretation in Section~\ref{sec:finite_subsets}, where we decompose the path class of various loops in $\exp_{2,3} S^1 \cong S^3 \wo K$ as visual generators of $B_3$. 
+
+\vspace{1em}
+\begin{figure}[h]
+  \centering
+  \begin{subfigure}[t]{0.48\textwidth}
+    \centering
+    \begin{tikzpicture}
+      \braid[ultra thick, number of strands=3, width=5mm, height=21mm] s_1;
+    \end{tikzpicture}
+    \hspace{10mm}
+    \begin{tikzpicture}
+      \braid[ultra thick, number of strands=3, width=5mm, height=21mm] s_2;
+    \end{tikzpicture}
+    \caption{The generators $\sigma_1$ and $\sigma_2$ of $B_3$}
+  \end{subfigure}
+  \hfill
+  \begin{subfigure}[t]{0.48\textwidth}
+    \centering
+    \begin{tikzpicture}
+      \braid[ultra thick, width=5mm, height=7mm] s_1 s_2 s_1;
+      \draw node[fill=white] at (2,-1.25) {=};
+    \end{tikzpicture}
+    \begin{tikzpicture}
+      \braid[ultra thick, width=5mm, height=7mm] s_2 s_1 s_2;
+    \end{tikzpicture}
+    \caption{The single relation in $B_3$, known as the \textbf{third Reidmeister move}.}
+  \end{subfigure}
+  \caption{The visual interpretation of $B_3$, where each generator is thought of as a braiding of three strands of string that start and end at fixed points. The group operation corresponds to stacking the visual generators top to bottom to compose a more complex braiding of string. The single relation in $B_3$ can be thought of as ``pulling a string'' without moving the endpoints, which preserves the homotopy class of the braid.}
+  \label{fig:visual_braid_group}
+\end{figure}
+
+\section{From $\LS$ to $S^3$}\label{subsec:lattice_to_s3}
+
+Given that both $\LS$ and $S^3$ consist of tuples of complex numbers, it is perhaps not surprising that these spaces are homeomorphic.
+We now describe an explicit homeomorphism $\LS \to S^3$ as sketched in~\cite{mostovoy2004}.
+
+Let $L \in \LS$ and $k \in \Z$.
+Define
+\begin{equation*}
+  G_k(L) = \sum_{\omega \in L,\ \omega \neq 0} \omega^{-k}
+\end{equation*}
+When $k = 4$ or $k = 6$, these series converge and is known as \defnphrase{Eisenstein series}.
+For non-degenerate $L$, these numbers are the parameters in the Weierstrass $\wp_L$-function identity
+\begin{equation*}
+  (\wp_L')^2 = 4 \wp_L^3 - 60 G_4(L) \wp_L - 140 G_6(L)
+\end{equation*}
+The following facts about $G_4(L)$ and $G_6(L)$ are fundamental to the theory of elliptic functions:
+\begin{enumerate}[(i)]
+  \item For $t > 0$ and any $L$, $G_4(tL) = t^{-4} G_4(L)$ and $G_6(tL) = t^{-6} G_6(L)$.
+  
+  \item The map $L \mapsto (G_4(L),\, G_6(L))$ is a homeomorphism $\LS \to \C^2 \wo \{ 0 \}$.
+
+  \item A tuple $(u, v) \in \C^2 \wo \{ 0 \}$ is the image of a degenerate lattice under this map if and only if $20u^3 - 49v^2 = 0$.
+\end{enumerate}
+Thus for any unimodular lattice $L$, we can obtain a unique rescaling $L' = tL$ for some $t > 0$ such that
+\begin{equation*}
+  |G_4(L')| + |G_6(L')| = 1
+\end{equation*}
+Then the map $L \mapsto (G_4(L'),\, G_6(L'))$ lands in $S^3$, and we have the desired homeomorphism $\LS \to S^3$.
+By Proposition~\ref{prop:trefoil_intersection_curve}, the image of degenerate lattices under this homeomorphism is the trefoil knot shown in Figure~\ref{fig:trefoil}.
+
+\section{Periodic orbits in $S^3$}\label{sec:periodic_orbits_in_s3}
+
+We have observed the periodic orbits of a simple flow in the space of lattices in Section~\ref{subsec:lattice_flow}, and we have just seen that the space of lattices is homeomorphic to the 3-sphere.
+It is now natural to ask: how do these periodic orbits present in the 3-sphere?
+
+Recall that the degenerate lattices are sent to the trefoil knot in the 3-sphere, but that the periodic orbits of this flow exist entirely within the space of non-degenerate lattices.
+Thus we can say that in the 3-sphere, \emph{a periodic orbit of the modular flow in the space of lattices determines a link with the trefoil knot}.
+Since each periodic flow is associated with some hyperbolic $A \in \SLZ$, we will call the corresponding trefoil link $k_A$ a \defnphrase{modular trefoil link} in line with~\cite{ghys2007}.
+Several examples of such links are shown in Figure~\ref{fig:trefoil_links}.
+
+\TODO{Give a brief recap of the historical and contemporary questions studied with respect to the modular flow, e.g. Lorenz, Birman, Ghys...}
+
+\begin{figure}[h!]
+  \centering
+  \begin{subfigure}[t]{0.48\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{figures/trefoil_link_1_1_1_2.png}
+    \caption*{$A = \begin{pmatrix}1 & 1 \\ 1 & 2\end{pmatrix}$}
+  \end{subfigure}
+  \hfill
+  \begin{subfigure}[t]{0.48\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{figures/trefoil_link_2_3_5_8.png}
+    \caption*{$A = \begin{pmatrix}2 & 3 \\ 5 & 8\end{pmatrix}$}
+  \end{subfigure}
+  \begin{subfigure}[t]{0.48\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{figures/trefoil_link_13_8_21_13.png}
+    \caption*{$A = \begin{pmatrix}13 & 8 \\ 21 & 13\end{pmatrix}$}
+  \end{subfigure}
+  \hfill
+  \begin{subfigure}[t]{0.48\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{figures/trefoil_link_43_163_67_254.png}
+    \caption*{$A = \begin{pmatrix}43 & 163\\ 67 & 254\end{pmatrix}$}
+  \end{subfigure}
+  \caption{A matrix $A \in \SLZ$ determines a periodic orbit of a flow in $\LS$, which in turn determines a modular trefoil link $k_A$ in $S^3$. Here, we visualize $k_A$ for several values of $A$.}
+  \label{fig:trefoil_links}
+\end{figure}
+
+\section{The modular group, Rademacher function, and linking number of a modular trefoil link}
+
+The periodic orbits of the modular flow provide a rich source of interesting trefoil links.
+One property of links that is classically studied is their linking number.
+
+\TODO{Define the linking number.}
+
+In \cite{ghys2007}, Ghys proves a fascinating result relating the linking numbers of modular trefoil links to a famous arithmetic function.
+To understand this function and subsequent result, we first need to understand a few facts about $\SLZ$ and its relative, $\PSLZ$.
+
+\begin{prop}
+  $\SLZ$ is generated by the matrices
+  \begin{equation*}
+    S = \begin{pmatrix}
+      0 & -1 \\
+      1 & 0
+    \end{pmatrix},\
+    T = \begin{pmatrix}
+      1 & 1 \\
+      0 & 1
+    \end{pmatrix}
+  \end{equation*}
+\end{prop}
+
+\begin{proof}
+  Let $\alpha \in \SLZ$.
+  First we show that there exists some $\gamma \in \ang{S,T}$ such that $\gamma\alpha$ is a matrix with lower left entry 0.
+  Note that for all $n \in \Z$,
+  \begin{equation*}
+    \begin{pmatrix}
+      1 & n \\
+      0 & 1
+    \end{pmatrix}
+    = \begin{pmatrix}
+      1 & 1 \\
+      0 & 1
+    \end{pmatrix}^n
+    = T^n \in \ang{S,T}
+  \end{equation*}
+  Then for any matrix $\begin{psmallmatrix}a & b \\ c & d\end{psmallmatrix}$, we have the identities
+  \begin{equation*}
+    S \begin{pmatrix}
+      a & b \\
+      c & d
+    \end{pmatrix}
+    = \begin{pmatrix}
+      -c & -d \\
+      a & b
+    \end{pmatrix},\ \
+    T^n \begin{pmatrix}
+      a & b \\
+      c & d
+    \end{pmatrix}
+    = \begin{pmatrix}
+      a + nc & b + nd \\
+      c & d
+    \end{pmatrix}
+  \end{equation*}
+  Now, let $\alpha = \begin{psmallmatrix}a & b \\ c & d\end{psmallmatrix}$.
+  If $c = 0$, then $\gamma = S^4 = I$ and we are done.
+  So suppose $c \neq 0$.
+  If $|a| < |c|$, left multiply $\alpha$ by $S$.
+  Then $|a| \geq |c|$, so we can divide $a$ by $c$.
+  Then we have $a = qc + r$ with $0 \leq r < |c|$.
+  Then $T^{-q} \alpha$ has upper left entry $r = a - qc$, which has absolute value smaller then the lower left entry of $T^{-q} \alpha$.
+  Applying $S$ to $T^{-q} \alpha$ switches the upper and lower left entries, and we can apply the division algorithm again.
+  After each iteration of this process, we obtain a matrix with lower left entry whose absolute value is strictly less than before.
+  So eventually we have a word $\gamma$ in $S$ and $T$ such that $\gamma\alpha$ has lower left entry 0.
+  To summarize, at the end of the following algorithm we have a word $\gamma$ in $S$ and $T$ such that $\gamma \alpha$ has lower-left entry 0.
+  
+  \vspace{1em}
+  \begin{algorithmic}
+    \State $\gamma \gets S^4 = I$
+    \If{$(\gamma \alpha)_{0,0} > (\gamma \alpha)_{1,0}$}
+      $\gamma \gets S \gamma$
+    \EndIf
+    \While{$(\gamma \alpha)_{1,0} \neq 0$}
+      \State $q \gets a \ // \ c$
+      \State $r \gets a\ \% \ c$
+      \State $\gamma \gets T^{-q} \gamma$
+      \If{$(\gamma \alpha)_{0,0} > (\gamma \alpha)_{1,0}$}
+        $\gamma \gets S \gamma$
+      \EndIf
+    \EndWhile
+  \end{algorithmic}
+
+  Since the determinant is multiplicative, $\gamma \alpha$ also has determinant 1.
+  Hence $\gamma\alpha$ must be of the form $\begin{psmallmatrix}1 & n \\ 0 & 1\end{psmallmatrix}$ or $\begin{psmallmatrix}-1 & n \\ 0 & -1\end{psmallmatrix}$ for some $n \in \Z$.
+  So $\gamma \alpha = \pm T^n$, which means that $\alpha = \pm \gamma^{-1} T^n$.
+  Both $\gamma^{-1} T^n$ and $-\gamma^{-1} T^n = -I \gamma^{-1} T^n = S^2 \gamma^{-1} T^n$ are in $\ang{S,T}$.
+  Thus we have taken an arbitrary $\alpha \in \SLZ$ and represented it as an element in $\ang{S,T}$, thus $\SLZ \subseteq \ang{S,T}$.
+  The reverse inclusion is apparent.
+\end{proof}
+
+\begin{defn}
+  The \defnphrase{modular group} $\PSLZ$ is $\SLZ / \{ \pm \Id \}$.
+\end{defn}
+
+\begin{prop}\label{prop:pslgenerators}
+  $\PSLZ = \ang{S, T} = \ang{U,V} = \ang{P,Q}$, where
+  \begin{equation*}
+    U = \begin{pmatrix}
+      0 & 1 \\
+      -1 & 0
+    \end{pmatrix},\
+    V = \begin{pmatrix}
+      1 & -1 \\
+      1 & 0
+    \end{pmatrix},\
+    P = \begin{pmatrix}
+      1 & 1 \\
+      0 & 1
+    \end{pmatrix},\
+    Q = \begin{pmatrix}
+      1 & 0 \\
+      1 & 1
+    \end{pmatrix}
+  \end{equation*}
+  and $S$ and $T$ are as before.
+\end{prop}
+
+\begin{proof}
+  $\PSLZ$ is all integer matrices $A$ such that $\det A = 1$, subject to the identification $A = -A$.
+  Since $\SLZ = \ang{S,T}$ and any such $A$ is in $\SLZ$, $S$ and $T$ generate $\PSLZ$ as well.
+  In $\PSLZ$, we also have that $U = S$, $V = (TSS)^{-1}$, $P = TSS$, and $Q = TST$.
+  Thus $\PSLZ = \ang{S,T} = \ang{U,V} = \ang{P,Q}$.
+\end{proof}
+
+\begin{prop}\label{prop:reducedform}
+  Any element of $\PSLZ$ can be written uniquely as
+  \begin{equation}
+    V^{\varepsilon_0} U V^{\varepsilon_1} U \cdots V^{\varepsilon_{n}} U V^{\varepsilon_{n+1}}
+  \end{equation}
+  where $\varepsilon_0, \varepsilon_{n+1} \in \{-1,0,1\}$ and $\varepsilon_i \in \{-1,1\}$ for $0 \leq i \leq n$.
+\end{prop}
+
+\begin{proof}
+  Let $A \in \PSLZ$.
+  Since $\PSLZ = \ang{U,V}$, we have that $A$ can be written uniquely in shortest form as
+  \begin{equation*}
+    V^{\varepsilon_0} U^{\varepsilon_1} V^{\varepsilon_2} \cdots U^{\varepsilon_{n}} V^{\varepsilon_{n+1}}
+  \end{equation*}
+  where $\varepsilon_i \neq 0$ for all $ 1 \leq i \leq n$.
+  But we also have that
+  \begin{equation*}
+    U^2 = V^3 = \begin{pmatrix}
+      -1 & 0 \\
+      0 & -1
+    \end{pmatrix}
+    = I
+  \end{equation*}
+  Thus $\varepsilon_i \in \Z / 3 \Z$ for all $i$, and $\varepsilon_i \not\equiv 0 \pmod 3$ for $1 \leq i \leq n$.
+  And since $V^2 = V^{-1}$, we have that
+  \begin{equation*}
+    A = V^{\varepsilon_0} U V^{\varepsilon_1} U \cdots V^{\varepsilon_n} U V^{\varepsilon_{n+1}}
+  \end{equation*}
+  where $\varepsilon_i = \pm 1$ for $1 \leq i \leq n$, the desired result.
+\end{proof}
+
+\begin{prop}
+  Any matrix $A \in \PSLZ$ is conjugate to a matrix either of the form
+  \begin{equation*}
+    \text{$U$, $V$, or $V^{-1}$}
+  \end{equation*}
+  or of the form
+  \begin{equation}\label{eq:uvform}
+    U V^{\varepsilon_1} U V^{\varepsilon_2} \cdots V^{\varepsilon_{n}}
+  \end{equation}
+  where $\varepsilon_i \in \{-1,\, 1\}$ for $1 \leq i \leq n$.
+  Furthermore, any cyclic permutation of the factors in \eqref{eq:uvform} remains in the conjugacy class of $A$.
+  Thus we call the form \eqref{eq:uvform} a \defnphrase{$UV$ decomposition of the conjugacy class of $A$}.
+\end{prop}
+
+\begin{proof}
+  See~\cite[56--57]{rademacher1972}.
+\end{proof}
+
+\begin{prop}\label{prop:pq_decomposition}
+  Let $A \in \PSLZ$ be conjugate to a matrix
+  \begin{equation*}
+    M = UV^{\varepsilon_1} UV^{\varepsilon_2} \cdots UV^{\varepsilon_n}
+  \end{equation*}
+  where $\varepsilon_i \in \{-1, 1\}$ for $1 \leq i \leq n$.
+  Then $A$ is conjugate to the word in $Q$ and $P$ where $Q$ replaces all occurrences of $UV^1$ and $P$ replaces all occurrences of $UV^{-1}$ in $M$.
+  This word is called a \defnphrase{$PQ$ decomposition of the conjugacy class of $A$}.
+\end{prop}
+
+\begin{proof}
+  Let 
+  \begin{equation*}
+    X = \begin{pmatrix}
+      -1 & 0 \\
+      0 & 1
+    \end{pmatrix}
+  \end{equation*}
+  Then $UV = XQX^{-1}$ and $UV^{-1} = XPX^{-1}$, so $UV$ is conjugate to $Q$ and $UV^{-1}$ is conjugate to $P$. 
+  By replacing all $UV$ and $UV^{-1}$ in $UV^{\varepsilon_1} UV^{\varepsilon_2} \cdots UV^{\varepsilon_n}$ with $XQX^{-1}$ and $XPX^{-1}$ then simplifying the result, we see that $M$ is conjugate by $X$ to a word in $Q$ and $P$.
+  Since conjugacy is a transitive relation, this means that $A$ is conjugate to the word in $P$ and $Q$ as well.
+\end{proof}
+
+\begin{defn}
+  Let $h$ and $k$ be coprime integers with $k \geq 1$.
+  The \defnphrase{Dedekind sum} $s(h,k)$ is the function given by
+  \begin{equation*}
+    s(h, k) = \sum_{r=1}^{k-1} \frac r k \left( \! \left( \frac {hr} k \right) \! \right)
+  \end{equation*}
+  where
+  \begin{equation*}
+    ((x)) = \begin{cases}
+      x - \lfloor x \rfloor - 1/2 & \text{if $x \notin \Z$} \\
+      0 & \text{if $x \in \Z$}
+    \end{cases}
+  \end{equation*}
+  and $\lfloor x \rfloor$ is the floor of $x$.
+\end{defn}
+
+\begin{defn}
+  The \defnphrase{Rademacher function $\Phi : \PSLZ \to \Z$} is given by
+  \begin{equation*}
+    \Phi \begin{pmatrix}
+      a & b \\
+      c & d
+    \end{pmatrix} = \begin{cases}
+    b/d & \text{for $c = 0$} \\
+    \frac{a + d}{c} - 12 (\sign c)\, s(d, |c|) & \text{for $c \neq 0$}
+    \end{cases}
+  \end{equation*}
+  The closely related \defnphrase{Rademacher class function $\Psi : \PSLZ \to \Z$} is defined as
+  \begin{equation*}
+    \Psi \begin{pmatrix}
+      a & b \\ c & d
+    \end{pmatrix} = \Phi \begin{pmatrix}
+      a & b \\ c & d
+    \end{pmatrix} - 3 \sign(c(a + d))
+  \end{equation*}
+\end{defn}
+
+\begin{prop}[Rademacher]
+ Suppose $A,\, B \in \PSLZ$ and let $c_M$ be the lower left entry of any matrix $M$.
+ Then
+ \begin{equation*}
+   \Phi(AB) = \Phi(A) + \Phi(B) - 3 \sign(c_A c_B c_{AB})
+ \end{equation*}
+ and
+ \begin{equation*}
+   \Psi(AB) = \Psi(A) + \Psi(B)
+ \end{equation*}
+\end{prop}
+
+\begin{proof}
+  Given in~\cite{rademacher1956}.
+\end{proof}
+
+\begin{prop}[Rademacher]\label{prop:rademacher_class_sum}
+  Suppose that $A \in \PSLZ$ is conjugate to a matrix of the form \eqref{eq:uvform}, say $A \sim U V^{\varepsilon_1} U V^{\varepsilon_2} \cdots V^{\varepsilon_{n}}$.
+  Then
+  \begin{equation*}
+    \Psi(A) = \sum_{i=1}^n \varepsilon_i
+  \end{equation*}
+\end{prop}
+
+\begin{proof}
+  See \cite[58-60]{rademacher1972}.
+\end{proof}
+
+\begin{cor}
+  Let $P^{i_1} Q^{j_1} \cdots P^{i_n} Q^{i_m}$ be a $PQ$ decomposition of the conjugacy class of $A \in \PSLZ$.
+  Then
+  \begin{equation*}
+    \Psi(A) = \sum_{k=1}^n j_k - i_k
+  \end{equation*}
+\end{cor}
+
+\begin{proof}
+  This follows from Proposition~\ref{prop:rademacher_class_sum} in light of Proposition~\ref{prop:pq_decomposition}.
+\end{proof}
+
+\begin{thm}[Ghys]
+  The linking number of a modular trefoil knot $k_A$ is $\Psi(A)$.
+\end{thm}
+
+\chapter{Finite subsets of the circle}\label{sec:finite_subsets}
+
+We now arrive at our third homeomorphic space, the set of all subsets of $S^1$ with at most 3 points.
+In general, we denote the set of all subsets with at most $k$ points of a space X as $\exp_k X$, and refer to it as a \defnphrase{finite subset space}.
+Such a space can be given the topology induced by the quotient map
+\begin{gather*}
+  q : X^k \to \exp_k X \\
+  q(x_1, x_2, \ldots, x_k) = \{x_1\} \cup \{x_2\} \cup \cdots \cup \{x_k\}
+\end{gather*}
+Alternatively, if the underlying space $X$ has metric structure, we can topologize $\exp_k X$ via an induced metric on subsets of $X$.
+Let $d$ be a metric on $X$, and define the \defnphrase{$r$-inflation of $A \subseteq X$} as
+\begin{equation*}
+  A_r = \bigcup_{a \in A} \{ x \in X : d(a, x) < r \}
+\end{equation*}
+Then the \defnphrase{Hausdorff distance $d_H$} between two subsets $A$ and $B$ of $X$ is given by
+\begin{equation*}
+  d_H(A, B) = \inf \{ \varepsilon \geq 0 : A \subseteq B_\varepsilon, B \subseteq A_\varepsilon \}
+\end{equation*}
+Intuitively, the Hausdorff distance between two subsets is the minimum amount they must be ``inflated'' in order to contain each other.
+The \defnphrase{Hausdorff metric topology} on $\exp_k X$ is the topology generated by the Hausdorff distance.
+Perhaps surprisingly, it turns out that this topology is equivalent to the quotient topology induced by the map $q$.
+\begin{prop}
+  Let $(X, d)$ be a metric space.
+  The Hausdorff metric topology $\mathcal{T}_H$ on $X$ is equivalent to the quotient topology $\mathcal{T}_q$ under the quotient map $q$.
+\end{prop}
+
+\begin{proof}
+  To show that $\mathcal{T}_H \subseteq \mathcal{T}_q$, we will show that an arbitrary basis element for $\mathcal{T}_H$ is in $\mathcal{T}_q$.
+  Since $\mathcal{T}_H$ is the metric topology generated by $d_H$, the set of all open balls in the metric $d_H$ is a basis for $\mathcal{T}_H$.
+  Let $A = \{ a_1, a_2, \ldots, a_\ell \} \in \exp_k X$ and $r > 0$ a real number, so that $B(A, r)$ is an arbitrary open ball in $\mathcal{T}_H$.
+  We claim that
+  \begin{equation}\label{eq:subset_topologies_claim}
+    q^{-1}(B(A,r)) = \bigcup_{\substack{x = (x_1, \ldots, x_k) \\ \in\ q^{-1}(B(A,r))}} B_d(x_1, r - r_x) \times \cdots \times B_d(x_k, r - r_x)
+  \end{equation}
+  where
+  \begin{equation*}
+    r_x = \max \{ d(x_i, a_j) : 1 \leq i \leq k,\ 1 \leq j \leq \ell \}
+  \end{equation*}
+
+  Let $y = (y_1, \ldots, y_k)$ be a point in the right-hand side of \eqref{eq:subset_topologies_claim}, so that $y \in \prod_i B_d(z_i,\ r - r_z)$ for some $z = (z_1, \ldots, z_k)$, and let $q(y)_r$ and $A_r$ be the $r$-inflation of $q(y)$ and $A$, respectively.
+  Since each $y_i$ is in $B_d(z_i,\ r - r_z)$, we have that that $d(y_i, z_i) < r - r_z$.
+  And for all $z_i$ there exists some $a_j \in A$ such that $d(z_i, a_j) < r_z$ (by construction of $r_z$).
+  Then by the triangle inequality,
+  \begin{equation*}
+    d(y_i, a_j) \leq d(y_i, z_i) + d(z_i, a_j) < r - r_z + r_z = r
+  \end{equation*}
+  Thus $A \subseteq q(y)_r$.
+  It can be shown similarly that $q(y) \subseteq A_r$ as well.
+  It follows that $d_H(A, q(y)) < r$, hence $q(y) \in B(A,r)$ and $y \in q^{-1}(B(A,r))$. 
+  
+  Conversely, if $y \in q^{-1}(B(A,r))$, then it is clear that $y$ is in the union containing products of balls centered at the coordinates of $y$.
+  So \eqref{eq:subset_topologies_claim} is verified.
+
+  Then we have that $q^{-1}(B(A,r))$ is a union of finite products of open sets in $X$, and so $q^{-1}(B(A, r))$ is open in $X^k$.
+  Thus we have that $\mathcal{T}_H$ is coarser than  $\mathcal{T}_q$.
+
+  Now we will show that $\mathcal{T}_q \subseteq \mathcal{T}_H$ as well.
+  Let $U \in \mathcal{U} \in \mathcal{T}_q$, and suppose that
+  \begin{equation*}
+    (x_1, \ldots, x_k) \in q^{-1}(U) \subseteq q^{-1}(\mathcal{U})
+  \end{equation*}
+  Since $q^{-1}(\mathcal{U})$ is open in $X^k$, we have that 
+  \begin{equation*}
+    q^{-1}(\mathcal{U}) = \bigcup_{j \in J} {V_j}_1 \times \cdots \times {V_j}_k
+  \end{equation*}
+  for some index set $J$, where each ${V_j}_i$ is open in $(X,d)$.
+  Then $(x_1, \ldots, x_k) \in {V_j}_1 \times \cdots \times {V_j}_k$ for some $j \in J$.
+  Since all ${V_j}_i$ are open in $(X,d)$, for each $x_i$ and some corresponding radius $r_i$ we can draw an open ball $B(x_i, r_i) \subseteq {V_j}_i$.
+  So we have that
+  \begin{equation*}
+    (x_1, \ldots, x_k) \subseteq \prod_i B_d(x_i, r_i) \subseteq \prod_i {V_j}_i
+  \end{equation*}
+  Let $r = \min_i \{ r_i \}$.
+  We claim that $B(U, r) \subseteq \mathcal{U}$: if it weren't, then there would exist some $W \in B(U, r)$ that is not in $\mathcal{U}$.
+  But then there would exist some $w \in q^{-1}(W)$ such that $w \in \prod_i B_d(x_i, r_i)$ and $w \notin q^{-1}(\mathcal{U})$.
+  This is a contradiction, since $\prod_i B_d(x_i, r_i) \subseteq q^{-1}(\mathcal{U})$.
+  Thus we have that $B(U, r) \subseteq \mathcal{U}$.
+  Since $U \in \mathcal{U}$ was arbitrary, this means that $\mathcal{U}$ is open in $(\exp_k X, \mathcal{T}_H)$, hence $\mathcal{T}_q \subseteq \mathcal{T}_H$.
+\end{proof}
+
+\section{From $\LS$ to $\exp_3 S^1$}\label{subsec:lattice_to_exp}
+
+For our purposes, we will focus on a particular finite subset space, $\exp_3 S^1$.
+In~\cite{mostovoy2004}, Mostovoy provides a homeomorphism $f : \LS \to \exp_3 S^1$, which we now describe.
+
+The \defnphrase{Voronoi cell} $V(L)$ of a non-degenerate lattice $L$ is any cell chosen from a Voronoi partition of $L$ (any cell will do since every cell in a Voronoi partition of a lattice is a translation of the same polygon).
+Or more directly, $V(L)$ is the set of all complex numbers $z$ such that $|z| \leq |z - \omega|$ for all nonzero $\omega \in L$.
+If $L$ is a rectangular lattice then $V(L)$ is a rectangle, otherwise it is a hexagon.
+
+For non-degenerate $L \in \LS$, the homeomorphism $f$ is defined as follows.
+Choose a vertex $v$ of $V(L)$.
+If $L$ is rectangular, the minimum distance between $v$ and points of $L$ is obtained generically on two lattice points.
+If $L$ is hexagonal, the minimum distance is obtained generically on three lattice points.
+Consider the set of two or three lines connecting $v$ to the closest lattice points.
+Translating $L$ so that $v$ is at the origin, we obtain two or three lines passing through the origin.
+It is clear that these lines do not depend on the choice of vertex $v$ and are the same for any $L'$ homothetic to $L$.
+Since lines passing through the origin are points in $\mathrm{RP}^1 \cong S^1$, we have associated with each non-degenerate lattice $L$ a subset $f(L) \in \exp_3 S^1$.
+
+Suppose instead that $L$ is a degenerate lattice.
+Then $L$ is contained within a line passing through the origin.
+We define $f$ for degenerate lattices by sending $L$ to the point in $\mathrm{RP}^1$ orthogonal to this line.
+
+For both degenerate and non-degenerate $L$, the verification of the continuity of $f$ is straightforward.
+Several steps of the homeomorphism for non-degenerate $L$ are shown in Figure~\ref{fig:homeomorphism_to_subset}.
+
+\begin{figure}[t!]
+  \centering
+  \begin{subfigure}[t]{0.45\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{figures/subset_homeomorphism_step_1.pdf}
+    \caption{A non-degenerate lattice in the plane.}
+  \end{subfigure}
+  \hfill
+  \begin{subfigure}[t]{0.45\textwidth}
+    \centering
+    \includegraphics[width=0.8\textwidth]{figures/subset_homeomorphism_step_2.pdf}
+    \caption{The Voronoi tessellation of the lattice, with a single hexagonal Voronoi cell selected.}
+  \end{subfigure}
+  \hfill
+  \begin{subfigure}[t]{0.45\textwidth}
+    \centering
+    \includegraphics[width=0.8\textwidth]{figures/subset_homeomorphism_step_3.pdf}
+    \caption{The three closest lattice points to any vertex the cell define three lines.}
+  \end{subfigure}
+  \hfill
+  \begin{subfigure}[t]{0.45\textwidth}
+    \centering
+    \includegraphics[width=0.7\textwidth]{figures/subset_homeomorphism_step_4.pdf}
+    \caption{When the entire lattice is translated so that the midpoint of the cell is at the origin, these three lines intersection with $S^1$ in three points.}
+  \end{subfigure}
+  \caption{Various stages of the homeomorphism $\LS \to \exp_3 S^1$.}
+  \label{fig:homeomorphism_to_subset}
+\end{figure}
+
+\section{Visualizing the generators of $B_3$ in $\exp_{2,3} S^1$}
+
+Observe that the homeomorphism $f : \LS = \LS_0 \cup \LS_1 \to \exp_3 S^1$ sends the subspace $\LS_0 $ to $\exp_1 S^3$ and the subspace $\LS_1$ to the 2 and 3 point elements of $\exp_3 S^1$.
+We will denote this subspace of 2 and 3 point elements as $\exp_{2,3} S^1$.
+
+In Section~\ref{sec:three_sphere}, we showed that $\pi_1(S^3 \wo K)$ was the braid group $B_3$, and that the trefoil knot $K$ corresponded to degenerate lattices under the homeomorphism $\LS \to S^3$.
+Thus we have that
+\begin{equation*}
+  \pi_1(\exp_{2,3} S^1) = \pi_1(\LS_1) = \pi_1(S^3 \wo K) = B_3
+\end{equation*}
+We now wish to describe the generators $\sigma_1$ and $\sigma_2$ of $B_3$ visually in $\exp_{2,3} S^1$.
+That is, we wish to find path representatives of the homotopy classes $\sigma_1$ and $\sigma_2$.
+
+In computing the fundamental group of $S^3 \wo K$, we understood the path classes corresponding the generators of a group $\ang{x, y : x^2 = y^3} \cong B_3$.
+The generator $x$ corresponded to a path through the axis of a particular solid torus in $S_3$, while $y$ corresponded to a large loop linking the hole of the torus.
+Explicitly, these are the paths parameterized by $(e^{i \theta}, 0)$ and $(0, e^{i \theta})$ where $\theta \in [0, 2 \pi)$.
+Pushing these paths via homeomorphisms $S^3 \to \LS \to \exp_3 S^1$ yields two paths in $\exp_3 S^1$: a ``half twist'' of two antipodal points and a ``third twist'' of three antipodal points, respectively.
+These paths are depicted in Figure~\ref{fig:antipodal_point_paths}.
+
+\TODO{Write a more precise description of $x$ and $y$ that explain the decomposition of $S^3$ into two torii. Explain how these diagrams should be interpreted. Show how they can be composed using $y^{-1} x$ or $x^{-1} y^2$ as an example.}
+
+Using the inverse of the isomorphism $\pi_1(S^3 \wo K) \to B_3$ defined in \eqref{eq:iso_pi1_b3}, we have that
+\begin{align*}
+  \sigma_1 &\mapsto y^{-1} x \\
+  \sigma_2 &\mapsto x^{-1} y^2
+\end{align*}
+By altering the paths for $x$ and $y$ to share a common basepoint in $\exp_3 S^1$, we can compose them to obtain paths for $y^{-1} x$ and $x^{-1} y^2$, and hence for $\sigma_1$ and $\sigma_2$.
+The paths for $\sigma_1$, $\sigma_2$, and their inverses are depicted in Figure~\ref{fig:gen_paths_under_iso_shared}.
+
+\begin{figure}[t]
+  \centering
+  \begin{subfigure}[t]{0.25\textwidth}
+    \centering
+    \includegraphics[height=4cm]{figures/antipodal_subset_path_1.pdf}
+  \end{subfigure}
+  \begin{subfigure}[t]{0.25\textwidth}
+    \centering
+    \includegraphics[height=4cm]{figures/antipodal_subset_path_2.pdf}
+  \end{subfigure}
+  \caption{The generators of $S^3 \wo K$ present as twists of antipodal points in $\exp_3 S^1$ when viewed via the sequence of homeomorphisms from $S^3$ to $\exp_3 S^1$.}
+  \label{fig:antipodal_point_paths}
+\end{figure}
+
+\begin{figure}[h]
+  \centering
+  \begin{subfigure}[t]{0.23\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{figures/braid_gen_a.pdf}
+    \caption{$\sigma_1$}
+  \end{subfigure}
+  \hfill
+  \begin{subfigure}[t]{0.23\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{figures/braid_gen_b.pdf}
+    \caption{$\sigma_2$}
+  \end{subfigure}
+  \begin{subfigure}[t]{0.23\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{figures/braid_gen_a_inv.pdf}
+    \caption{$\sigma_1^{-1}$}
+  \end{subfigure}
+  \hfill
+  \begin{subfigure}[t]{0.23\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{figures/braid_gen_b_inv.pdf}
+    \caption{$\sigma_2^{-1}$}
+  \end{subfigure}
+  \caption{Representatives in $\exp_{2,3} S^1$ of the homotopy classes corresponding to the generators of the braid group, $\sigma_1$ and $\sigma_2$, along with their inverses.}
+  \label{fig:gen_paths_under_iso_shared}
+\end{figure}
+
+\section{Decomposing periodic orbits in $\exp_{2,3} S^1$}
+
+Previously we saw that the periodic orbits of a dynamic system in $\LS_1$ were in bijection with conjugacy classes of hyperbolic elements in $\SLZ$, and that each conjugacy class determined a knot in $S^3 \wo K$.
+We can also examine these periodic orbits as loops in $\exp_{2,3} S^1$ via the homeomorphism $\LS \to \exp_3 S^1$.
+Several such loops are shown in Figure~\ref{fig:subset_loop_examples}; it may be interesting to compare them to the knots in $S^3 \wo K$ produced by the same hyperbolic matrices in Figure~\ref{fig:trefoil_links}.
+When viewed in $\exp_{2,3} S^1$, we call these periodic orbits \defnphrase{hyperbolic subset loops}.
+
+\begin{figure}[h]
+  \centering
+  \begin{subfigure}[t]{0.31\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{figures/subset_loop_qp_1_1_1_2.pdf}
+    \caption*{$A = \begin{pmatrix}1 & 1 \\ 1 & 2\end{pmatrix}$}
+  \end{subfigure}
+  \hfill
+  \begin{subfigure}[t]{0.31\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{figures/subset_loop_pqpq_5_3_3_2.pdf}
+    \caption*{$A = \begin{pmatrix}5 & 3 \\ 3 & 2\end{pmatrix}$}
+  \end{subfigure}
+  \hfill
+  \begin{subfigure}[t]{0.31\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{figures/subset_loop_pqqq_4_1_3_1.pdf}
+    \caption*{$A = \begin{pmatrix}4 & 1 \\ 3 & 1\end{pmatrix}$}
+  \end{subfigure}
+  \caption{Conjugacy classes of hyperbolic $A \in \SLZ$ are in bijection with period orbits of a dynamical system in $\LS$. These periodic orbits can be examined as loops in $\exp_{2,3} S^1 \approx \LS_1$. Here, several loops are shown in $\exp_{2,3} S^1$ for various values of $A \in \SLZ$.}
+  \label{fig:subset_loop_examples}
+\end{figure}
+
+The path class of each of these hyperbolic subset loops is an element of the group $\pi_1(\exp_{2,3} S^1)$, which is isomorphic to the braid group $B_3$.
+In particular, each loop is a braid word in $\sigma_1$ and $\sigma_2$, the generators of $B_3$.
+In the previous section, we found visual representatives for $\sigma_1$ and $\sigma_2$.
+Given a diagram of a hyperbolic subset loop, can we decompose it into a word in $\sigma_1$ and $\sigma_2$?
+
+We demonstrate that such a decomposition is possible with the following steps:
+\begin{enumerate}[1.]
+  \item If necessary, first shift the hyperbolic subset loop diagram so that the top and bottom edges correspond to a 3-pointed element of $\exp_{2,3} S^1$.
+  Since the diagram represents a loop, we are free to choose which point in the loop is the starting and ending point.
+
+  \item Perform a series of homotopy-class preserving deformations to simplify the diagram.
+  This deformations must be homotopies. In particular, at no time can the deformed loop diagram have a 1-point element. 
+
+  \item Identify a sequence of $\sigma_1$ and $\sigma_2$ diagrams that can be homotopy-transformed back to the diagram in the previous step.
+\end{enumerate}
+
+This process is shown for two separate hyperbolic subset loop diagrams in Figure~\ref{fig:subset_loop_decompositions_1} and Figure~\ref{fig:subset_loop_decompositions_2}.
+The results for decomposing several more diagrams are presented in Figure~\ref{fig:subset_loop_decompositions_table}.
+
+\TODO{Analysis of the decompositions.}
+
+\begin{figure}[p]
+  \centering
+  \begin{subfigure}[t]{0.24\linewidth}
+    \centering
+    \includegraphics[height=4cm]{figures/subset_loop_ppqq.pdf}
+    \caption{}
+  \end{subfigure}
+  \hfill
+  \begin{subfigure}[t]{0.24\linewidth}
+    \centering
+    \includegraphics[height=4cm]{figures/subset_loop_ppqq_shifted.pdf}
+    \caption{}
+  \end{subfigure}
+  \hfill
+  \begin{subfigure}[t]{0.24\linewidth}
+    \centering
+    \includegraphics[height=4cm]{figures/subset_loop_ppqq_normalized.pdf}
+    \caption{}
+  \end{subfigure}
+  \hfill
+  \begin{subfigure}[t]{0.24\linewidth}
+    \centering
+    \includegraphics[height=4cm]{figures/subset_loop_ppqq_decomposed.pdf}
+    \caption{}
+  \end{subfigure}
+  \caption{Decomposing the hyperbolic subset loop diagram for $A = 
+  \protect\begin{psmallmatrix}5 & 2 \\ 2 & 1\protect\end{psmallmatrix}$ into braid group generators. The diagram in (a) depicts the unmodified periodic orbit in $\LS$ corresponding to $A$ after it has been pushed $\LS \to \exp_{2,3} S^1$ via a homeomorphism. In (b), the diagram has been shifted so that it begins and ends on a 3-point element of $\exp_{2,3} S^1$. In (c), the diagram has been continuously deformed to represent a path within the same homotopy class. In (d), the deformed diagram has been decomposed into a sequence of $\sigma_1$ and $\sigma_2$ diagrams, whose composition is still within the same homotopy class. The sequence is the braid $\sigma_2^{-1} \sigma_2^{-1} \sigma_1 \sigma _1$.} 
+  \label{fig:subset_loop_decompositions_1}
+\end{figure}
+
+\begin{figure}[p]
+  \centering
+  \begin{subfigure}[t]{0.24\linewidth}
+    \centering
+    \includegraphics[height=4cm]{figures/subset_loop_pqq.pdf}
+  \end{subfigure}
+  \hfill
+  \begin{subfigure}[t]{0.24\linewidth}
+    \centering
+    \includegraphics[height=4cm]{figures/subset_loop_pqq_shifted.pdf}
+  \end{subfigure}
+  \hfill
+  \begin{subfigure}[t]{0.24\linewidth}
+    \centering
+    \includegraphics[height=4cm]{figures/subset_loop_pqq_normalized.pdf}
+  \end{subfigure}
+  \hfill
+  \begin{subfigure}[t]{0.24\linewidth}
+    \centering
+    \includegraphics[height=4cm]{figures/subset_loop_pqq_decomposed.pdf}
+  \end{subfigure}
+  \caption{Decomposing the hyperbolic subset loop diagram for $A = \protect\begin{psmallmatrix}3 & 1 \\ 2 & 1\protect\end{psmallmatrix}$ into braid group generators, with the same process described in Figure~\ref{fig:subset_loop_decompositions_1}.}
+  \label{fig:subset_loop_decompositions_2}
+\end{figure}
+
+\begin{figure}[p]
+  \centering
+  \begin{tabular}{r l}
+   hyperbolic matrix & hyperbolic subset loop decomposition \\
+   \toprule
+   $PQ = \begin{pmatrix}2 & 1 \\ 1 & 1\end{pmatrix}$ & $\sigma_2 \sigma_1^{-1}$ \\[1em]
+   $PQQ = \begin{pmatrix}3 & 1 \\ 2 & 1\end{pmatrix}$ & $\sigma_2 \sigma_2 \sigma_1^{-1}$ \\[1em]
+   $PQQQ = \begin{pmatrix}4 & 1 \\ 3 & 1\end{pmatrix}$ & $\sigma_2 \sigma_2 \sigma_2 \sigma_1^{-1}$ \\[1em]
+   $PQQQQ = \begin{pmatrix}5 & 1 \\ 4 & 1\end{pmatrix}$ & $\sigma_2 \sigma_2 \sigma_2 \sigma_2 \sigma_1^{-1}$ \\[1em]
+   $PPPQ = \begin{pmatrix}4 & 3 \\ 1 & 1\end{pmatrix}$ & $\sigma_2^{-1} \sigma_1 \sigma_2^{-1} \sigma_2^{-1}$ \\[1em]
+   $PPPQQ = \begin{pmatrix}7 & 3 \\ 2 & 1\end{pmatrix}$ & $\sigma_2^{-1} \sigma_2^{-1} \sigma_1 \sigma_1 \sigma_2^{-1}$ \\[1em]
+   $PPPPQ = \begin{pmatrix}5 & 4 \\ 1 & 1\end{pmatrix}$ & $\sigma_2^{-1} \sigma_2^{-1} \sigma_2^{-1} \sigma_1 \sigma_2^{-1}$ \\[1em]
+   $PPQ = \begin{pmatrix}3 & 2 \\ 1 & 1\end{pmatrix}$ & $\sigma_1 \sigma_2^{-1} \sigma_2^{-1}$ \\[1em]
+   $PPQQ = \begin{pmatrix}5 & 2 \\ 2 & 1\end{pmatrix}$ & $\sigma_2^{-1} \sigma_2^{-1} \sigma_1 \sigma_1$ \\[1em]
+   $PPQQQ = \begin{pmatrix}7 & 2 \\ 3 & 1\end{pmatrix}$ & $\sigma_2^{-1} \sigma_2^{-1} \sigma_1 \sigma_1 \sigma_1$ \\[1em]
+   $PQPQ = \begin{pmatrix}5 & 3 \\ 3 & 2\end{pmatrix}$ & $\sigma_2 \sigma_1^{-1} \sigma_2 \sigma_1^{-1}$ \\[1em]
+   $PQPQP = \begin{pmatrix}5 & 8 \\ 3 & 5\end{pmatrix}$ & $\sigma_2^{-1} \sigma_2^{-1} \sigma_1 \sigma_2^{-1} \sigma_1$
+  \end{tabular}
+  \caption{Decompositions of hyperbolic subset loops corresponding to twelve hyperbolic matrices. Each matrix is in a unique conjugacy class, and thus produces a unique hyperbolic subset loop.}
+  \label{fig:subset_loop_decompositions_table}
+\end{figure}
 
 
- \bibliography{thesis}
+\section{The linking number of finite subset loops}
+
+\TODO{Motivate and describe conjecture.}
+
+\newpage
+\appendix
+
+\chapter{Computational exploration of homeomorphisms}
+
+% TODO: Citation for Jobs quote
+
+Steve Jobs believed that a computer is a ``bicycle for the mind''\cite{krainin1990}.
+We can't tell computers what to think, but we can employ them to make our own thinking more efficient.
+This observation is now so widely realized as to be banal---in every other field besides mathematics, at least.
+Mathematics, however, remains largely unaffected by developments in computing.
+
+By its nature, math seeks knowledge about objects that defy computational interpretation.
+It seeks to describe properties of all real numbers and not just those that we can store in a finite bank of computer memory.
+While some progress has been made in articulating mathematical knowledge as computer programs, computers will continue to be of secondary importance in mathematics for the foreseeable future.
+We can, however, use computers to generate intuition and to suggest what purely analytical questions we might ask next.
+
+The results in this document were explored and understood via computer programming.
+What follows now is a ``literate programming'' description of the relevant Mathematica programs~\cite{knuth1992}.
+Some knowledge of Mathematica programming is assumed.
+
+\newpage
+
+\section{Visualizing a dynamic system in the space of lattices}
+
+A lattice is uniquely defined by its generators, a pair of complex numbers.
+This suggests we can encode lattices programmatically in a simple manner as \texttt{\{w1, w2\}}, where \texttt{w1} and \texttt{w2} are the complex generators. 
+
+In Section~\ref{subsec:lattice_flow}, we considered a lattice produced by a $2 \times 2$ matrix acting point-wise upon the standard square lattice, $\Z \oplus \Z$.
+Given a lattice, we can find this corresponding matrix:
+\begin{minted}[breaklines, fontsize=\small]{Mathematica}
+latticeToMtx[m_] := m // ReIm // Transpose;
+\end{minted}
+We can also convert back to a lattice from the matrix form:
+\begin{minted}[breaklines, fontsize=\small]{Mathematica}
+mtxToLattice[m_] := (Complex @@ #)& /@ Transpose[m];
+\end{minted}
+These are just simple accessors to get data representing a lattice into a convenient shape.
+We can now describe the dynamical system of Proposition~\ref{prop:hyperbolic_defines_flow}.
+Suppose that $A \in \SLZ$, and let $P$ such that $PAP^{-1} = \delta_t$, where $\delta_t$ is defined as in \eqref{eq:delta_t}.
+Then $P$ is a matrix whose columns are the eigenvectors of $A$, thus we can compute the lattice corresponding to $P$ with the function 
+\begin{minted}[breaklines, fontsize=\small]{Mathematica}
+latticeForModularMtx[a_] := a // Eigenvectors // N // Transpose // Inverse // mtxToLattice;
+\end{minted}
+where \mintinline{Mathematica}|a| is the Mathematica representation of $A$.
+Remember that we obtain the dynamical system of interest by acting upon $P$ via $\delta_t$ for continuously increasing $t$.
+
+To observe a periodic orbit in this system, we need a programmatic method for obtaining the orbit time.
+That is, we wish to find a minimal $T > 0$ such that $\delta_T P = P$.
+We know that $PAP^{-1} = \delta_T$ is a diagonal matrix with diagonal entries being eigenvalues of $A$.
+And since
+\begin{equation*}
+  \delta_T = \begin{pmatrix}
+    \exp(T) & 0 \\
+    0 & \exp(-T)
+  \end{pmatrix}
+\end{equation*}
+these eigenvalues are in fact $\exp(T)$ and $\exp(-T)$.
+Thus we can take the logarithm of the absolute value of either eigenvalue to obtain the orbit time $T$.
+In Mathematica, we do so with the following function:
+\begin{minted}[breaklines, fontsize=\small]{Mathematica}
+orbitTimeForModularMtx[m_] := m // Eigenvalues // N // First // Abs // Log;
+\end{minted}
+
+With the appropriate matrix $P$ corresponding to some $A \in \SLZ$ and the orbit time readily available, we can now encode the path of a periodic orbit in the space of lattices.
+First, we define a quick utility function for $\delta_t$:
+\begin{minted}[breaklines, fontsize=\small]{Mathematica}
+deltaT[t_] := {{E^t, 0}, {0, E^-t}} // N;
+\end{minted}
+Then an ordered list of points along the periodic orbit can be computed as follows:
+\begin{minted}[breaklines, fontsize=\small]{Mathematica}
+assocLatticeLoop[mtx_, res_: 100] := Module[{p, t},
+   p = latticeToMtx[latticeForModularMtx[mtx]];
+   t = orbitTimeForModularMtx[mtx];
+   Table[mtxToLattice[deltaT[u].p], {u, 0, t, t / res}]
+   ];
+\end{minted}
+There are, of course, infinitely many points along the path of the periodic orbit, of which we can only compute a finite number.
+We parameterize the amount of points along the path to compute with the resolution parameter \mintinline{Mathematica}|res|.
+
+How can we visualize these periodic orbits?
+Each point in the periodic orbit is a lattice, and we can readily visualize a subset of each lattice in the plane.
+Thus a natural visualization choice for the periodic orbits is an animation, with each frame being a depiction of a lattice in the plane.
+The following function produces a subset of the points in a lattice:
+\begin{minted}[breaklines, fontsize=\small]{Mathematica}
+latticePoints[{w1_, w2_}, size_: 1] := ReIm /@ Flatten[ Table[m w1 + n w2, {m, Range[-size, size]}, {n, Range[-size, size]}]];
+\end{minted}
+Then the desired animation is produced by:
+\begin{minted}[breaklines, fontsize=\small]{Mathematica}
+visualizeLatticeLoop[ls_] := ListAnimate[ListPlot[latticePoints[#, 100], PlotRange -> {{-2, 2}, {-2, 2}}]& /@ assocLatticeLoop[ls]]
+\end{minted}
+It's difficult to print a movie onto a piece of paper, so we show a static adaptation of this animation in Figure~\ref{fig:periodic_orbits_lattice}.
+
+\section{Coding the homeomorphism from $\LS \to S^3$}
+
+We now have a program capable of realizing the periodic orbits of a dynamical system in the space of lattices.
+In the homeomorphic space $S^3$, these periodic orbits appear as links with the trefoil.
+In this section, we will code the homeomorphism from $\LS$ to $S^3$ described in Section~\ref{subsec:lattice_to_s3}, and use it to visualize links with the trefoil.
+
+The homeomorphism $\LS$ $S^3$ sends a lattice $L$ to a rescaled version of the complex tuple $(G_4(L),\, G_6(L))$, where
+\begin{equation*}
+  G_k(L) = \sum_{\omega \in L,\ \omega \neq 0} \omega^{-k}
+\end{equation*}
+A non-trivial lattice $L$ contains infinitely many points $\omega$, presenting a potential challenge in computing $G_k(L)$.
+The series for $G_4(L)$ and $G_6(L)$ do converge however, and for non-degenerate lattices we can compute the tuple $(G_4(L),\, G_6(L))$ using Mathematica's \mintinline{Mathematica}|WeierstrassInvariants| function.
+The \mintinline{Mathematica}|WeierstrassInvariants| function (more commonly used in cryptographic applications) returns two special constants $g_2$ and $g_3$ associated with a lattice.
+These are related to $G_4(L)$ and $G_6(L)$ by $g_2(L) = G_4(L) / 60$ and $g_3(L) = G_6(L) / 140$.
+Thus the Mathematica function
+\begin{minted}[breaklines, fontsize=\small]{Mathematica}
+nondegenGTuple[{w1_, w2_}] := N[WeierstrassInvariants[{w1/2, w2/2}]] * {1/60, 1/140} // Chop;
+\end{minted}
+returns our desired point $(G_4(L),\, G_6(L))$ for non-degenerate $L \in \LS$.
+What about degenerate lattices?
+In this case, the series $G_k(L)$ converge fast enough that we can leverage a straightforward numerical approach.
+We start computing the infinite series from the origin outwards, and let Mathematica determine when we have reached reasonable numeric accuracy:
+\begin{minted}[breaklines, fontsize=\small]{Mathematica}
+degenEisensteinSeries[c_, k_] := N[Sum[(n c)^-k+ (-n c)^-k, {n, \[Infinity]}]];
+
+degenGTuple[c_] := {degenEisensteinSeries[c, 4], degenEisensteinSeries[c, 6]};
+\end{minted}
+Now, the next step in the homeomorphism is to rescale the tuple $(G_4(L), G_6(L))$ so that it lies in $S^3 = \{(u,\, v) \in \C : |u|^2 + |v|^2 = 1\}$.
+Recall that for any real number $t > 0$ and lattice $L$, we have that
+\begin{equation*}
+  G_4(tL) = t^{-4}G_4(L)
+\end{equation*}
+and
+\begin{equation*}
+  G_6(tL) = t^{-6} G_6(L)
+\end{equation*}
+Thus we solve for the appropriate scaling factor $t$ so that $(G_4(tL), G_6(tL))$ is in $S^3$:
+\begin{minted}[breaklines, fontsize=\small]{Mathematica}
+gTupleScaleFactor[{g4_, g6_}] := t /.Solve[Norm[t^-4 g4]^2 + Norm[t^-6 g6]^2 == 1 && t  \[Element] Reals && t > 0, t][[1]] // Quiet;
+\end{minted}
+
+We're almost ready to code the complete homeomorphism $\LS \to S^3$.
+The last gadget we need is a utility function to check if a lattice is degenerate, so that we know when to branch into our seperate \mintinline{Mathematica}|nondegenGTuple| and \mintinline{Mathematica}|degenGTuple| functions.
+A degenerate lattice either has a zero generator, or has rank one in matrix form.
+\begin{minted}[breaklines, fontsize=\small]{Mathematica}
+isDegen[{w1_, w2_}] := w1 == 0 || w2 == 0 || MatrixRank[{ReIm[w1], ReIm[w2]}] == 1;
+\end{minted}
+Now we can wire up our previously defined functions to form the complete homeomorphism.
+\begin{minted}[breaklines, fontsize=\small]{Mathematica}
+latticeToS3[l_] := Module[{gTuple, t},
+  gTuple = If[isDegen[l],degenGTuple[degenGenerator[l]], nondegenGTuple[l]]; 
+  t = gTupleScaleFactor[gTuple];
+  {t^-4, t^-6} * gTuple
+];
+\end{minted}
+As discussed in Section~\ref{subsec:lattice_to_s3}, all degenerate lattices in $\LS$ present as a trefoil know when viewed in $S^3$.
+We can see this via our coded homeomorphism as follows.
+First, we define a function that will help us parameterize a path through all degenerate lattices.
+\begin{minted}[breaklines, fontsize=\small]{Mathematica}
+  degenLatticeForAngle[rad_] := N[{Complex @@ radToR2[rad], Complex @@ radToR2[rad]}];
+\end{minted}
+Since $S^3$ lies within four-dimensional space, we also need to sterographically project points of $S^3$ into $\R^3$ before we can visualize them.
+\begin{minted}[breaklines, fontsize=\small]{Mathematica}
+  projS3ToR3[{z1_, z2_}] := {Re[z1]/(1 - Im[z2]), Im[z1]/(1 - Im[z2]), Re[z2]/(1 - Im[z2])};
+\end{minted}
+Now we can generate the points of the trefoil knot:
+\begin{minted}[breaklines, fontsize=\small]{Mathematica}
+  trefoilPoints = Table[degenLatticeForAngle[r] // latticeToS3 // projS3ToR3, {r, 0, Pi, 0.02}];
+\end{minted}
+And then visualize the trefoil, as shown in Figure~\ref{fig:trefoil}:
+\begin{minted}[breaklines, fontsize=\small]{Mathematica}
+  trefoilPlot = Graphics3D[{Thick, Blue, Tube[trefoilPoints]}, Boxed -> False]
+\end{minted}
+
+What of the trefoil links produced by periodic orbits of the dynamical system in $\LS$?
+We can view them alongside the trefoil with the following function, which generates the periodic orbit in $\LS$ corresponding to some hyperbolic \mintinline{Mathematica}|mtx|, pushes it through the homeomorphism to $S^3$, then visualizes it alongside the \mintinline{Mathematica}|trefoilPlot| via sterographic projection.
+\begin{minted}[breaklines, fontsize=\small]{Mathematica}
+  plotAssocKnot[mtx_, res_:200] := Show[Graphics3D[{Thick, , Tube[projS3ToR3 /@ latticeToS3 /@ assocLatticeLoop[mtx, res]]}], trefoilPlot];
+\end{minted}
+This function produces the visualizations in Figure~\ref{fig:trefoil_links}.
+
+\section{Coding the homeomorphism from $\LS \to \exp_3 S^1$}
+
+The homeomorphism from $\LS$ to $\exp_3 S^1$ described in Section~\ref{subsec:lattice_to_exp} is already algorithmic in nature.
+Briefly, we recall the steps of the homeomorphism for a nondegenerate lattice $L$:
+\begin{enumerate}
+  \item Select a single cell in the Voronoi partition of $L$
+  \item Select any vertex of that cell, and translate the entire lattice so that this vertex is at the origin
+  \item Consider the two or three lines connecting the vertex to the next closest points in the lattice
+  \item These lines define three points in $\mathrm{RP}^1$, which is homeomorphic to $S^3$
+\end{enumerate}
+We quite literally translate this process into a Mathematica procedure as follows:
+\begin{minted}[breaklines, fontsize=\small]{Mathematica}
+nondegenToExpS1[{w1_, w2_}] := Module[{points, d, cell, vertex, sorted, isRectangular, minPoints, lines},
+  points = latticePoints[{w1, w2}, latticeSize];
+  cell = SelectFirst[MeshPrimitives[VoronoiMesh[points], 2], ({0,0} \[Element] #)&];
+  vertex = cell[[1,1]];
+  sorted = Sort[points, (EuclideanDistance[vertex, #1] < EuclideanDistance[vertex, #2])&];
+  isRectangular  = Length[DeleteDuplicates[cell[[1]]]] == 4;
+  minPoints = Take[sorted, If[isRectangular, 2, 3]];
+  lines = Map[(Line[{vertex, #}])&, minPoints];
+  Map[(#[[1,2]] - #[[1,1]] // r2ToRad // radOnHalfCircle // halfToFullCircle)&, lines]
+];
+\end{minted}
+Here we have used a few utility functions which define the homeomorphism between $\mathrm{RP}^1$ and $S^1$.
+\mintinline{Mathematica}|r2ToRad| gives the angle between a vector in $\R^2$ and the positive $x$-axis:
+\begin{minted}[breaklines, fontsize=\small]{Mathematica}
+r2ToRad[p_] := Complex @@ p // Arg;
+\end{minted}
+\mintinline{Mathematica}|radOnHalfCircle| and \mintinline{Mathematica}|halfToFullCircle| are then used to translate this angle approriately to $S^1$:
+\begin{minted}[breaklines, fontsize=\small]{Mathematica}
+radOnHalfCircle[rad_] := If[rad >= Pi, Pi - rad, rad];
+
+halfToFullCircle[rad_] := Rescale[rad, {0, Pi}, {0, 2 Pi}];
+\end{minted}
+For the degenerate lattice case, the homeomorphism $\LS \to \exp_3 S^1$ is more straightforward.
+A degenerate lattice defines a line through the origin via either of its generators \mintinline{Mathematica}|c|.
+We take the line orthogonal to this as our point in $\mathrm{RP}^1$, and then translate that to $\exp_3 S^1$ as before.
+\begin{minted}[breaklines, fontsize=\small]{Mathematica}
+degenToExpS1[c_] := {(Arg[c] - Pi / 2) // radOnHalfCircle // halfToFullCircle};
+\end{minted}
+Now we can simply connect the degenerate and nondegenerate cases as before by branching on the \mintinline{Mathematica}|isDegen| function:
+\begin{minted}[breaklines, fontsize=\small]{Mathematica}
+latticeToExpS1[lattice_] := If[isDegen[lattice], degenToExpS1[degenGenerator[lattice]], nondegenToExpS1[lattice]]
+\end{minted}
+With the homeomorphism $\LS \to \exp_3 S^1$ in hand, we also need a method for visualizing paths in $\exp_3 S^1$.
+The following code is rather terse, but the idea is simple.
+We associate each point in the path (a subset of $S^1$, i.e.
+a subset of numbers between 0 and $2\pi$) with an increasing value $r$.
+Then we plot the points in the plane, with the $y$ direction of the plot corresponding to the increasing $r$ values and the $x$ direction corresponding to the position of the subset points on the circle.
+\begin{minted}[breaklines, fontsize=\small]{Mathematica}
+zipWithIncreasing[xs_, r0_:0, r1_: 1] := Map[({xs[[#]], N[r0 + (# (r1 - r0))/Length[xs]]})&, Range[Length[xs]]];
+
+flatViz[xs_] := Module[{zipped, split, points},
+  zipped = zipWithIncreasing[xs, 1, 0];
+  split = Function[p, Map[({Mod[#, 2 Pi], p[[2]]})&, p[[1]]]];
+  points = Flatten[Map[split, zipped], 1];
+  Graphics[{Thickness[0.005],
+            Line[{{0, 0}, {2 Pi, 0}}],
+            Line[{{0, 0}, {0, 1}}],
+            Line[{{2 Pi, 0}, {2 Pi, 1}}],
+            Line[{{0, 1}, {2 Pi, 1}}],
+            Point[points]}, AspectRatio -> 3/2]
+];
+\end{minted}
+This method produces the subset loop visualizations shown in Figure~\ref{fig:subset_loop_examples}.
+
+
+\newpage
+\printbibliography
+
 \end{document}
