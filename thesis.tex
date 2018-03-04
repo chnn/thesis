@@ -131,7 +131,12 @@ There are three types of lattices: \defnphrase{degenerate} lattices, \defnphrase
 As additive subgroups of $\C$, degenerate and non-degenerate lattices are those isomorphic to $\Z$ and $\Z \oplus \Z$, respectively.
 The zero lattice is trivial, consisting of the single point at the origin (see Figure~\ref{fig:three_types_of_lattices}).
 
-\begin{figure}[h]
+Two lattices are \defnphrase{homothetic} if they are real scalar multiples of each other, i.e., $L$ and $L'$ are homothetic if every point in $L'$ is a point in $L$ scaled by some constant $t \in \R$.
+We denote the space of all non-trivial lattices modulo the homothety relation as $\LS = \LS_0 \cup \LS_1$, where $\LS_0$ and $\LS_1$ are the degenerate and non-degenerate lattices, respectively.
+
+Some authors use a slightly different vocabulary to discuss the set of non-degenerate lattices $\LS_1$. Rather than identify all homothetic lattices, we can instead restrict the set of lattices to only those of a certain unit size. More precisely, we restrict to the set of \defnphrase{unimodular lattices}---lattices whose fundamental domain has area $1$. For our purposes, we will switch between these two interpretations of $\LS_1$ quite freely.
+
+\begin{figure}[t]
   \centering
   \begin{subfigure}[t]{0.31\textwidth}
     \centering
@@ -154,11 +159,6 @@ The zero lattice is trivial, consisting of the single point at the origin (see F
   \label{fig:three_types_of_lattices}
 \end{figure}
 
-Two lattices are \defnphrase{homothetic} if they are real scalar multiples of each other, i.e., $L$ and $L'$ are homothetic if every point in $L'$ is a point in $L$ scaled by some constant $t \in \R$.
-We denote the space of all non-trivial lattices modulo the homothety relation as $\LS = \LS_0 \cup \LS_1$, where $\LS_0$ and $\LS_1$ are the degenerate and non-degenerate lattices, respectively.
-
-Some authors use a slightly different vocabulary to discuss the set of non-degenerate lattices $\LS_1$. Rather than identify all homothetic lattices, we can instead restrict the set of lattices to only those of a certain unit size. More precisely, we restrict to the set of \defnphrase{unimodular lattices}---lattices whose fundamental domain has area $1$. For our purposes, we will switch between these two interpretations of $\LS_1$ quite freely.
-
 \section{The modular flow of lattices}\label{subsec:lattice_flow}
 
 We now describe a dynamical flow in the space of lattices.
@@ -174,13 +174,6 @@ Thus as the time variable $t$ increases continuously, we obtain a flow in $\LS$.
   
 Note that as $t$ increases, each individual point in the lattice moves towards $\pm \infty$ along a hyperbolic path, yet the lattice as a whole may move back to its original position.
 Thus we can study the periodic orbits of this flow. 
-
-\begin{figure}[t]
-  \centering
-  \includegraphics[width=0.8\linewidth]{figures/periodic_orbits_lattice.pdf}
-  \caption{A periodic orbit of the modular flow in the space of lattices. As each point in the lattice is acted upon by $\delta_t$, it moves on a hyperbolic path towards infinity. At $t \approx 0.96$, we have that $\delta_t(L) = L$.}
-  \label{fig:periodic_orbits_lattice}
-\end{figure}
 
 The periodic orbits can be described succinctly via a particular type of matrix.
 Recall that that the special linear group $\SLZ$ is the set of $2 \times 2$ matrices with integer entries and determinant 1.
@@ -213,6 +206,13 @@ Thus the image of $P(\Z^2)$ by $\delta_t$ as $t \in [0, T]$ is a periodic orbit 
 \end{prop}
 
 An example periodic orbit corresponding to the hyperbolic matrix $\begin{psmallmatrix} 2 & 1 \\ 1 & 1 \end{psmallmatrix}$ is shown in Figure~\ref{fig:periodic_orbits_lattice}.
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=0.8\linewidth]{figures/periodic_orbits_lattice.pdf}
+  \caption{A periodic orbit of the modular flow in the space of lattices. As each point in the lattice is acted upon by $\delta_t$, it moves on a hyperbolic path towards infinity. At $t \approx 0.96$, we have that $\delta_t(L) = L$.}
+  \label{fig:periodic_orbits_lattice}
+\end{figure}
 
 \TODO{Show the periodic orbits are in bijection with conjugacy classes of hyperbolic elements.}
 
