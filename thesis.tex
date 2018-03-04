@@ -103,11 +103,11 @@
 \chaptermark{Introduction}
 \markboth{Introduction}{Introduction}
 
-The 3-sphere, the space of unimodular lattices, and 1 to 3 point subsets of the circle---each of these spaces possesses a unique and rich structure.
+The 3-sphere, the space of non-trivial lattices, and 1 to 3 point subsets of the circle---each of these spaces possesses a unique and rich structure.
 Remarkably, they are also homeomorphic, providing multiple perspectives of phenomenon occurring in each individual space.
 
-In this document, we examine the modular flow and its periodic orbits in the space of unimodular lattices.
-This is a simple dynamical system whose a periodic orbits can be described in terms of hyperbolic elements of the modular group, $\PSLZ$.
+In this document, we examine the modular flow and its periodic orbits in the space of non-trivial lattices.
+This is a dynamical system whose periodic orbits can be described in terms of hyperbolic elements of the modular group, $\PSLZ$.
 Viewed in the 3-sphere, such a flow presents as a link with the trefoil knot.
 A basic property of these trefoil links, their linking number, can be described by a classic yet mysterious arithmetic function.
 Moreover, the knot-complement of the trefoil in the 3-sphere has fundamental group isomorphic to a famous group, the braid group on 3 strands, providing an additional viewpoint from which to consider periodic orbits of lattices and their associated trefoil links.
@@ -119,7 +119,7 @@ Additionally, we provide a conjecture for determining the linking number of a tr
 
 This document will proceed by examining each homeomorphic space in turn.
 
-\chapter{The space of unimodular lattices}
+\chapter{The lattice space}
 
 First, we recall some basic definitions. A \defnphrase{lattice in $\C$} is a set of points
 \begin{equation*}
@@ -130,8 +130,6 @@ We call $\omega_1$ and $\omega_2$ the \defnphrase{lattice generators}, since eac
 There are three types of lattices: \defnphrase{degenerate} lattices, \defnphrase{non-degenerate} lattices, and the \defnphrase{zero lattice}.
 As additive subgroups of $\C$, degenerate and non-degenerate lattices are those isomorphic to $\Z$ and $\Z \oplus \Z$, respectively.
 The zero lattice is trivial, consisting of the single point at the origin (see Figure~\ref{fig:three_types_of_lattices}).
-The \defnphrase{determinant of a lattice} is the determinant of the matrix whose columns are the generators of the lattice, considered as pairs of real numbers---this quantity is the area of a single cell in the lattice.
-If a lattice has determinant 1 or $-1$, we say that the lattice is \defnphrase{unimodular}. 
 
 \begin{figure}[h]
   \centering
@@ -156,9 +154,10 @@ If a lattice has determinant 1 or $-1$, we say that the lattice is \defnphrase{u
   \label{fig:three_types_of_lattices}
 \end{figure}
 
-We denote the space of all non-trivial unimodular lattices as $\LS = \LS_0 \cup \LS_1$, where $\LS_0$ and $\LS_1$ are the degenerate and non-degenerate lattices, respectively.
-This space can alternatively be defined as the quotient space of all lattices modulo a homothety relation.
-Two lattices are homothetic if one is the scalar multiple of the other, i.e. if the generators of one lattice is a multiple of the generators of the other lattice.
+Two lattices are \defnphrase{homothetic} if they are real scalar multiples of each other, i.e., $L$ and $L'$ are homothetic if every point in $L'$ is a point in $L$ scaled by some constant $t \in \R$.
+We denote the space of all non-trivial lattices modulo the homothety relation as $\LS = \LS_0 \cup \LS_1$, where $\LS_0$ and $\LS_1$ are the degenerate and non-degenerate lattices, respectively.
+
+Some authors use a slightly different vocabulary to discuss the set of non-degenerate lattices $\LS_1$. Rather than identify all homothetic lattices, we can instead restrict the set of lattices to only those of a certain unit size. More precisely, we restrict to the set of \defnphrase{unimodular lattices}---lattices whose fundamental domain has area $1$. For our purposes, we will switch between these two interpretations of $\LS_1$ quite freely.
 
 \section{The modular flow of lattices}\label{subsec:lattice_flow}
 
@@ -170,7 +169,7 @@ We can think of a complex lattice $L \in \LS$ as sitting inside $\R^2 \cong \C$.
     0 & \exp(-t)
   \end{pmatrix}
 \end{equation}
-produces another unimodular lattice.
+produces another non-degenerate lattice.
 Thus as the time variable $t$ increases continuously, we obtain a flow in $\LS$.
   
 Note that as $t$ increases, each individual point in the lattice moves towards $\pm \infty$ along a hyperbolic path, yet the lattice as a whole may move back to its original position.
@@ -386,7 +385,7 @@ The following facts about $G_4(L)$ and $G_6(L)$ are fundamental to the theory of
 
   \item A tuple $(u, v) \in \C^2 \wo \{ 0 \}$ is the image of a degenerate lattice under this map if and only if $20u^3 - 49v^2 = 0$.
 \end{enumerate}
-Thus for any unimodular lattice $L$, we can obtain a unique rescaling $L' = tL$ for some $t > 0$ such that
+Thus for any non-trivial lattice $L$, we can obtain a unique rescaling $L' = tL$ for some $t > 0$ such that
 \begin{equation*}
   |G_4(L')| + |G_6(L')| = 1
 \end{equation*}
