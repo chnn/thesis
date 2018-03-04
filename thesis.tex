@@ -109,10 +109,10 @@
 \chaptermark{Introduction}
 \markboth{Introduction}{Introduction}
 
-The 3-sphere, the space of non-trivial lattices, and 1 to 3 point subsets of the circle---each of these spaces possesses a unique and rich structure.
+The 3-sphere, the space of nontrivial lattices, and 1 to 3 point subsets of the circle---each of these spaces possesses a unique and rich structure.
 Remarkably, they are also homeomorphic, providing multiple perspectives of phenomenon occurring in each individual space.
 
-In this document, we examine the modular flow and its periodic orbits in the space of non-trivial lattices.
+In this document, we examine the modular flow and its periodic orbits in the space of nontrivial lattices.
 This is a dynamical system whose periodic orbits can be described in terms of hyperbolic elements of the modular group, $\PSLZ$.
 Viewed in the 3-sphere, such a flow presents as a link with the trefoil knot.
 A basic property of these trefoil links, their linking number, can be described by a classic yet mysterious arithmetic function.
@@ -138,7 +138,7 @@ As additive subgroups of $\C$, degenerate and non-degenerate lattices are those 
 The zero lattice is trivial, consisting of the single point at the origin (see Figure~\ref{fig:three_types_of_lattices}).
 
 Two lattices are \defnphrase{homothetic} if they are real scalar multiples of each other, i.e., $L$ and $L'$ are homothetic if every point in $L'$ is a point in $L$ scaled by some constant $t \in \R$.
-We denote the space of all non-trivial lattices modulo the homothety relation as $\LS = \LS_0 \cup \LS_1$, where $\LS_0$ and $\LS_1$ are the degenerate and non-degenerate lattices, respectively.
+We denote the space of all nontrivial lattices modulo the homothety relation as $\LS = \LS_0 \cup \LS_1$, where $\LS_0$ and $\LS_1$ are the degenerate and non-degenerate lattices, respectively.
 
 Some authors use a slightly different vocabulary to discuss the set of non-degenerate lattices $\LS_1$. Rather than identify all homothetic lattices, we can instead restrict the set of lattices to only those of a certain unit size. More precisely, we restrict to the set of \defnphrase{unimodular lattices}---lattices whose fundamental domain has area $1$. For our purposes, we will switch between these two interpretations of $\LS_1$ quite freely.
 
@@ -401,7 +401,7 @@ The following facts about $G_4(L)$ and $G_6(L)$ are fundamental to the theory of
 
   \item A tuple $(u, v) \in \C^2 \wo \{ 0 \}$ is the image of a degenerate lattice under this map if and only if $20u^3 - 49v^2 = 0$.
 \end{enumerate}
-Thus for any non-trivial lattice $L$, we can obtain a unique rescaling $L' = tL$ for some $t > 0$ such that
+Thus for any nontrivial lattice $L$, we can obtain a unique rescaling $L' = tL$ for some $t > 0$ such that
 \begin{equation*}
   |G_4(L')|^2 + |G_6(L')|^2 = 1
 \end{equation*}
@@ -814,7 +814,7 @@ Perhaps surprisingly, it turns out that this topology is equivalent to the quoti
 For our purposes, we will focus on a particular finite subset space, $\exp_3 S^1$.
 In~\cite{mostovoy2004}, Mostovoy provides a homeomorphism $f : \LS \to \exp_3 S^1$, which we now describe.
 
-The \defnphrase{Voronoi cell} $V(L)$ of a non-trivial lattice $L$ is the cell in a Voronoi partition of $L$ containing $0$.
+The \defnphrase{Voronoi cell} $V(L)$ of a nontrivial lattice $L$ is the cell in a Voronoi partition of $L$ containing $0$.
 More directly,
 \begin{equation*}
   V(L) = \{ z \in \C : |z| \leq |z - \omega| \text{ for all } \omega \in L \}
@@ -1174,7 +1174,7 @@ The homeomorphism $\LS$ $S^3$ sends a lattice $L$ to a rescaled version of the c
 \begin{equation*}
   G_k(L) = \sum_{\omega \in L,\ \omega \neq 0} \omega^{-k}
 \end{equation*}
-A non-trivial lattice $L$ contains infinitely many points $\omega$, presenting a potential challenge in computing $G_k(L)$.
+A nontrivial lattice $L$ contains infinitely many points $\omega$, presenting a potential challenge in computing $G_k(L)$.
 The series for $G_4(L)$ and $G_6(L)$ do converge however, and for non-degenerate lattices we can compute the tuple $(G_4(L),\, G_6(L))$ using Mathematica's \mintinline{Mathematica}|WeierstrassInvariants| function.
 The \mintinline{Mathematica}|WeierstrassInvariants| function (more commonly used in cryptographic applications) returns two special constants $g_2$ and $g_3$ associated with a lattice.
 These are related to $G_4(L)$ and $G_6(L)$ by $g_2(L) = G_4(L) / 60$ and $g_3(L) = G_6(L) / 140$.
