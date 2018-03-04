@@ -194,18 +194,28 @@ is \defnphrase{hyperbolic} if $|a + d| > 2$.
 Hyperbolic matrices are diagonalizable over the real numbers, so we can find a real $2 \times 2$ matrix $P$ such that
 \begin{equation*}
   PAP^{-1} = \begin{pmatrix}
-    \exp(T) & 0 \\
-    0 & \exp(-T)
-  \end{pmatrix} = \delta_{T}
+    \lambda_1 & 0 \\
+    0 & \lambda_2
+  \end{pmatrix}
 \end{equation*}
-for some $T \in \R$. Let $L = P(\Z^2)$ be the image of the square lattice by $P$. Then
+where $\lambda_1$ and $\lambda_2$ are the eigenvalues of $A$.
+In fact, since $\det(A) = 1$ and the product of eigenvalues of a matrix is equal to its determinant, we can find $P$ such that
+\begin{equation*}
+  PAP^{-1} = \begin{pmatrix}
+    e^T & 0 \\
+    0 & e^{-T}
+  \end{pmatrix} = \delta_T
+\end{equation*}
+for some $T \in \R$.
+Let $L = P(\Z^2)$ be the image of the square lattice by $P$.
+Then
 \begin{align*}
   \delta_{T}(L) &= PAP^{-1} P(\Z^2) \\
   &= PA(\Z^2) \\
   &= P(\Z^2) && \text{Since $\det(A) = 1$, so $A(\Z^2) = \Z^2$.} \\
   &= L
 \end{align*}
-Thus the image of $P(\Z^2)$ by $\delta_t$ as $t \in [0, T]$ is a periodic orbit of orbit time $T$, and we have the following proposition: 
+Thus the image of $P(\Z^2)$ by $\delta_t$ as $t \in [0, T]$ is a periodic orbit of orbit time $T$.
 
 \begin{prop}\label{prop:hyperbolic_defines_flow}
   Every hyperbolic matrix defines a periodic orbit of the modular flow.
@@ -219,8 +229,6 @@ An example periodic orbit corresponding to the hyperbolic matrix $\begin{psmallm
   \caption{A periodic orbit of the modular flow in the space of lattices. As each point in the lattice is acted upon by $\delta_t$, it moves on a hyperbolic path towards infinity. At $t \approx 0.96$, we have that $\delta_t(L) = L$.}
   \label{fig:periodic_orbits_lattice}
 \end{figure}
-
-\TODO{Show the periodic orbits are in bijection with conjugacy classes of hyperbolic elements.}
 
 \chapter{The 3-sphere and the trefoil complement}\label{sec:three_sphere}
 
