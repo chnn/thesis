@@ -40,6 +40,9 @@
 \newcommand{\defnphrase}[1]{\textbf{#1}}
 \DeclarePairedDelimiter\ang{\langle}{\rangle}
 
+\usepackage{color}
+\definecolor{strand}{RGB}{231, 76, 60}
+
 % Use line breaks, not indents, for distinguishing paragraphs.
 \setlength{\parindent}{0em}
 \setlength{\parskip}{1em}
@@ -351,11 +354,11 @@ We will return to this visual interpretation in Section~\ref{sec:finite_subsets}
   \begin{subfigure}[t]{0.48\textwidth}
     \centering
     \begin{tikzpicture}
-      \braid[ultra thick, width=5mm, height=7mm] s_1 s_2 s_1;
+      \braid[ultra thick, width=5mm, height=7mm, style strands={2}{strand}] s_1 s_2 s_1;
       \draw node[fill=white] at (2,-1.25) {=};
     \end{tikzpicture}
     \begin{tikzpicture}
-      \braid[ultra thick, width=5mm, height=7mm] s_2 s_1 s_2;
+      \braid[ultra thick, width=5mm, height=7mm, style strands={2}{strand}] s_2 s_1 s_2;
     \end{tikzpicture}
     \caption{The single relation in $B_3$, known as the \textbf{third Reidmeister move}.}
   \end{subfigure}
