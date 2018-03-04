@@ -24,7 +24,7 @@
 \addbibresource{thesis.bib}
 
 \theoremstyle{definition}
-\newtheorem{thm}{Theorem}[section]
+\newtheorem{thm}{Theorem}[chapter]
 \newtheorem{cor}[thm]{Corollary}
 \newtheorem{conj}[thm]{Conjecture}
 \newtheorem{lemma}[thm]{Lemma}
@@ -37,8 +37,6 @@
 \newtheorem*{note}{Note}
 \newtheorem{facts}[thm]{Facts}
 \newtheorem{fact}[thm]{Fact}
-\newcommand{\defnphrase}[1]{\textbf{#1}}
-\DeclarePairedDelimiter\ang{\langle}{\rangle}
 
 \usepackage{color}
 \definecolor{strand}{RGB}{231, 76, 60}
@@ -67,6 +65,10 @@
 \definecolor{todopink}{RGB}{219, 48, 122}
 \newcommand{\TODO}[1]{{\color{todopink}\textsf{TODO: #1}}}
 \newcommand{\Id}{\mathrm{Id}}
+\newcommand{\defnphrase}[1]{\textbf{#1}}
+\DeclarePairedDelimiter\ang{\langle}{\rangle}
+\DeclarePairedDelimiter\bigsawtooth{\Bigl( \! \! \Bigl(}{\Bigr) \! \! \Bigr)}
+\DeclarePairedDelimiter\sawtooth{( \! (}{) \! )}
 
 \title{}
 \author{}
@@ -291,7 +293,11 @@ For additional details, see~\cite[47--49]{hatcher2002} and~\cite[153--154]{still
   \begin{equation*}
     \ell \simeq y^3
   \end{equation*}
-  Now, we can expand $X$ and $Y$ slightly to open sets $X' \supseteq X$ and $Y' \supseteq$ such that $X' \cap Y'$ is an open neighborhood of $L$ and $X' \cup Y' = \R^3 \wo K$ (see Figure~\ref{fig:fundamental_group_side}). 
+  Now, we can expand $X$ and $Y$ slightly to open sets $X' \supseteq X$ and $Y' \supseteq$ such that $X' \cap Y'$ is an open neighborhood of $L$ and $X' \cup Y' = \R^3 \wo K$ (see Figure~\ref{fig:fundamental_group_side}).
+  Then, applying Van Kampen, we have that
+  \begin{equation*}
+    \pi_1(\R^3 \wo K) = \ang{x, y : x^2 = y^3}
+  \end{equation*}
 
   \begin{figure}[t]
     \centering
@@ -300,10 +306,6 @@ For additional details, see~\cite[47--49]{hatcher2002} and~\cite[153--154]{still
     \label{fig:fundamental_group_side}
   \end{figure}
 
-  Then, applying Van Kampen, we have that
-  \begin{equation*}
-    \pi_1(\R^3 \wo K) = \ang{x, y : x^2 = y^3}
-  \end{equation*}
   Now we show that $\pi_1(\R^3 \wo K) = \pi_1(S^3 \wo K)$ with another application of Van Kampen.
   Decompose $S^3 \wo K$ into $(\R^3 \wo K) \cup B$, where $B$ is an open set containing the compactification point and the complement of a large closed ball containing $K$.
   Both $B$ and $B \cap (\R^3 \wo K)$ are simply connected.
@@ -328,10 +330,12 @@ This group has presentation
   B_3 = \ang{\sigma_1, \sigma_2 : \sigma_1 \sigma_2 \sigma_1 = \sigma_2 \sigma_1 \sigma_2}
 \end{equation*}
 The isomorphism $\pi_1(S^3 \wo K) \to B_3$ is given by sending generators
-\begin{align}\label{eq:iso_pi1_b3}
-  x &\mapsto \sigma_0 \sigma_1 \sigma_0 \\
-  y &\mapsto \sigma_0 \sigma_1
-\end{align}
+\begin{equation}\label{eq:iso_pi1_b3}
+  \begin{aligned}
+    x &\mapsto \sigma_0 \sigma_1 \sigma_0 \\
+    y &\mapsto \sigma_0 \sigma_1
+  \end{aligned}
+\end{equation}
 This group appears in many different contexts: it is the mapping class group of the thrice-punctured disk, the universal central extension of $\PSLZ$, and so forth.
 It also has a convenient visual interpretation, where the generators $\sigma_1$ and $\sigma_2$ are depicted and composed as in Figure~\ref{fig:visual_braid_group}.
 We will return to this visual interpretation in Section~\ref{sec:finite_subsets}, where we decompose the path class of various loops in $\exp_{2,3} S^1 \cong S^3 \wo K$ as visual generators of $B_3$. 
@@ -376,7 +380,7 @@ Define
 \begin{equation*}
   G_k(L) = \sum_{\omega \in L,\ \omega \neq 0} \omega^{-k}
 \end{equation*}
-When $k = 4$ or $k = 6$, these series converge and is known as \defnphrase{Eisenstein series}.
+When $k = 4$ or $k = 6$, these series converge and are known as \defnphrase{Eisenstein series}.
 For non-degenerate $L$, these numbers are the parameters in the Weierstrass $\wp_L$-function identity
 \begin{equation*}
   (\wp_L')^2 = 4 \wp_L^3 - 60 G_4(L) \wp_L - 140 G_6(L)
@@ -391,18 +395,18 @@ The following facts about $G_4(L)$ and $G_6(L)$ are fundamental to the theory of
 \end{enumerate}
 Thus for any non-trivial lattice $L$, we can obtain a unique rescaling $L' = tL$ for some $t > 0$ such that
 \begin{equation*}
-  |G_4(L')| + |G_6(L')| = 1
+  |G_4(L')|^2 + |G_6(L')|^2 = 1
 \end{equation*}
 Then the map $L \mapsto (G_4(L'),\, G_6(L'))$ lands in $S^3$, and we have the desired homeomorphism $\LS \to S^3$.
 By Proposition~\ref{prop:trefoil_intersection_curve}, the image of degenerate lattices under this homeomorphism is the trefoil knot shown in Figure~\ref{fig:trefoil}.
 
 \section{Periodic orbits in $S^3$}\label{sec:periodic_orbits_in_s3}
 
-We have observed the periodic orbits of a simple flow in the space of lattices in Section~\ref{subsec:lattice_flow}, and we have just seen that the space of lattices is homeomorphic to the 3-sphere.
+We have observed the periodic orbits of a flow in the space of lattices in Section~\ref{subsec:lattice_flow}, and we have just seen that the space of lattices is homeomorphic to the 3-sphere.
 It is now natural to ask: how do these periodic orbits present in the 3-sphere?
 
 Recall that the degenerate lattices are sent to the trefoil knot in the 3-sphere, but that the periodic orbits of this flow exist entirely within the space of non-degenerate lattices.
-Thus we can say that in the 3-sphere, \emph{a periodic orbit of the modular flow in the space of lattices determines a link with the trefoil knot}.
+Thus we can say that in the 3-sphere, a periodic orbit of the modular flow in the space of lattices determines a link with the trefoil knot.
 Since each periodic flow is associated with some hyperbolic $A \in \SLZ$, we will call the corresponding trefoil link $k_A$ a \defnphrase{modular trefoil link} in line with~\cite{ghys2007}.
 Several examples of such links are shown in Figure~\ref{fig:trefoil_links}.
 
@@ -633,18 +637,18 @@ To understand this function and subsequent result, we first need to understand a
   \end{equation*}
   Then $UV = XQX^{-1}$ and $UV^{-1} = XPX^{-1}$, so $UV$ is conjugate to $Q$ and $UV^{-1}$ is conjugate to $P$. 
   By replacing all $UV$ and $UV^{-1}$ in $UV^{\varepsilon_1} UV^{\varepsilon_2} \cdots UV^{\varepsilon_n}$ with $XQX^{-1}$ and $XPX^{-1}$ then simplifying the result, we see that $M$ is conjugate by $X$ to a word in $Q$ and $P$.
-  Since conjugacy is a transitive relation, this means that $A$ is conjugate to the word in $P$ and $Q$ as well.
+  Since conjugacy is a transitive relation, this means that $A$ is conjugate to the word in $Q$ and $P$ as well.
 \end{proof}
 
 \begin{defn}
   Let $h$ and $k$ be coprime integers with $k \geq 1$.
   The \defnphrase{Dedekind sum} $s(h,k)$ is the function given by
   \begin{equation*}
-    s(h, k) = \sum_{r=1}^{k-1} \frac r k \left( \! \left( \frac {hr} k \right) \! \right)
+    s(h, k) = \sum_{r=1}^{k-1} \frac{r}{k} \bigsawtooth{\frac{hr}{k}}
   \end{equation*}
   where
   \begin{equation*}
-    ((x)) = \begin{cases}
+    \sawtooth{x} = \begin{cases}
       x - \lfloor x \rfloor - 1/2 & \text{if $x \notin \Z$} \\
       0 & \text{if $x \in \Z$}
     \end{cases}
