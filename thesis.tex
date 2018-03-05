@@ -415,10 +415,25 @@ It is now natural to ask: how do these periodic orbits present in the 3-sphere?
 
 Recall that the degenerate lattices are sent to the trefoil knot in the 3-sphere, but that the periodic orbits of this flow exist entirely within the space of non-degenerate lattices.
 Thus we can say that in the 3-sphere, a periodic orbit of the modular flow in the space of lattices determines a link with the trefoil knot.
-Since each periodic flow is associated with some hyperbolic $A \in \SLZ$, we will call the corresponding trefoil link $k_A$ a \defnphrase{modular trefoil link} in line with~\cite{ghys2007}.
+Since each periodic flow is associated with some hyperbolic $A \in \SLZ$, we will call the corresponding trefoil link $k_A$ a \defnphrase{modular trefoil link} follow after~\cite{ghys2007}.
 Several examples of such links are shown in Figure~\ref{fig:trefoil_links}.
 
-\TODO{Give a brief recap of the historical and contemporary questions studied with respect to the modular flow, e.g. Lorenz, Birman, Ghys...}
+These periodic orbits have a rich mathematical history, starting with an attempt to tell the weather in 1963. With the Navier-Stokes equations as his starting point, meteorologist Edward Lorenz set out to find a deterministic system governing weather patterns. He built a highly simplified model of a thin fluid disk heated from below and cooled from above, governed by the following differential equations:
+\begin{equation*}
+  \frac{dx}{dt} = 10 (y - x) \quad\quad \frac{dy}{dt} = 28x - y - xz \quad\quad \frac{dz}{dt} = xy - \frac 8 3 z
+\end{equation*}
+Integrating this system of equations yields a flow in $\R^3$ with some peculiar properties. For one, forward trajectories in the system ultimately flow into a bounded region known as the \emph{Lorenz attractor}, no matter the starting point (shown in Figure~\ref{fig:lorenz_attractor}). Secondly, this dynamic system is incredibly sensitive to initial conditions; slight changes in the initial conditions yield drastically different later states of the system. While this made the model a poor fit for the predicting weather (from Lorenz: ``In view of the inevitable inaccuracy and incompleteness of weather observations, precise very-long-range forecasting would seem to be nonexistent''~\cite{lorenz1963}), it was the prototypical example of a \emph{chaotic system} and foundational to the field of chaos theory.
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=0.6\linewidth]{figures/lorenz.png}
+  \caption{The Lorenz attractor.}
+  \label{fig:lorenz_attractor}
+\end{figure}
+
+Soon after Lorenz published his model, mathematicians began to study the closed periodic orbits in the system, which are now known as \emph{Lorenz knots}. In the 1970s, John Guckenheimer and Robert Williams conjectured that every finite subset of the closed periodic orbits project simultaneously and disjointly onto a \emph{Lorenz template}---a certain branched 2-manifold embedded in $\R^3$. 30 years later, Warwick Tucker and \'{E}tienne Ghys proved that the existence of the template. From this viewpoint, a Lorenz knot is any knot that embeds on the template, thus we can study Lorenz knots with the full force of knot theory. 
+
+Presently, we are considering the \emph{modular knots} arising from the periodic orbits of a dynamic system in the space of lattices. As it turns out, Lorenz knots and modular knots coincide~\cite{ghys2007}. Thus while we study a very particular construction of these knots, there is a vast corpus of theory providing alternative perspectives. In fact, there are several more areas in which these knots appear which we haven't mentioned yet: as closed geodesics on the modular surface, as continued fractions, as ideal classes in quadratic number fields, and so forth. For our purposes, we will somewhat only narrowly consider the lattice-based interpretation.
 
 \begin{figure}[h!]
   \centering
@@ -448,7 +463,7 @@ Several examples of such links are shown in Figure~\ref{fig:trefoil_links}.
   \label{fig:trefoil_links}
 \end{figure}
 
-\section{The modular group, Rademacher function, and linking number of a modular trefoil link}
+\section{The linking number of a modular trefoil link}
 
 The periodic orbits of the modular flow provide a rich source of interesting trefoil links.
 One property of links that is classically studied is their linking number.
