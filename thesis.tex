@@ -205,18 +205,39 @@ Then
   &= P(\Z^2) && \text{(since $\det(A) = 1$, so $A(\Z^2) = \Z^2$).} \\
   &= L.
 \end{align*}
-Thus the image of $P(\Z^2)$ by $\delta_t$ as $t \in [0, T]$ is a periodic orbit of orbit time $T$.
+Thus the image of $P(\Z^2)$ by $\delta_t$ as $0 \leq t \leq T$ is a periodic orbit of orbit time $T$.
 
 \begin{prop}\label{prop:hyperbolic_defines_flow}
-  Every hyperbolic matrix defines a periodic orbit of the modular flow.
+  Every hyperbolic matrix in $\SLZ$ defines a periodic orbit of the modular flow.
 \end{prop}
 
-An example periodic orbit corresponding to the hyperbolic matrix $\begin{psmallmatrix} 2 & 1 \\ 1 & 1 \end{psmallmatrix}$ is shown in Figure~\ref{fig:periodic_orbits_lattice}.
+For a concrete example of these periodic orbits, consider the hyperbolic matrix
+\begin{equation*}
+  A = \begin{pmatrix}
+    2 & 1 \\
+    1 & 1
+  \end{pmatrix}
+  \in \SLZ
+\end{equation*}
+The eigenvalues of $A$ yield a diagonal matrix $D$ such that $PAP^{-1} = D$, where $P$ is the matrix whose columns are the eigenvectors of $A$.
+Explicitly, we compute that
+\begin{equation*}
+  D = \begin{pmatrix}
+    \frac{3 + \sqrt{5}}{2} & 0 \\[0.3em]
+    0 & \frac{3 - \sqrt{5}}{2}
+  \end{pmatrix}, \quad P = \begin{pmatrix}
+    \frac{1 + \sqrt{5}}{2} & 1 \\[0.3em]
+    \frac{1 - \sqrt{5}}{2} & 1
+  \end{pmatrix}.
+\end{equation*}
+Let $\lambda$ be the first eigenvalue of $A$.
+We know that $D = \delta_T$ for some $T$, hence $\lambda = e^T$ and $T \approx 0.96$ is the orbit time for the periodic orbit corresponding to $A$.
+If we continuously act upon $P$ by $\delta_t$ as $0 \leq t \leq T$, we observe a periodic orbit in the space of lattices. This orbit is visualized in Figure~\ref{fig:periodic_orbits_lattice}.
 
 \begin{figure}[h]
   \centering
   \includegraphics[width=0.8\linewidth]{figures/periodic_orbits_lattice.pdf}
-  \caption{A periodic orbit of the modular flow in the space of lattices. As each point in the lattice is acted upon by $\delta_t$, it moves on a hyperbolic path towards infinity. At $t \approx 0.96$, we have that $\delta_t(L) = L$.}
+  \caption{A periodic orbit of the modular flow in the space of lattices. As each point in the lattice given by $P$ is acted upon by $\delta_t$, it moves on a hyperbolic path towards infinity. At $t \approx 0.96$, we have that $\delta_t P(\Z^2) = P(\Z^2)$.}
   \label{fig:periodic_orbits_lattice}
 \end{figure}
 
