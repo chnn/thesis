@@ -80,25 +80,15 @@
 \begin{document}
 \maketitle
 \setlength{\parskip}{0pt}
-\frontmatter % this stuff will be roman-numbered
-\pagestyle{empty} % this removes page numbers from the frontmatter
+\frontmatter
+\pagestyle{empty}
 
 % \chapter*{Acknowledgements}
-
-% I want to thank a few people.
-
-% \chapter*{List of Abbreviations}
-
-% You can always change the way your abbreviations are formatted. Play around with it yourself, use tables, or come to CUS if you'd like to change the way it looks. You can also completely remove this chapter if you have no need for a list of abbreviations. Here is an example of what this could look like:
 
 \tableofcontents
 
 % \listoftables
 % \listoffigures
-
-% \chapter*{Abstract}
-
-% The preface pretty much says it all.
 
 \setlength{\parskip}{1em}
 \mainmatter
@@ -125,7 +115,7 @@ Additionally, we provide a conjecture for determining the linking number of a tr
 
 This document will proceed by examining each homeomorphic space in turn.
 
-\chapter{The lattice space}
+\chapter{The space of lattices}
 
 First, we recall some basic definitions. A \defnphrase{lattice in $\C$} is a set of points
 \begin{equation*}
@@ -137,10 +127,10 @@ There are three types of lattices: \defnphrase{degenerate} lattices, \defnphrase
 As additive subgroups of $\C$, degenerate and non-degenerate lattices are those isomorphic to $\Z$ and $\Z \oplus \Z$, respectively.
 The zero lattice is trivial, consisting of the single point at the origin (see Figure~\ref{fig:three_types_of_lattices}).
 
-Two lattices are \defnphrase{homothetic} if they are real scalar multiples of each other, i.e., $L$ and $L'$ are homothetic if every point in $L'$ is a point in $L$ scaled by some constant $t \in \R$.
+Two lattices $L$ and $L'$ are \defnphrase{homothetic} if $L' = tL = \{t\omega : \omega \in L\}$ for some fixed $t \in \R$.
 We denote the space of all nontrivial lattices modulo the homothety relation as $\LS = \LS_0 \cup \LS_1$, where $\LS_0$ and $\LS_1$ are the degenerate and non-degenerate lattices, respectively.
 
-Some authors use a slightly different vocabulary to discuss the set of non-degenerate lattices $\LS_1$. Rather than identify all homothetic lattices, we can instead restrict the set of lattices to only those of a certain unit size. More precisely, we restrict to the set of \defnphrase{unimodular lattices}---lattices whose fundamental domain has area $1$. For our purposes, we will switch between these two interpretations of $\LS_1$ quite freely.
+Some authors use a slightly different vocabulary to discuss the set of non-degenerate lattices $\LS_1$. Rather than identify all homothetic lattices, we can instead restrict the set of lattices to only those of a certain unit size. More precisely, we restrict to the set of \defnphrase{unimodular lattices}---lattices with determinant equal to $1$, where the determinant of a lattice is the determinant of the matrix whose columns are the generators of the lattice. For our purposes, we will switch between these two interpretations of $\LS_1$ quite freely.
 
 \begin{figure}[t]
   \centering
@@ -212,8 +202,8 @@ Then
 \begin{align*}
   \delta_{T}(L) &= PAP^{-1} P(\Z^2) \\
   &= PA(\Z^2) \\
-  &= P(\Z^2) && \text{Since $\det(A) = 1$, so $A(\Z^2) = \Z^2$.} \\
-  &= L
+  &= P(\Z^2) && \text{(since $\det(A) = 1$, so $A(\Z^2) = \Z^2$).} \\
+  &= L.
 \end{align*}
 Thus the image of $P(\Z^2)$ by $\delta_t$ as $t \in [0, T]$ is a periodic orbit of orbit time $T$.
 
@@ -247,7 +237,7 @@ Intuitively, a knot is a loop in 3-space with interesting twisting behavior and 
   \label{fig:trefoil}
 \end{figure}
 
-In our case, we're interested in particular prototypical knot called the \defnphrase{trefoil} (visualized in Figure \ref{fig:trefoil}).
+In our case, we're interested in a particular prototypical knot called the \defnphrase{trefoil} (visualized in Figure \ref{fig:trefoil}).
 This is the knot that, when laid on the surface of the torus, crosses the meridian of the torus three times and crosses longitudinal circles twice---as such it is also known as the \defnphrase{$(2, 3)$-torus knot}.
 While a knot technically refers to an \emph{isotopy class} of a loop, we can also work explicitly with a parameterization of a representative of this isotopy class.
 Doing so for the trefoil will be of use to us soon in understanding the correspondence between $\LS$ and $S^3$.
@@ -294,17 +284,17 @@ For additional details, see~\cite[47--49]{hatcher2002} and~\cite[153--154]{still
   So $\pi_1(X)$ is infinite cyclic as well, with generator $x$ corresponding to the loop around the axis of the solid torus.
   In $X$, the generator $\ell$ is a trefoil loop around the torus that crosses longitudinal circles twice, so we have
   \begin{equation*}
-    \ell \simeq x^2
+    \ell \simeq x^2.
   \end{equation*}
   The fundamental group of $Y$ is also infinite cyclic, with the generator $y$ corresponding to a loop that ``links'' the hole of the solid torus.
-  $\ell$ crosses meridian circles in the solid torus three times, so we have that
+  The loop $\ell$ crosses meridian circles in the solid torus three times, so we have that
   \begin{equation*}
-    \ell \simeq y^3
+    \ell \simeq y^3.
   \end{equation*}
   Now, we can expand $X$ and $Y$ slightly to open sets $X' \supseteq X$ and $Y' \supseteq$ such that $X' \cap Y'$ is an open neighborhood of $L$ and $X' \cup Y' = \R^3 \wo K$ (see Figure~\ref{fig:fundamental_group_side}).
   Then, applying Van Kampen, we have that
   \begin{equation*}
-    \pi_1(\R^3 \wo K) = \ang{x, y : x^2 = y^3}
+    \pi_1(\R^3 \wo K) = \ang{x, y : x^2 = y^3}.
   \end{equation*}
 
   \begin{figure}[t]
@@ -335,7 +325,7 @@ For additional details, see~\cite[47--49]{hatcher2002} and~\cite[153--154]{still
 The fundamental group of the trefoil complement is isomorphic to a well-known group, the \defnphrase{braid group on $3$ strands}.
 This group has presentation
 \begin{equation*}
-  B_3 = \ang{\sigma_1, \sigma_2 : \sigma_1 \sigma_2 \sigma_1 = \sigma_2 \sigma_1 \sigma_2}
+  B_3 = \ang{\sigma_1, \sigma_2 : \sigma_1 \sigma_2 \sigma_1 = \sigma_2 \sigma_1 \sigma_2}.
 \end{equation*}
 The isomorphism $\pi_1(S^3 \wo K) \to B_3$ is given by sending generators
 \begin{equation}\label{eq:iso_pi1_b3}
@@ -374,32 +364,33 @@ We will return to this visual interpretation in Section~\ref{sec:finite_subsets}
     \end{tikzpicture}
     \caption{The single relation in $B_3$, known as the \textbf{third Reidmeister move}.}
   \end{subfigure}
-  \caption{The visual interpretation of $B_3$, where each generator is thought of as a braiding of three strands of string that start and end at fixed points. The group operation corresponds to stacking the visual generators top to bottom to compose a more complex braiding of string. The single relation in $B_3$ can be thought of as ``pulling a string'' without moving the endpoints, which preserves the homotopy class of the braid.}
+  \caption{The visual interpretation of $B_3$, where each generator is thought of as a braiding of three strands of string that start and end at fixed points. The group operation corresponds to stacking the visual generators top to bottom to compose a more complex braiding of string. The single relation in $B_3$ can be thought of as ``pulling a string'' without moving the endpoints, which preserves the isotopy class of the braid.}
   \label{fig:visual_braid_group}
 \end{figure}
 
 \section{From $\LS$ to $S^3$}\label{subsec:lattice_to_s3}
 
-Given that both $\LS$ and $S^3$ consist of tuples of complex numbers, it is perhaps not surprising that these spaces are homeomorphic.
-We now describe an explicit homeomorphism $\LS \to S^3$ as sketched in~\cite{mostovoy2004}.
+At first glance, the space of two-dimensional lattices up to homothety and the three-dimensional sphere may seem quite different.
+It turns out that they are indeed homeomorphic.
+We now describe an explicit homeomorphism $\LS \to S^3$ as sketched by Mostovoy in~\cite{mostovoy2004}.
 
 Let $L \in \LS$ and $k \in \Z$.
 Define
 \begin{equation*}
-  G_k(L) = \sum_{\omega \in L,\ \omega \neq 0} \omega^{-k}
+  G_k(L) = \sum_{\omega \in L,\ \omega \neq 0} \omega^{-k}.
 \end{equation*}
-When $k = 4$ or $k = 6$, these series converge and are known as \defnphrase{Eisenstein series}.
+When $k \geq 4$, these series converge and are known as \defnphrase{Eisenstein series}.
 For non-degenerate $L$, these numbers are the parameters in the Weierstrass $\wp_L$-function identity
 \begin{equation*}
-  (\wp_L')^2 = 4 \wp_L^3 - 60 G_4(L) \wp_L - 140 G_6(L)
+  (\wp_L')^2 = 4 \wp_L^3 - 60 G_4(L) \wp_L - 140 G_6(L).
 \end{equation*}
 The following facts about $G_4(L)$ and $G_6(L)$ are fundamental to the theory of elliptic functions:
 \begin{enumerate}[(i)]
-  \item For $t > 0$ and any $L$, $G_4(tL) = t^{-4} G_4(L)$ and $G_6(tL) = t^{-6} G_6(L)$.
+  \item For $t > 0$ and any $L$, $G_4(tL) = t^{-4} G_4(L)$ and $G_6(tL) = t^{-6} G_6(L)$~\cite[631]{abramowitz1964}
   
-  \item The map $L \mapsto (G_4(L),\, G_6(L))$ is a homeomorphism $\LS \to \C^2 \wo \{ 0 \}$.
+  \item The map $L \mapsto (G_4(L),\, G_6(L))$ is a homeomorphism $\LS \to \C^2 \wo \{ 0 \}$~\cite[82, 89]{serre1973}.
 
-  \item A tuple $(u, v) \in \C^2 \wo \{ 0 \}$ is the image of a degenerate lattice under this map if and only if $20u^3 - 49v^2 = 0$.
+  \item A tuple $(u, v) \in \C^2 \wo \{ 0 \}$ is the image of a degenerate lattice under this map if and only if $20u^3 - 49v^2 = 0$~\cite[265]{ghys2007}.
 \end{enumerate}
 Thus for any nontrivial lattice $L$, we can obtain a unique rescaling $L' = tL$ for some $t > 0$ such that
 \begin{equation*}
@@ -422,7 +413,7 @@ These periodic orbits have a rich mathematical history, starting with an attempt
 \begin{equation*}
   \frac{dx}{dt} = 10 (y - x) \quad\quad \frac{dy}{dt} = 28x - y - xz \quad\quad \frac{dz}{dt} = xy - \frac 8 3 z
 \end{equation*}
-Integrating this system of equations yields a flow in $\R^3$ with some peculiar properties. For one, forward trajectories in the system ultimately flow into a bounded region known as the \emph{Lorenz attractor}, no matter the starting point (shown in Figure~\ref{fig:lorenz_attractor}). Secondly, this dynamic system is incredibly sensitive to initial conditions; slight changes in the initial conditions yield drastically different later states of the system. While this made the model a poor fit for the predicting weather (from Lorenz: ``In view of the inevitable inaccuracy and incompleteness of weather observations, precise very-long-range forecasting would seem to be nonexistent''~\cite{lorenz1963}), it was the prototypical example of a \emph{chaotic system} and foundational to the field of chaos theory.
+Integrating this system of equations yields a flow in $\R^3$ with some peculiar properties. For one, forward trajectories in the system ultimately flow into a bounded region known as the \emph{Lorenz attractor}, no matter the starting point (shown in Figure~\ref{fig:lorenz_attractor}). Second, this dynamic system is incredibly sensitive to initial conditions; slight changes in the initial conditions yield drastically different later states of the system. While this made the model a poor fit for the predicting weather (from Lorenz: ``In view of the inevitable inaccuracy and incompleteness of weather observations, precise very-long-range forecasting would seem to be nonexistent''~\cite{lorenz1963}), it was the prototypical example of a \emph{chaotic system} and foundational to the field of math now known as \emph{chaos theory}.
 
 \begin{figure}[h]
   \centering
@@ -431,7 +422,7 @@ Integrating this system of equations yields a flow in $\R^3$ with some peculiar 
   \label{fig:lorenz_attractor}
 \end{figure}
 
-Soon after Lorenz published his model, mathematicians began to study the closed periodic orbits in the system, which are now known as \emph{Lorenz knots}. In the 1970s, John Guckenheimer and Robert Williams conjectured that every finite subset of the closed periodic orbits project simultaneously and disjointly onto a \emph{Lorenz template}---a certain branched 2-manifold embedded in $\R^3$. 30 years later, Warwick Tucker and \'{E}tienne Ghys proved that the existence of the template. From this viewpoint, a Lorenz knot is any knot that embeds on the template, thus we can study Lorenz knots with the full force of knot theory. 
+Soon after Lorenz published his model, mathematicians began to study the closed periodic orbits in the system, which are now known as \emph{Lorenz knots}. In the 1970s, John Guckenheimer and Robert Williams conjectured that every finite subset of the closed periodic orbits project simultaneously and disjointly onto a \emph{Lorenz template}---a certain branched 2-manifold embedded in $\R^3$ \cite{guckenheimer1976, guckenheimer1979}. Thirty years later, Warwick Tucker and \'{E}tienne Ghys proved that the existence of the template. From this viewpoint, a Lorenz knot is any knot that embeds on the template, thus we can study Lorenz knots with the full force of knot theory. 
 
 Presently, we are considering the \emph{modular knots} arising from the periodic orbits of a dynamic system in the space of lattices. As it turns out, Lorenz knots and modular knots coincide~\cite{ghys2007}. Thus while we study a very particular construction of these knots, there is a vast corpus of theory providing alternative perspectives. In fact, there are several more areas in which these knots appear which we haven't mentioned yet: as closed geodesics on the modular surface, as continued fractions, as ideal classes in quadratic number fields, and so forth. For our purposes, we will somewhat only narrowly consider the lattice-based interpretation.
 
@@ -522,7 +513,7 @@ To understand this function and subsequent result, we first need to understand a
     \end{pmatrix}
   \end{equation*}
   Now, let $\alpha = \begin{psmallmatrix}a & b \\ c & d\end{psmallmatrix}$.
-  If $c = 0$, then $\gamma = S^4 = I$ and we are done.
+  If $c = 0$, then $\gamma = I$ and we are done.
   So suppose $c \neq 0$.
   If $|a| < |c|$, left multiply $\alpha$ by $S$.
   Then $|a| \geq |c|$, so we can divide $a$ by $c$.
@@ -535,7 +526,7 @@ To understand this function and subsequent result, we first need to understand a
   
   \vspace{1em}
   \begin{algorithmic}
-    \State $\gamma \gets S^4 = I$
+    \State $\gamma \gets I$
     \If{$(\gamma \alpha)_{0,0} > (\gamma \alpha)_{1,0}$}
       $\gamma \gets S \gamma$
     \EndIf
@@ -585,7 +576,7 @@ To understand this function and subsequent result, we first need to understand a
 \end{prop}
 
 \begin{proof}
-  $\PSLZ$ is all integer matrices $A$ such that $\det A = 1$, subject to the identification $A = -A$.
+  The group $\PSLZ$ is all integer matrices $A$ such that $\det A = 1$, subject to the identification $A = -A$.
   Since $\SLZ = \ang{S,T}$ and any such $A$ is in $\SLZ$, $S$ and $T$ generate $\PSLZ$ as well.
   In $\PSLZ$, we also have that $U = S$, $V = (TSS)^{-1}$, $P = TSS$, and $Q = TST$.
   Thus $\PSLZ = \ang{S,T} = \ang{U,V} = \ang{P,Q}$.
@@ -596,7 +587,7 @@ To understand this function and subsequent result, we first need to understand a
   \begin{equation}
     V^{\varepsilon_0} U V^{\varepsilon_1} U \cdots V^{\varepsilon_{n}} U V^{\varepsilon_{n+1}}
   \end{equation}
-  where $\varepsilon_0, \varepsilon_{n+1} \in \{-1,0,1\}$ and $\varepsilon_i \in \{-1,1\}$ for $0 \leq i \leq n$.
+  where $\varepsilon_0, \varepsilon_{n+1} \in \{-1,0,1\}$ and $\varepsilon_i \in \{-1,1\}$ for $1 \leq i \leq n$.
 \end{prop}
 
 \begin{proof}
@@ -612,7 +603,7 @@ To understand this function and subsequent result, we first need to understand a
       -1 & 0 \\
       0 & -1
     \end{pmatrix}
-    = I
+    = I.
   \end{equation*}
   Thus $\varepsilon_i \in \Z / 3 \Z$ for all $i$, and $\varepsilon_i \not\equiv 0 \pmod 3$ for $1 \leq i \leq n$.
   And since $V^2 = V^{-1}$, we have that
@@ -656,7 +647,7 @@ To understand this function and subsequent result, we first need to understand a
     X = \begin{pmatrix}
       -1 & 0 \\
       0 & 1
-    \end{pmatrix}
+    \end{pmatrix}.
   \end{equation*}
   Then $UV = XQX^{-1}$ and $UV^{-1} = XPX^{-1}$, so $UV$ is conjugate to $Q$ and $UV^{-1}$ is conjugate to $P$. 
   By replacing all $UV$ and $UV^{-1}$ in $UV^{\varepsilon_1} UV^{\varepsilon_2} \cdots UV^{\varepsilon_n}$ with $XQX^{-1}$ and $XPX^{-1}$ then simplifying the result, we see that $M$ is conjugate by $X$ to a word in $Q$ and $P$.
@@ -669,15 +660,22 @@ To understand this function and subsequent result, we first need to understand a
   \begin{equation*}
     s(h, k) = \sum_{r=1}^{k-1} \frac{r}{k} \bigsawtooth{\frac{hr}{k}}
   \end{equation*}
-  where
+  where the ``sawtooth'' function $\sawtooth{x}$ is defined as
   \begin{equation*}
     \sawtooth{x} = \begin{cases}
       x - \lfloor x \rfloor - 1/2 & \text{if $x \notin \Z$} \\
       0 & \text{if $x \in \Z$}
     \end{cases}
   \end{equation*}
-  and $\lfloor x \rfloor$ is the floor of $x$.
+  and $\lfloor x \rfloor$ is the floor of $x$. A graph of $\sawtooth{x}$ is shown in Figure~\ref{fig:sawtooth}
 \end{defn}
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=0.8\linewidth]{figures/sawtooth.pdf}
+  \caption{The sawtooth function $\sawtooth{x}$ for $-3 \leq x \leq 3$.}
+  \label{fig:sawtooth}
+\end{figure}
 
 \begin{defn}
   The \defnphrase{Rademacher function $\Phi : \PSLZ \to \Z$} is given by
@@ -829,7 +827,7 @@ Perhaps surprisingly, it turns out that this topology is equivalent to the quoti
 For our purposes, we will focus on a particular finite subset space, $\exp_3 S^1$.
 In~\cite{mostovoy2004}, Mostovoy provides a homeomorphism $f : \LS \to \exp_3 S^1$, which we now describe.
 
-The \defnphrase{Voronoi cell} $V(L)$ of a nontrivial lattice $L$ is the cell in a Voronoi partition of $L$ containing $0$.
+The \defnphrase{Voronoi cell} $V(L)$ of a nondegenerate lattice $L$ is the cell in a Voronoi partition of $L$ containing $0$.
 More directly,
 \begin{equation*}
   V(L) = \{ z \in \C : |z| \leq |z - \omega| \text{ for all } \omega \in L \}
@@ -846,9 +844,8 @@ Translating $L$ so that $v$ is at the origin, we obtain two or three lines passi
 It is clear that these lines do not depend on the choice of vertex $v$ and are the same for any $L'$ homothetic to $L$.
 Since lines passing through the origin are points in $\RP \cong S^1$, we have associated with each non-degenerate lattice $L$ a subset $f(L) \in \exp_3 S^1$.
 
-Suppose instead that $L$ is a degenerate lattice.
-Then $L$ is contained within a line passing through the origin.
-We define $f$ for degenerate lattices by sending $L$ to the point in $\mathrm{RP}^1$ orthogonal to this line.
+Suppose instead that $L$ is a degenerate lattice, so that $L$ is contained within a line in $\RP$ passing through the origin.
+We define $f$ for degenerate lattices by sending $L$ to this line.
 
 For both degenerate and non-degenerate $L$, the verification of the continuity of $f$ is straightforward.
 Several steps of the homeomorphism for non-degenerate $L$ are shown in Figure~\ref{fig:homeomorphism_to_subset}.
@@ -906,7 +903,7 @@ These paths are depicted in Figure~\ref{fig:antipodal_point_paths}.
 Using the inverse of the isomorphism $\pi_1(S^3 \wo K) \to B_3$ defined in \eqref{eq:iso_pi1_b3}, we have that
 \begin{align*}
   \sigma_1 &\mapsto y^{-1} x \\
-  \sigma_2 &\mapsto x^{-1} y^2
+  \sigma_2 &\mapsto x^{-1} y^2.
 \end{align*}
 By altering the paths for $x$ and $y$ to share a common basepoint in $\exp_3 S^1$, we can compose them to obtain paths for $y^{-1} x$ and $x^{-1} y^2$, and hence for $\sigma_1$ and $\sigma_2$.
 The paths for $\sigma_1$, $\sigma_2$, and their inverses are depicted in Figure~\ref{fig:gen_paths_under_iso_shared}.
