@@ -461,9 +461,31 @@ Several examples of such links are shown in Figure~\ref{fig:trefoil_links}.
 \section{The linking number of a modular trefoil link}
 
 The periodic orbits of the modular flow provide a rich source of interesting trefoil links.
-One property of links that is classically studied is their linking number.
+One classically studied invariant of two-component links is their linking number, an integer associated with a particular link that can be computed as follows:
 
-\TODO{Define the linking number.}
+\begin{enumerate}
+  \item Color the components of the link red and blue, respectively, and give each component an orientation.
+  \item Project the colored, oriented link onto the plane. Any projection will do.
+  \item Assign each crossing of a red strand over blue strand a number, either $1$ or $-1$ according to the diagram in Figure~\ref{fig:linking_number}.
+  \item The sum of numbers at all crossings is the linking number.
+\end{enumerate}
+
+\begin{figure}[t]
+  \centering
+  \includegraphics[width=0.3\linewidth]{figures/linking_number.pdf}
+  \caption{Diagrammatic rules for computing the linking number of link.}
+  \label{fig:linking_number}
+\end{figure}
+
+\begin{figure}[b]
+  \centering
+  \includegraphics[width=0.3\linewidth]{figures/linking_number_example.pdf}
+  \caption{A simple link. The red component crosses over the blue component exactly once. According to Figure~\ref{fig:linking_number}, this link has linking number 1.}
+  \label{fig:linking_number_example}
+\end{figure}
+
+A simple example is shown in Figure~\ref{fig:linking_number_example}.
+For a more complex example, consider the first link in Figure~\ref{fig:trefoil_links}; it has linking number 0.
 
 In \cite{ghys2007}, Ghys proves a fascinating result relating the linking numbers of modular trefoil links to a famous arithmetic function.
 To understand this function and subsequent result, we first need to understand a few facts about $\SLZ$ and its relative, $\PSLZ$.
