@@ -197,15 +197,14 @@ In fact, since $\det(A) = 1$ and the product of eigenvalues of a matrix is equal
   \end{pmatrix} = \delta_T
 \end{equation*}
 for some $T \in \R$.
-Let $L = P(\Z^2)$ be the image of the square lattice by $P$.
+Let $P(\Z^2)$ be the image of the square lattice by $P$.
 Then
 \begin{align*}
-  \delta_{T}(L) &= PAP^{-1} P(\Z^2) \\
+  \delta_{T}P(\Z^2) &= PAP^{-1} P(\Z^2) \\
   &= PA(\Z^2) \\
-  &= P(\Z^2) && \text{(since $\det(A) = 1$, so $A(\Z^2) = \Z^2$).} \\
-  &= L.
+  &= P(\Z^2) && \text{(since $\det(A) = 1$, so $A(\Z^2) = \Z^2$).}
 \end{align*}
-Thus the image of $P(\Z^2)$ by $\delta_t$ as $0 \leq t \leq T$ is a periodic orbit of orbit time $T$.
+Thus the image of $P(\Z^2)$ by $\delta_t$ as $0 \leq t \leq T$ is a periodic orbit of orbit time $T$, and we have the following proposition.
 
 \begin{prop}\label{prop:hyperbolic_defines_flow}
   Every hyperbolic matrix in $\SLZ$ defines a periodic orbit of the modular flow.
@@ -223,11 +222,11 @@ The eigenvalues of $A$ yield a diagonal matrix $D$ such that $PAP^{-1} = D$, whe
 Explicitly, we compute that
 \begin{equation*}
   D = \begin{pmatrix}
-    \frac{3 + \sqrt{5}}{2} & 0 \\[0.3em]
-    0 & \frac{3 - \sqrt{5}}{2}
+    (3 + \sqrt{5}) / 2 & 0 \\
+    0 & (3 - \sqrt{5}) / 2
   \end{pmatrix}, \quad P = \begin{pmatrix}
-    \frac{1 + \sqrt{5}}{2} & 1 \\[0.3em]
-    \frac{1 - \sqrt{5}}{2} & 1
+    (1 + \sqrt{5}) / 2 & 1 \\
+    (1 - \sqrt{5}) / 2 & 1
   \end{pmatrix}.
 \end{equation*}
 Let $\lambda$ be the first eigenvalue of $A$.
