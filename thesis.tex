@@ -55,10 +55,13 @@
 \newcommand{\C}{\mathbb{C}}
 \newcommand{\LS}{\mathcal{L}}
 \newcommand{\SLZ}{\mathrm{SL}_2{\Z}}
+\newcommand{\GLZ}{\mathrm{GL}_2{\Z}}
+\newcommand{\SLR}{\mathrm{SL}_2{\R}}
 \newcommand{\PSLZ}{\mathrm{PSL}_2{\Z}}
 \newcommand{\PSLR}{\mathrm{PSL}_2{\R}}
 \newcommand{\RP}{\mathrm{RP}^1}
 \DeclareMathOperator{\im}{im}
+\DeclareMathOperator{\tr}{tr}
 \DeclareMathOperator{\sign}{sign}
 \newcommand{\into}{\xhookrightarrow{}}
 \newcommand{\wo}{\, \backslash \,}
@@ -157,8 +160,8 @@ Some authors use a slightly different vocabulary to discuss the set of non-degen
 
 \section{The modular flow of lattices}\label{subsec:lattice_flow}
 
-We now describe a dynamical flow in the space of lattices.
-We can think of a complex lattice $L \in \LS$ as sitting inside $\R^2 \cong \C$. Left multiplication of each point in the lattice by
+We now describe a dynamical flow in the space of non-degenerate lattices.
+We can think of a complex lattice $L \in \LS_1$ as sitting inside $\R^2 \cong \C$. Left multiplication of each point in the lattice by
 \begin{equation}\label{eq:delta_t}
   \delta_t = \begin{pmatrix}
     \exp(t) & 0 \\
@@ -166,12 +169,12 @@ We can think of a complex lattice $L \in \LS$ as sitting inside $\R^2 \cong \C$.
   \end{pmatrix}
 \end{equation}
 produces another non-degenerate lattice.
-Thus as the time variable $t$ increases continuously, we obtain a flow in $\LS$.
+As the time variable $t$ increases continuously, we obtain a flow in $\LS_1$ known as \defnphrase{the modular flow}.
   
 Note that as $t$ increases, each individual point in the lattice moves towards $\pm \infty$ along a hyperbolic path, yet the lattice as a whole may move back to its original position.
 Thus we can study the periodic orbits of this flow. 
 
-The periodic orbits can be described succinctly via a particular type of matrix.
+These periodic orbits can be described succinctly via a particular type of matrix.
 Recall that that the special linear group $\SLZ$ is the set of $2 \times 2$ matrices with integer entries and determinant 1.
 We say that a matrix
 \begin{equation*}
@@ -204,10 +207,22 @@ Then
   &= PA(\Z^2) \\
   &= P(\Z^2) && \text{(since $\det(A) = 1$, so $A(\Z^2) = \Z^2$).}
 \end{align*}
-Thus the image of $P(\Z^2)$ by $\delta_t$ as $0 \leq t \leq T$ is a periodic orbit of orbit time $T$, and we have the following proposition.
+Thus the image of $P(\Z^2)$ by $\delta_t$ as $0 \leq t \leq T$ is a periodic orbit of orbit time $T$.
+
+Now, suppose that $B \in \SLZ$ as well, so that $BAB^{-1}$ is in the conjugacy class of $A$.
+Then
+\begin{equation*}
+  (PB^{-1}) BAB^{-1} (PB^{-1})^{-1} = PAP^{-1} = \delta_T
+\end{equation*}
+but also
+\begin{equation*}
+  (PB^{-1})(\Z^2) = PB^{-1} (\Z^2) = P(\Z^2).
+\end{equation*}
+Hence the element $BAB^{-1} \in \SLZ$ defines a periodic orbit with the same orbit time and same initial lattice $P(\Z^2)$, i.e. the same periodic orbit as $A$.
+To summarize, we have the following proposition.
 
 \begin{prop}\label{prop:hyperbolic_defines_flow}
-  Every hyperbolic matrix in $\SLZ$ defines a periodic orbit of the modular flow.
+  Every conjugacy class of hyperbolic elements in $\SLZ$ defines a periodic orbit of the modular flow.
 \end{prop}
 
 For a concrete example of these periodic orbits, consider the hyperbolic matrix
@@ -231,7 +246,8 @@ Explicitly, we compute that
 \end{equation*}
 Let $\lambda$ be the first eigenvalue of $A$.
 We know that $D = \delta_T$ for some $T$, hence $\lambda = e^T$ and $T \approx 0.96$ is the orbit time for the periodic orbit corresponding to $A$.
-If we continuously act upon $P$ by $\delta_t$ as $0 \leq t \leq T$, we observe a periodic orbit in the space of lattices. This orbit is visualized in Figure~\ref{fig:periodic_orbits_lattice}.
+If we continuously act upon $P$ by $\delta_t$ as $0 \leq t \leq T$, we observe a periodic orbit in the space of lattices.
+This orbit is visualized in Figure~\ref{fig:periodic_orbits_lattice}.
 
 \begin{figure}[h]
   \centering
@@ -239,6 +255,60 @@ If we continuously act upon $P$ by $\delta_t$ as $0 \leq t \leq T$, we observe a
   \caption{A periodic orbit of the modular flow in the space of lattices. As each point in the lattice given by $P$ is acted upon by $\delta_t$, it moves on a hyperbolic path towards infinity. At $t \approx 0.96$, we have that $\delta_t P(\Z^2) = P(\Z^2)$.}
   \label{fig:periodic_orbits_lattice}
 \end{figure}
+
+It is convenient to label a periodic orbit of the modular flow by the matrix $A \in \SLZ$ that produced it.
+But does every periodic orbit arise from an element of $\SLZ$?
+The following results establish that this is indeed the case.
+
+\begin{lemma}\label{lemma:m_is_integer}
+  Suppose that $X,\, Y \in \SLR$ generate the same nondegenerate lattice.
+  Then there exists some $A \in \SLZ$ such that $X = YA$.
+  In particular, if $X$ generates the square lattice, then $X \in \SLZ$.
+\end{lemma}
+
+\begin{proof}
+  A lattice is all integer combinations of vectors in a basis for that lattice; since $X(\Z^2) = Y(\Z^2)$, we know that there exists integer matrices $A$ and $B$ such that $X = YA$ and $Y = XB$.
+  So we just need to show that $A$ has determinant 1.
+  Note that $X = XBA$, which means that $X(I - BA) = 0$.
+  Since $X(\Z^2)$ is nondegenerate, the columns of $X$ are linearly independent, and so $I - BA = 0$ and hence $BA = I$.
+  Then $\det(BA) = \det(B) \det(A) = \det(I) = 1$.
+  Since $A$ and $B$ are integer, we have that $\det(A) = \det(B) = \pm 1$.
+  But also since $X = YA$, we know $1 = \det(X) = \det(Y) \det(A) = 1 \det(A)$, so $\det(A)$ must be 1 and thus $A \in \SLZ$.
+\end{proof}
+
+\begin{prop}
+  The periodic orbits of the modular flow are in bijection with conjugacy classes of elements of $\SLZ$.
+\end{prop}
+
+\begin{proof}
+  Given a matrix $A \in \SLZ$, we have already shown how to construct a periodic orbit of the modular flow.
+  So instead suppose that we are given a periodic orbit.
+  Then there exists some $M \in \SLR$ and $T \in \R$ that describes this periodic orbit, where $\delta_T M(\Z^2) = M(\Z^2)$.
+  Observe that if $A = M^{-1} \delta_T M$, then
+  \begin{equation*}
+    A(\Z^2) = M^{-1} \delta_T M (\Z^2) = M^{-1} M (\Z^2) = \Z^2.
+  \end{equation*}
+  Thus by Lemma~\ref{lemma:m_is_integer}, $A \in \SLZ$.
+  Note, however, that our choice of $M$ was not unique.
+  Suppose there exists some other $N \in \SLR$ such that $M(\Z^2) = N(\Z^2)$.
+  Then again by the Lemma, we have that $N = MB$ for some $B \in \SLZ$, so
+  \begin{equation*}
+    N^{-1} \delta_T N = (MB)^{-1} \delta_T (MB) = B^{-1} M^{-1} \delta_T M B = B^{-1} A B.
+  \end{equation*}
+  Hence every periodic orbit corresponds to some conjugacy class of an element $A \in \SLZ$.
+  It remains to be shown that $A$ is hyperbolic.
+  Since $MAM^{-1} = \delta_T$, we can compute the trace of $A$ directly:
+  \begin{align*}
+    \tr(A) &= \tr(MAM^{-1}) \\
+    &= \tr(\delta_T) \\
+    &= e^{T} + e^{-T} \\
+    &= \left( \sum_{k=0}^\infty \frac{T^k}{k!} \right) + \left( \sum_{k=0}^\infty \frac{(-T)^k}{k!} \right) \\[0.5em]
+    &= \sum_{k=0}^\infty \frac{T^k + (-T)^k}{k!} \\[0.5em]
+    &= 2 + 0 + \frac{T^2 + T^2}{2!} + 0 + \frac{T^4 + T^4}{4!} + \cdots \\
+    &> 2.
+  \end{align*}
+  Thus $A$ is indeed hyperbolic, and it is straightforward to observe that we indeed have a bijection.
+\end{proof}
 
 \chapter{The 3-sphere and the trefoil complement}\label{sec:three_sphere}
 
