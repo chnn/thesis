@@ -60,6 +60,7 @@
 \newcommand{\PSLZ}{\mathrm{PSL}_2{\Z}}
 \newcommand{\PSLR}{\mathrm{PSL}_2{\R}}
 \newcommand{\RP}{\mathrm{RP}^1}
+\renewcommand{\vec}[1]{\mathbf{#1}}
 \DeclareMathOperator{\im}{im}
 \DeclareMathOperator{\tr}{tr}
 \DeclareMathOperator{\sign}{sign}
@@ -120,23 +121,36 @@ This document will proceed by examining each homeomorphic space in turn.
 
 \chapter{The space of lattices}
 
-First, we recall some basic definitions. A \defnphrase{lattice in $\C$} is a set of points
+First, we recall some basic definitions.
+A \defnphrase{lattice in $\R^2$} is a set
 \begin{equation*}
-  \{ n \omega_1 + m \omega_2 : n,\, m \in \Z \}
+  B(\Z^2) = \{ B \vec x : \vec x \in \Z^2 \}
 \end{equation*}
-where $\omega_1$ and $\omega_2$ are complex numbers.
-We call $\omega_1$ and $\omega_2$ the \defnphrase{lattice generators}, since each complex pair of numbers of $(\omega_1, \omega_2)$, defines a (not necessarily unique) lattice.
-There are three types of lattices: \defnphrase{degenerate} lattices, \defnphrase{non-degenerate} lattices, and the \defnphrase{zero lattice}.
-As additive subgroups of $\C$, degenerate and non-degenerate lattices are those isomorphic to $\Z$ and $\Z \oplus \Z$, respectively.
-The zero lattice is trivial, consisting of the single point at the origin (see Figure~\ref{fig:three_types_of_lattices}).
+where $B$ is some real $2 \times 2$ matrix.
+We call $B$ a \defnphrase{basis} for the lattice and the columns of $B$ the \defnphrase{generators} of the lattice.
+If $B$ is the 0 matrix, then $B(\Z^2)$ is the \defnphrase{zero lattice} consisting of the single point at the origin.
+If the columns of $B$ are linearly dependent, then we say that $B(\Z^2)$ is a \defnphrase{degenerate lattice}.
+Otherwise, if the columns are linearly independent, then $B(\Z^2)$ is a \defnphrase{nondegenerate lattice} or \defnphrase{full rank lattice}.
+A lattice of each type is shown in Figure~\ref{fig:three_types_of_lattices}.
 
-Two lattices $L$ and $L'$ are \defnphrase{homothetic} if $L' = tL = \{t\omega : \omega \in L\}$ for some fixed $t \in \R$.
+Two lattices $L$ and $L'$ are \defnphrase{homothetic} if they are rescaled versions of each other, i.e. if $L' = tL = \{t\omega : \omega \in L\}$ for some fixed $t \in \R$.
 We denote the space of all nontrivial lattices modulo the homothety relation as $\LS = \LS_0 \cup \LS_1$, where $\LS_0$ and $\LS_1$ are the degenerate and non-degenerate lattices, respectively.
 
-Some authors use a slightly different vocabulary to discuss the set of non-degenerate lattices $\LS_1$. Rather than identify all homothetic lattices, we can instead restrict the set of lattices to only those of a certain unit size. More precisely, we restrict to the set of \defnphrase{unimodular lattices}---lattices with determinant equal to $1$, where the determinant of a lattice is the determinant of the matrix whose columns are the generators of the lattice. For our purposes, we will switch between these two interpretations of $\LS_1$ quite freely.
+Some authors use slightly different conventions to describe lattices.
+A lattice can also be defined as a closed, discrete, and additive subgroup of either $\R^2$ or $\C \cong \R^2$.
+In this case, the zero lattice, degenerate lattices, and nondegenerate lattices are those isomorphic to the trivial group, $\Z$, and $\Z \oplus \Z$, respectively.
+Additionally, instead of defining $\LS_1$ as the set of all nondegenerate lattices modulo a homothety relation, we can define $\LS_1$ as the set of all lattices of a certain unit size.
+More precisely, we say that $\LS_1$ is the set of all \defnphrase{unimodular lattices}---those whose basis matrix is unimodular.
+For our purposes, we will switch between these two interpretations of $\LS_1$ quite freely.
 
-\begin{figure}[t]
+\begin{figure}[h]
   \centering
+  \begin{subfigure}[t]{0.31\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{figures/zero_lattice.pdf}
+    \caption{The zero lattice.}
+  \end{subfigure}
+  \hfill
   \begin{subfigure}[t]{0.31\textwidth}
     \centering
     \includegraphics[width=\textwidth]{figures/degen_lattice.pdf}
@@ -148,12 +162,6 @@ Some authors use a slightly different vocabulary to discuss the set of non-degen
     \includegraphics[width=\textwidth]{figures/non_degen_lattice.pdf}
     \caption{A non-degenerate lattice.}
   \end{subfigure}
-  \hfill
-  \begin{subfigure}[t]{0.31\textwidth}
-    \centering
-    \includegraphics[width=\textwidth]{figures/zero_lattice.pdf}
-    \caption{The zero lattice.}
-  \end{subfigure}
   \caption{The three types of lattices.}
   \label{fig:three_types_of_lattices}
 \end{figure}
@@ -161,7 +169,7 @@ Some authors use a slightly different vocabulary to discuss the set of non-degen
 \section{The modular flow of lattices}\label{subsec:lattice_flow}
 
 We now describe a dynamical flow in the space of non-degenerate lattices.
-We can think of a complex lattice $L \in \LS_1$ as sitting inside $\R^2 \cong \C$. Left multiplication of each point in the lattice by
+Left multiplication of each point in the lattice by
 \begin{equation}\label{eq:delta_t}
   \delta_t = \begin{pmatrix}
     \exp(t) & 0 \\
