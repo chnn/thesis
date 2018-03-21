@@ -133,14 +133,14 @@ If the columns of $B$ are linearly dependent, then we say that $B(\Z^2)$ is a \d
 Otherwise, if the columns are linearly independent, then $B(\Z^2)$ is a \defnphrase{nondegenerate lattice} or \defnphrase{full rank lattice}.
 A lattice of each type is shown in Figure~\ref{fig:three_types_of_lattices}.
 
-Two lattices $L$ and $L'$ are \defnphrase{homothetic} if they are rescaled versions of each other, i.e. if $L' = tL = \{t\omega : \omega \in L\}$ for some fixed $t \in \R$.
+Two lattices $L$ and $L'$ are \defnphrase{homothetic} if they are rescaled versions of each other, i.e. if $L' = tL = \{t \vec x : \vec x \in L\}$ for some fixed $t \in \R$.
 We denote the space of all nontrivial lattices modulo the homothety relation as $\LS = \LS_0 \cup \LS_1$, where $\LS_0$ and $\LS_1$ are the degenerate and nondegenerate lattices, respectively.
 
 Some authors use slightly different conventions to describe lattices.
 A lattice can also be defined as a closed, discrete, and additive subgroup of either $\R^2$ or $\C \cong \R^2$.
 In this case, the zero lattice, degenerate lattices, and nondegenerate lattices are those isomorphic to the trivial group, $\Z$, and $\Z \oplus \Z$, respectively.
 Additionally, instead of defining $\LS_1$ as the set of all nondegenerate lattices modulo a homothety relation, we can define $\LS_1$ as the set of all lattices of a certain unit size.
-More precisely, we say that $\LS_1$ is the set of all \defnphrase{unimodular lattices}---those whose basis matrix is unimodular.
+More precisely, we say that $\LS_1$ is the set of all \defnphrase{unimodular lattices}---those whose basis matrix has determinant 1.
 For our purposes, we will switch between these two interpretations of $\LS_1$ quite freely.
 
 \begin{figure}[h]
@@ -169,7 +169,7 @@ For our purposes, we will switch between these two interpretations of $\LS_1$ qu
 \section{The modular flow of lattices}\label{subsec:lattice_flow}
 
 We now describe a dynamical flow in the space of nondegenerate lattices.
-Left multiplication of each point in a lattice by
+Left multiplication of each point in a nondegenerate lattice by
 \begin{equation}\label{eq:delta_t}
   \delta_t = \begin{pmatrix}
     \exp(t) & 0 \\
@@ -216,21 +216,10 @@ Then
   &= P(\Z^2) && \text{(since $\det(A) = 1$, so $A(\Z^2) = \Z^2$).}
 \end{align*}
 Thus the image of $P(\Z^2)$ by $\delta_t$ as $0 \leq t \leq T$ is a periodic orbit of orbit time $T$.
-
-Now, suppose that $B \in \SLZ$ as well, so that $BAB^{-1}$ is in the conjugacy class of $A$.
-Then
-\begin{equation*}
-  (PB^{-1}) BAB^{-1} (PB^{-1})^{-1} = PAP^{-1} = \delta_T
-\end{equation*}
-but also
-\begin{equation*}
-  (PB^{-1})(\Z^2) = PB^{-1} (\Z^2) = P(\Z^2).
-\end{equation*}
-Hence the element $BAB^{-1} \in \SLZ$ defines a periodic orbit with the same orbit time and same initial lattice $P(\Z^2)$, i.e. the same periodic orbit as $A$.
 To summarize, we have the following proposition.
 
 \begin{prop}\label{prop:hyperbolic_defines_flow}
-  Every conjugacy class of hyperbolic elements in $\SLZ$ defines a periodic orbit of the modular flow.
+  Every hyperbolic element in $\SLZ$ defines a periodic orbit of the modular flow.
 \end{prop}
 
 For a concrete example of these periodic orbits, consider the hyperbolic matrix
@@ -260,7 +249,7 @@ This orbit is visualized in Figure~\ref{fig:periodic_orbits_lattice}.
 \begin{figure}[h]
   \centering
   \includegraphics[width=0.8\linewidth]{figures/periodic_orbits_lattice.pdf}
-  \caption{A periodic orbit of the modular flow in the space of lattices. As each point in the lattice given by $P$ is acted upon by $\delta_t$, it moves on a hyperbolic path towards infinity. At $t \approx 0.96$, we have that $\delta_t P(\Z^2) = P(\Z^2)$.}
+  \caption{A periodic orbit of the modular flow in the space of lattices. As each point in the lattice given by $P$ is acted upon by $\delta_t$, it moves on a hyperbolic path towards infinity. Here, the path of each point is depicted by a sequence of points with shrinking radii. At $t \approx 0.96$, we have that $\delta_t P(\Z^2) = P(\Z^2)$.}
   \label{fig:periodic_orbits_lattice}
 \end{figure}
 
@@ -291,32 +280,60 @@ The following results establish that this is indeed the case.
 
 \begin{proof}
   Given a matrix $A \in \SLZ$, we have already shown how to construct a periodic orbit of the modular flow.
-  So instead suppose that we are given a periodic orbit.
-  Then there exists some $M \in \SLR$ and $T \in \R$ that describes this periodic orbit, where $\delta_T M(\Z^2) = M(\Z^2)$.
-  Observe that if $A = M^{-1} \delta_T M$, then
+  It remains to be shown that any element in the conjugacy class of $A$ produces the same periodic orbit, and that any periodic orbit of the modular flow defines the conjugacy class of some hyperbolic element in $\SLZ$.
+  Let $P \in \SLR$ such that $PAP^{-1} = \delta_t$ for some $t \in \R$, so that $\delta_t P(\Z^2) = P(\Z^2)$.
+  Also suppose that $B \in \SLZ$ as well, so that $BAB^{-1}$ is in the conjugacy class of $A$.
+  Then
   \begin{equation*}
-    A(\Z^2) = M^{-1} \delta_T M (\Z^2) = M^{-1} M (\Z^2) = \Z^2.
+    (PB^{-1}) BAB^{-1} (PB^{-1})^{-1} = PAP^{-1} = \delta_t
+  \end{equation*}
+  but also
+  \begin{equation*}
+    (PB^{-1})(\Z^2) = PB^{-1} (\Z^2) = P(\Z^2).
+  \end{equation*}
+  Hence the element $BAB^{-1} \in \SLZ$ defines a periodic orbit with the same orbit time and same initial lattice $P(\Z^2)$, i.e. the same periodic orbit as $A$.
+
+  Now, suppose instead that we are given a periodic orbit of the modular flow.
+  We wish to show that it corresponds to the conjugacy class of some hyperbolic element in $\SLZ$.
+  The periodic orbit can be described by some $M \in \SLR$ and $t \in \R$ where $\delta_t M(\Z^2) = M(\Z^2)$
+  Observe that if $A = M^{-1} \delta_t M$, then
+  \begin{equation*}
+    A(\Z^2) = M^{-1} \delta_t M (\Z^2) = M^{-1} M (\Z^2) = \Z^2.
   \end{equation*}
   Thus by Lemma~\ref{lemma:m_is_integer}, $A \in \SLZ$.
   Note, however, that our choice of $M$ was not unique.
-  Suppose there exists some other $N \in \SLR$ such that $M(\Z^2) = N(\Z^2)$.
-  Then again by the Lemma, we have that $N = MB$ for some $B \in \SLZ$, so
+  Let $N \in \SLR$ be such that $M(\Z^2) = N(\Z^2)$.
+  Then again by the lemma, we have that $N = MB$ for some $B \in \SLZ$, so
   \begin{equation*}
-    N^{-1} \delta_T N = (MB)^{-1} \delta_T (MB) = B^{-1} M^{-1} \delta_T M B = B^{-1} A B.
+    N^{-1} \delta_t N = (MB)^{-1} \delta_t (MB) = B^{-1} M^{-1} \delta_t M B = B^{-1} A B.
   \end{equation*}
-  Hence every periodic orbit corresponds to some conjugacy class of an element $A \in \SLZ$.
-  It remains to be shown that $A$ is hyperbolic.
-  Since $MAM^{-1} = \delta_T$, we can compute the trace of $A$ directly:
+  Hence every periodic orbit defines a conjugacy class of some element $A \in \SLZ$.
+  We now show that $A$ is hyperbolic by computing its trace directly.
+  Since $MAM^{-1} = \delta_t$ and trace is invariant under conjugation, we have that 
   \begin{align*}
     \tr(A) &= \tr(MAM^{-1}) \\
-    &= \tr(\delta_T) \\
-    &= e^{T} + e^{-T} \\
-    &= \left( \sum_{k=0}^\infty \frac{T^k}{k!} \right) + \left( \sum_{k=0}^\infty \frac{(-T)^k}{k!} \right) \\[0.5em]
-    &= \sum_{k=0}^\infty \frac{T^k + (-T)^k}{k!} \\[0.5em]
-    &= 2 + 0 + \frac{T^2 + T^2}{2!} + 0 + \frac{T^4 + T^4}{4!} + \cdots \\
+    &= \tr(\delta_t) \\
+    &= e^{t} + e^{-t} \\
+    &= \left( \sum_{k=0}^\infty \frac{t^k}{k!} \right) + \left( \sum_{k=0}^\infty \frac{(-t)^k}{k!} \right) \\[0.5em]
+    &= \sum_{k=0}^\infty \frac{t^k + (-t)^k}{k!} \\[0.5em]
+    &= 2 + 0 + \frac{t^2 + t^2}{2!} + 0 + \frac{t^4 + t^4}{4!} + \cdots \\
     &> 2.
   \end{align*}
-  Thus $A$ is indeed hyperbolic, and it is straightforward to observe that we have a bijection.
+  Thus $A$ is indeed hyperbolic. To summarize, there are two maps
+  \begin{equation*}
+    \left\lbrace
+    \begin{array}{c}
+      \text{conjugacy classes of} \\
+      \text{hyperbolic } A \in \SLZ
+    \end{array}
+    \right\rbrace \rightleftarrows \left\lbrace
+    \begin{array}{c}
+      \text{periodic orbits of} \\
+      \text{the modular flow}
+    \end{array}
+    \right\rbrace
+  \end{equation*}
+  and it is straightforward to observe that they form a bijection.
 \end{proof}
 
 \chapter{The 3-sphere and the trefoil complement}\label{sec:three_sphere}
