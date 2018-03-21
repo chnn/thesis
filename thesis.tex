@@ -169,7 +169,7 @@ For our purposes, we will switch between these two interpretations of $\LS_1$ qu
 \section{The modular flow of lattices}\label{subsec:lattice_flow}
 
 We now describe a dynamical flow in the space of nondegenerate lattices.
-Left multiplication of each point in the lattice by
+Left multiplication of each point in a lattice by
 \begin{equation}\label{eq:delta_t}
   \delta_t = \begin{pmatrix}
     \exp(t) & 0 \\
@@ -275,13 +275,14 @@ The following results establish that this is indeed the case.
 \end{lemma}
 
 \begin{proof}
-  A lattice is all integer combinations of vectors in a basis for that lattice; since $X(\Z^2) = Y(\Z^2)$, we know that there exists integer matrices $A$ and $B$ such that $X = YA$ and $Y = XB$.
-  So we just need to show that $A$ has determinant 1.
-  Note that $X = XBA$, which means that $X(I - BA) = 0$.
-  Since $X(\Z^2)$ is nondegenerate, the columns of $X$ are linearly independent, and so $I - BA = 0$ and hence $BA = I$.
-  Then $\det(BA) = \det(B) \det(A) = \det(I) = 1$.
-  Since $A$ and $B$ are integer, we have that $\det(A) = \det(B) = \pm 1$.
-  But also since $X = YA$, we know $1 = \det(X) = \det(Y) \det(A) = 1 \det(A)$, so $\det(A)$ must be 1 and thus $A \in \SLZ$.
+  A lattice consists of all integer linear combinations of its generators.
+  Since $X$ and $Y$ generate the same lattice, we know that there exists some integer matrix $A$ such that $X = YA$.
+  Because $X$ and $Y$ are in $\SLR$, we also know that $\det(X) = \det(Y) = 1$. Then
+  \begin{equation*}
+    1 = \det(X) = \det(YA) = \det(Y)\det(A) = 1 \cdot \det(A)
+  \end{equation*}
+  and so $\det(A) = 1$ and $A \in \SLZ$.
+  If $X$ generates the square lattice, then $X(\Z^2) = I(\Z^2)$, and so $X = IA = A \in \SLZ$.
 \end{proof}
 
 \begin{prop}
@@ -315,7 +316,7 @@ The following results establish that this is indeed the case.
     &= 2 + 0 + \frac{T^2 + T^2}{2!} + 0 + \frac{T^4 + T^4}{4!} + \cdots \\
     &> 2.
   \end{align*}
-  Thus $A$ is indeed hyperbolic, and it is straightforward to observe that we indeed have a bijection.
+  Thus $A$ is indeed hyperbolic, and it is straightforward to observe that we have a bijection.
 \end{proof}
 
 \chapter{The 3-sphere and the trefoil complement}\label{sec:three_sphere}
