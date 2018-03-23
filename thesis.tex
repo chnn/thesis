@@ -73,6 +73,7 @@
 \DeclarePairedDelimiter\ang{\langle}{\rangle}
 \DeclarePairedDelimiter\bigsawtooth{\Bigl( \! \! \Bigl(}{\Bigr) \! \! \Bigr)}
 \DeclarePairedDelimiter\sawtooth{( \! (}{) \! )}
+\newcommand{\mathe}[1]{\mintinline{Mathematica}|#1|}
 
 \title{}
 \author{}
@@ -1511,16 +1512,24 @@ latticeToExpS1[lattice_] := If[isDegen[lattice], degenToExpS1[degenGenerator[lat
 \end{minted}
 With the homeomorphism $\LS \to \exp_3 S^1$ in hand, we also need a method for visualizing paths in $\exp_3 S^1$.
 The following code is rather terse, but the idea is simple.
-We associate each point in the path (a subset of $S^1$, i.e.
-a subset of numbers between 0 and $2\pi$) with an increasing value $r$.
-Then we plot the points in the plane, with the $y$ direction of the plot corresponding to the increasing $r$ values and the $x$ direction corresponding to the position of the subset points on the circle.
+We associate each point in the path (a subset of $S^1$, i.e. a subset of numbers between 0 and $2\pi$) with an increasing value $r$ using \mathe{zipWithIncreasing}.
+Then we map over each zipped $(x \in \exptwothree S^1, r \in [0,1])$ tuple to produce several $(x_i \in S^1, r)$ tuples.
+We flatten the result to remove one superfluous level of nesting.
+Finally, we plot the points in the plane, with the $y$ direction of the plot corresponding to the increasing $r$ values and the $x$ direction corresponding to the position of the subset points on the circle.
 \begin{minted}[breaklines, fontsize=\small]{Mathematica}
 zipWithIncreasing[xs_, r0_:0, r1_: 1] := Map[({xs[[#]], N[r0 + (# (r1 - r0))/Length[xs]]})&, Range[Length[xs]]];
 
 flatViz[xs_] := Module[{zipped, split, points},
+  (* Map points {a, b, c} to {{a, b, c}, r} with r increasing *)
   zipped = zipWithIncreasing[xs, 1, 0];
+
+  (* Map points {{a, b, c}, r} to {{a, r}, {b, r}, {c, r}} *)
   split = Function[p, Map[({Mod[#, 2 Pi], p[[2]]})&, p[[1]]]];
+
+  (* Flatten a the resulting list of lists by one level *)
   points = Flatten[Map[split, zipped], 1];
+
+  (* Display the processed points *)
   Graphics[{Thickness[0.005],
             Line[{{0, 0}, {2 Pi, 0}}],
             Line[{{0, 0}, {0, 1}}],
