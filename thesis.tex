@@ -362,19 +362,8 @@ Intuitively, a knot is a loop in 3-space with interesting twisting behavior and 
 
 In our case, we're interested in a particular prototypical knot called the \defnphrase{trefoil} (visualized in Figure~\ref{fig:trefoil}).
 This is the knot that, when laid on the surface of the torus, crosses the meridian of the torus three times and crosses longitudinal circles twice---as such it is also known as the \defnphrase{$(2, 3)$-torus knot}.
-While a knot technically refers to an \emph{isotopy class} of a loop, we can also work explicitly with a parameterization of a representative of this isotopy class.
-Doing so for the trefoil will be of use to us soon in understanding the correspondence between $\LS$ and $S^3$.
 
-\begin{prop}\label{prop:trefoil_intersection_curve}
-  Let $u,\, v \in \C$ and $a \in \R$ with $a \neq 0$.
-  The intersection of the of the complex curve $u^3 + a v^2 = 0$ with the 3-sphere is a trefoil knot.
-\end{prop}
-
-\begin{proof}
-  See~\cite[4]{milnor1968}.
-\end{proof}
-
-For any knot $K : S^1 \into S^3$, we can also consider the \defnphrase{knot complement} space $S^3 \wo K$.
+For any knot $K : S^1 \into S^3$, we can study the \defnphrase{knot complement} space $S^3 \wo K$.
 Historically, such spaces have provided useful knot invariants via there fundamental group and interesting examples of 3-manifolds.
 The fundamental group of the trefoil complement happens to be isomorphic to a famous group with a convenient physical interpretation, which we will describe shortly.
 First, we recall the definition of a fundamental group as well as a useful theorem for computing fundamental groups.
@@ -556,7 +545,8 @@ Thus for any nontrivial lattice $L$, we can obtain a unique rescaling $L' = tL$ 
   |G_4(L')|^2 + |G_6(L')|^2 = 1
 \end{equation*}
 Then the map $L \mapsto (G_4(L'),\, G_6(L'))$ lands in $S^3$, and we have the desired homeomorphism $\LS \to S^3$.
-By Proposition~\ref{prop:trefoil_intersection_curve}, the image of degenerate lattices under this homeomorphism is the trefoil knot shown in Figure~\ref{fig:trefoil}.
+
+The image of the degenerate lattices under this map is the intersection of the curve $20u^3 - 49v^2 = 0$ with the 3-sphere. For any $a \in \R$, it happens that the intersection of complex curve $u^3 + av^2 = 0$ with the 3-sphere is a trefoil knot \cite[4]{milnor1968}. Thus, the image of degenerate lattices under the homeomorphism is the trefoil shown in Figure~\ref{fig:trefoil}.
 
 \section{Periodic orbits in $S^3$}\label{sec:periodic_orbits_in_s3}
 
