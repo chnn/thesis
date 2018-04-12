@@ -891,7 +891,7 @@ It is perhaps surprising that a function built out of such intractable objects s
   See \cite[58-60]{rademacher1972}.
 \end{proof}
 
-\begin{cor}
+\begin{cor}\label{cor:rademacher_class_function_pq}
   Let $P^{i_1} Q^{j_1} \cdots P^{i_n} Q^{i_m}$ be a $PQ$ decomposition of the conjugacy class of $A \in \PSLZ$.
   Then
   \begin{equation*}
@@ -905,11 +905,29 @@ It is perhaps surprising that a function built out of such intractable objects s
 
 Finally, we are ready to understand a main result from Ghys on the periodic orbits of the modular flow.
 
-\begin{thm}[Ghys]
+\begin{thm}[Ghys]\label{thm:ghys}
   The linking number of a modular trefoil knot $k_A$ is $\Psi(A)$.
 \end{thm}
 
-\TODO{The main point here is that we can compute a seemingly arbitrary property (linking number of periodic orbits) of a totally wild system with something as simple as a $PQ$ decomposition. To get at how remarkable this is, I feel like I want to point out that the modular flow isn't \emph{incidentally} complex because we have defined it in terms of obscure arithmetic. Rather it is \emph{fundamentally} complex---it is the ur-example of a chaotic system! But for this terminology to be impactful, we first need to understand what a chaotic system means exactly, and how the modular flow is chaotic. I think that the section on the history of the Lorenz attractor serves this purpose, but I need to find a way to integrate that history smoothly into the prior narrative.}
+To appreciate this remarkable fact, let's compute the linking number of the modular trefoil link $k_A$ for
+\begin{equation*}
+  A = PQQPQPPPQ = \begin{pmatrix}
+    32 & 25 \\ 
+    23 & 18
+  \end{pmatrix}
+\end{equation*}
+The link $k_A$ is rather intricate, as shown in Figure~\ref{fig:trefoil_link_pqqpqpppq}.
+While we could count colored crossings in this figure to obtain the linking number, we now have a much simpler method of computation.
+According to Corollary~\ref{cor:rademacher_class_function_pq} and Theorem~\ref{thm:ghys}, the linking number of $k_A$ is the number of $P$s minus the number of $Q$s in the $PQ$-decomposition of $A$. 
+Thus, the linking number of $k_A$ is $5 - 4 = 1$.
+
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=0.5\linewidth]{figures/trefoil_link_pqqpqpppq.png}
+  \caption{The modular trefoil link $k_A$ for $A = \protect\begin{psmallmatrix}32 & 25 \\ 23 & 18\protect\end{psmallmatrix}$.}
+  \label{fig:trefoil_link_pqqpqpppq}
+\end{figure}
 
 \chapter{Finite subsets of the circle}\label{sec:finite_subsets}
 
@@ -1328,8 +1346,6 @@ The results for decomposing several more diagrams are presented in Figure~\ref{f
 % Presently, we are considering the \emph{modular knots} arising from the periodic orbits of a dynamic system in the space of lattices. As it turns out, Lorenz knots and modular knots coincide~\cite{ghys2007}. Thus while we study a very particular construction of these knots, there is a vast corpus of theory providing alternative perspectives. In fact, there are several more areas in which these knots appear which we haven't mentioned yet: as closed geodesics on the modular surface, as continued fractions, as ideal classes in quadratic number fields, and so forth. For our purposes, we will somewhat only narrowly consider the lattice-based interpretation.
 
 \chapter{Computational exploration of homeomorphisms}
-
-% TODO: Citation for Jobs quote
 
 Steve Jobs believed that a computer is a ``bicycle for the mind''\cite{krainin1990}.
 We can't tell computers what to think, but we can employ them to make our own thinking more efficient.
