@@ -375,9 +375,43 @@ Doing so for the trefoil will be of use to us soon in understanding the correspo
 \end{proof}
 
 For any knot $K : S^1 \into S^3$, we can also consider the \defnphrase{knot complement} space $S^3 \wo K$.
-Historically, such spaces have provided interesting examples of 3-manifolds, and their fundamental groups provide useful knot invariants.
-The fundamental group of the trefoil complement happens to be isomorphic to a famous group, which we will describe shortly.
-First, we provide an explicit computation of the fundamental group of the trefoil complement.
+Historically, such spaces have provided useful knot invariants via there fundamental group and interesting examples of 3-manifolds.
+The fundamental group of the trefoil complement happens to be isomorphic to a famous group with a convenient physical interpretation, which we will describe shortly.
+First, we recall the definition of a fundamental group as well as a useful theorem for computing fundamental groups.
+
+\begin{defn}
+  Let $X$ be a topological space. A \defnphrase{loop in $X$ based at $p$} is a continuous map $f : I \to X$ such that $f(0) = f(1) = p$.
+  Two loops $f$ and $g$ based at $p$ are \defnphrase{path-homotopic} if there exists a continuous map $H : I \times I \to X$ such that for all $s$ and $t$ in $I$, $H(s, 0) = f(s)$,  $H(s, 1) = g(s)$, and $H(0, t) = H(1, t) = p$.
+  The path-homotopy relation is an equivalence relation on the set of all loops in $X$ based at $p$, and we call the equivalence class of a loop its \defnphrase{path class}.
+  The \defnphrase{fundamental group of $X$ based at $p$} is the set of path classes of loops in $X$ based at $p$, denoted $\pi_1(X, p)$.
+  The set $\pi_1(X, p)$ forms a group under the operation of path composition.
+\end{defn}
+
+Morally, two loops in $X$ are homotopic if they can be continuously deformed into one another.
+The fundamental group describes the structure of all paths in $X$ as a group, and does not distinguish between homotopic paths.
+
+There is no general method for computing the fundamental group of an arbitrary topological space.
+Instead, we rely on a toolkit of methods and theorems that prove useful in different situations.
+One such essential tool is the Seifart Van-Kampen theorem.
+
+\begin{thm}[Seifert-van Kampen Theorem]
+  Let $X$ be a topological space, and suppose that $X = U_1 \cup U_2$ for two open and path-connected subsets $U_1,\ U_2 \subseteq X$.
+  In addition, suppose that $U_1 \cap U_2$ is path-connected and nonempty, and let $p \in U_1 \cap U_2$.
+  Then there exists an isomorphism
+  \begin{equation*}
+    \Phi : \pi_1(U_1, p) \ast_{\pi_1(U_1 \cap U_2,\, p)} \pi_2(U_2, p) \to \pi_1(X, p)
+  \end{equation*}
+  such that the following diagram commutes:
+  \begin{center}
+    \begin{tikzcd}
+      & \pi_1(U_1) \ar[dr, bend left=20, "j_1",] \ar[d, hookrightarrow] & \\
+      \pi_1(U_1 \cap U_2) \ar[ur, bend left=20, "i_1"] \ar[dr, bend right=20, "i_2"'] & \pi_1(U_1) \ast_{\pi_1(U_1 \cap U_2)} \pi_2(U_2) \ar[r, "\Phi", dashed] \ar[d, hookleftarrow] & \pi_1(X) \\
+      & \pi_1(U_2) \ar[ur, bend right=20, "j_2"'] & 
+    \end{tikzcd}
+  \end{center}
+\end{thm}
+
+Now, we provide an explicit computation of the fundamental group of the trefoil complement.
 For additional details, see~\cite[47--49]{hatcher2002} and~\cite[153--154]{stillwell1993}.
 
 \begin{prop}
@@ -434,14 +468,14 @@ For additional details, see~\cite[47--49]{hatcher2002} and~\cite[153--154]{still
   Both $B$ and $B \cap (\R^3 \wo K)$ are simply connected.
   By Van Kampen, the inclusion $\R^3 \wo K \into S^3 - K$ induces an isomorphism of groups
   \begin{equation*}
-    \Phi : \pi_1(R^3 \wo K) \to \pi_1(S^3 \wo K)
+    \Phi : \pi_1(R^3 \wo K,) \to \pi_1(S^3 \wo K)
   \end{equation*}
   as shown by the following commutative diagram:
   \begin{center}
     \begin{tikzcd}
-      & \pi_1(\R^3 \wo K) \ar[dr,] \ar[d] & \\
-      \pi_1(B \cap (\R^3 \wo K)) \ar[ur] \ar[dr, "1"'] & \pi_1(B) \ast \pi_1(\R^3 \wo K) \ar[r, "\Phi"] & \pi_1(S^3 \wo K) \\
-      & \pi_1(B) = 1 \ar[ur, "1"'] \ar[u] &
+      & \pi_1(\R^3 \wo K) \ar[dr, bend left=20] \ar[d, hookrightarrow] & \\
+      \pi_1(B \cap (\R^3 \wo K)) \ar[ur, bend left=20] \ar[dr, bend right=20, "1"'] & \pi_1(B) \ast \pi_1(\R^3 \wo K) \ar[r, "\Phi", dashed] \ar[d, hookleftarrow] & \pi_1(S^3 \wo K) \\
+      & \pi_1(B) \ar[ur, bend right=20, "1"'] & 
     \end{tikzcd}
   \end{center}
   Thus we have the desired result.
