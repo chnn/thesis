@@ -45,8 +45,6 @@
 \setlength{\parskip}{1em}
 \setlist{topsep=0pt}
 
-\setlength{\parskip}{0pt}
-
 \newcommand{\N}{\mathbb{N}}
 \newcommand{\Z}{\mathbb{Z}}
 \newcommand{\Q}{\mathbb{Q}}
@@ -83,19 +81,26 @@
 \department{Mathematics}
 
 \begin{document}
+
+% Fix a bug with display math vertical spacing. These commands must come after the start of the document.
+\setlength{\abovedisplayshortskip}{1em}
+\setlength{\belowdisplayshortskip}{1em}
+\setlength{\abovedisplayskip}{1em}
+\setlength{\belowdisplayskip}{1em}
+
 \maketitle
-\setlength{\parskip}{0pt}
 \frontmatter
 \pagestyle{empty}
 
 % \chapter*{Acknowledgements}
 
+\setlength{\parskip}{0em}
 \tableofcontents
+\setlength{\parskip}{1em}
 
 % \listoftables
 % \listoffigures
 
-\setlength{\parskip}{1em}
 \mainmatter
 \pagestyle{fancyplain}
 
@@ -125,16 +130,17 @@ This document will proceed by examining each homeomorphic space in turn.
 First, we recall some basic definitions.
 A \defnphrase{lattice in $\R^2$} is a set
 \begin{equation*}
-  B(\Z^2) = \{ B \vec x : \vec x \in \Z^2 \}
+  B(\Z^2) = \{ B x : x \in \Z^2 \}
 \end{equation*}
 where $B$ is some real $2 \times 2$ matrix.
 We call $B$ a \defnphrase{basis} for the lattice and the columns of $B$ the \defnphrase{generators} of the lattice.
+
 If $B$ is the 0 matrix, then $B(\Z^2)$ is the \defnphrase{zero lattice} consisting of the single point at the origin.
 If the columns of $B$ are linearly dependent, then we say that $B(\Z^2)$ is a \defnphrase{degenerate lattice}.
 Otherwise, if the columns are linearly independent, then $B(\Z^2)$ is a \defnphrase{nondegenerate lattice} or \defnphrase{full rank lattice}.
 A lattice of each type is shown in Figure~\ref{fig:three_types_of_lattices}.
 
-Two lattices $L$ and $L'$ are \defnphrase{homothetic} if they are rescaled versions of each other, i.e. if $L' = tL = \{t \vec x : \vec x \in L\}$ for some fixed $t \in \R$.
+Two lattices $L$ and $L'$ are \defnphrase{homothetic} if they are rescaled versions of each other, i.e. if $L' = tL = \{t x : x \in L\}$ for some fixed $t \in \R$.
 We denote the space of all nontrivial lattices modulo the homothety relation as $\LS = \LS_0 \cup \LS_1$, where $\LS_0$ and $\LS_1$ are the degenerate and nondegenerate lattices, respectively.
 
 Some authors use slightly different conventions to describe lattices.
@@ -1025,7 +1031,7 @@ Several steps of the homeomorphism for nondegenerate $L$ are shown in Figure~\re
 Observe that the homeomorphism $f : \LS = \LS_0 \cup \LS_1 \to \exp_3 S^1$ sends the subspace $\LS_0 $ to $\exp_1 S^3$ and the subspace $\LS_1$ to the 2 and 3 point elements of $\exp_3 S^1$.
 We will denote this subspace of 2 and 3 point elements as $\exptwothree S^1$.
 
-In Chaper~\ref{sec:three_sphere}, we showed that $\pi_1(S^3 \wo K)$ was the braid group $B_3$, and that the trefoil knot $K$ corresponded to degenerate lattices under the homeomorphism $\LS \to S^3$.
+In Chapter~\ref{sec:three_sphere}, we showed that $\pi_1(S^3 \wo K)$ was the braid group $B_3$, and that the trefoil knot $K$ corresponded to degenerate lattices under the homeomorphism $\LS \to S^3$.
 Thus we have that
 \begin{equation*}
   \pi_1(\exptwothree S^1) = \pi_1(\LS_1) = \pi_1(S^3 \wo K) = B_3
