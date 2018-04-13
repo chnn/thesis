@@ -1254,7 +1254,22 @@ We demonstrate that such a decomposition is possible with the following steps:
 This process is shown for two separate hyperbolic subset loop diagrams in Figure~\ref{fig:subset_loop_decompositions_1} and Figure~\ref{fig:subset_loop_decompositions_2}.
 The results for decomposing several more diagrams are presented in Figure~\ref{fig:subset_loop_decompositions_table}.
 
-\TODO{Analysis of the decompositions.}
+We know that every modular trefoil knot has a corresponding representation as an element of the braid group because we computed $\pi_1(S^3 \wo K)$ directly.
+However, this computation was achieved via the sprawling and opaque machinery of the Seifart Van-Kampen theorem, and provides little insight into how we ought to intuit modular trefoil knots as braids.
+Decomposing string cheese diagrams provides us with our concrete examples of braids and their corresponding modular trefoil links.
+What can we now say about modular trefoil links as braids?
+
+The braid word $\beta_A$ for a modular trefoil link $k_A$ seems mimics the $PQ$ decomposition of $A$ closely.
+For example, $A = PQQ$ is $\sigma_2 \sigma_2 \sigma_1^{-1}$ as a braid, while $A  = PQQ$ is $\sigma_2 \sigma_2 \sigma_2 \sigma_1^{-1}$.
+Notice that every character in the $PQ$ word has exactly one matching character in the braid word.
+These matchings vary throughout the different example braids---sometimes $Q$ corresponds to $\sigma_1$ in a braid word, but other times it corresponds to $\sigma_2$---but for each individual $(k_A, \beta_A)$ pairing there is some one-to-one correspondence between characters $P$ and $Q$ in $A$ and characters $\sigma_i^{\pm 1}$ in $\beta_A$.
+
+There may still exist a map between $\SLZ$ and $B_3$ that utilizes $PQ$ decompositions of elements in $\SLZ$.
+Every braid $\beta_A$ for a modular trefoil link $k_A$ was obtained via a decomposition of the string cheese diagram for $k_A$. 
+Did we make subtle and arbitrary choices in the decomposition process that affects whether $P$ maps to $\sigma_2^{-1}$ or $\sigma_1^{-1}$, and whether $Q$ maps to $\sigma_1$ or $\sigma_2$?
+Or does the sign of the braid group generators reflect the orientation of the modular trefoil link?
+Or yet still, are some of these braid words equivalent? We leave these questions for further study.
+
 
 \begin{figure}[p]
   \centering
@@ -1340,25 +1355,6 @@ The results for decomposing several more diagrams are presented in Figure~\ref{f
 
 \newpage
 \appendix
-
-% \chapter{Alternate perspectives on the modular flow}
-
-% These periodic orbits have a rich mathematical history, starting with an attempt to tell the weather in 1963. With the Navier-Stokes equations as his starting point, meteorologist Edward Lorenz set out to find a deterministic system governing weather patterns. He built a highly simplified model of a thin fluid disk heated from below and cooled from above, governed by the following differential equations:
-% \begin{equation*}
-%   \frac{dx}{dt} = 10 (y - x) \quad\quad \frac{dy}{dt} = 28x - y - xz \quad\quad \frac{dz}{dt} = xy - \frac 8 3 z
-% \end{equation*}
-% Integrating this system of equations yields a flow in $\R^3$ with some peculiar properties. For one, forward trajectories in the system ultimately flow into a bounded region known as the \emph{Lorenz attractor}, no matter the starting point (shown in Figure~\ref{fig:lorenz_attractor}). Second, this dynamic system is incredibly sensitive to initial conditions; slight changes in the initial conditions yield drastically different later states of the system. While this made the model a poor fit for the predicting weather (from Lorenz: ``In view of the inevitable inaccuracy and incompleteness of weather observations, precise very-long-range forecasting would seem to be nonexistent''~\cite{lorenz1963}), it was the prototypical example of a \emph{chaotic system} and foundational to the field of math now known as \emph{chaos theory}.
-
-% \begin{figure}[h]
-%   \centering
-%   \includegraphics[width=0.6\linewidth]{figures/lorenz.png}
-%   \caption{The Lorenz attractor.}
-%   \label{fig:lorenz_attractor}
-% \end{figure}
-
-% Soon after Lorenz published his model, mathematicians began to study the closed periodic orbits in the system, which are now known as \emph{Lorenz knots}. In the 1970s, John Guckenheimer and Robert Williams conjectured that every finite subset of the closed periodic orbits project simultaneously and disjointly onto a \emph{Lorenz template}---a certain branched 2-manifold embedded in $\R^3$ \cite{guckenheimer1976, guckenheimer1979}. Thirty years later, Warwick Tucker and \'{E}tienne Ghys proved that the existence of the template. From this viewpoint, a Lorenz knot is any knot that embeds on the template, thus we can study Lorenz knots with the full force of knot theory. 
-
-% Presently, we are considering the \emph{modular knots} arising from the periodic orbits of a dynamic system in the space of lattices. As it turns out, Lorenz knots and modular knots coincide~\cite{ghys2007}. Thus while we study a very particular construction of these knots, there is a vast corpus of theory providing alternative perspectives. In fact, there are several more areas in which these knots appear which we haven't mentioned yet: as closed geodesics on the modular surface, as continued fractions, as ideal classes in quadratic number fields, and so forth. For our purposes, we will somewhat only narrowly consider the lattice-based interpretation.
 
 \chapter{Computational exploration of homeomorphisms}
 
