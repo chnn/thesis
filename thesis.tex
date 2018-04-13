@@ -94,7 +94,7 @@
 
 % \chapter*{Acknowledgements}
 
-\setlength{\parskip}{0em}
+\setlength{\parskip}{0.2em}
 \tableofcontents
 \setlength{\parskip}{1em}
 
@@ -110,7 +110,7 @@
 \markboth{Introduction}{Introduction}
 
 The 3-sphere, the space of nontrivial lattices, and 1 to 3 point subsets of the circle---each of these spaces possesses a unique and rich structure.
-Remarkably, they are also homeomorphic, providing multiple perspectives of phenomenon occurring in each individual space.
+Remarkably, they are also homeomorphic, providing multiple perspectives of phenomenon occurring in each space individually.
 
 In this document, we examine the modular flow and its periodic orbits in the space of nontrivial lattices.
 This is a dynamical system whose periodic orbits can be described in terms of hyperbolic elements of the modular group, $\PSLZ$.
@@ -183,7 +183,7 @@ Left multiplication of each point in a nondegenerate lattice by
     0 & \exp(-t)
   \end{pmatrix}
 \end{equation}
-produces another nondegenerate lattice.
+produces another close by nondegenerate lattice.
 As the time variable $t$ increases continuously, we obtain a flow in $\LS_1$ known as \defnphrase{the modular flow}.
   
 Note that as $t$ increases, each individual point in the lattice moves towards $\pm \infty$ along a hyperbolic path, yet the lattice as a whole may move back to its original position.
@@ -215,12 +215,11 @@ In fact, since $\det(A) = 1$ and the product of eigenvalues of a matrix is equal
   \end{pmatrix} = \delta_T
 \end{equation*}
 for some $T \in \R$.
-Let $P(\Z^2)$ be the image of the square lattice by $P$.
 Then
 \begin{align*}
   \delta_{T}P(\Z^2) &= PAP^{-1} P(\Z^2) \\
   &= PA(\Z^2) \\
-  &= P(\Z^2) && \text{(since $\det(A) = 1$, so $A(\Z^2) = \Z^2$).}
+  &= P(\Z^2) && \text{(since $A \in \SLZ$).}
 \end{align*}
 Thus the image of $P(\Z^2)$ by $\delta_t$ as $0 \leq t \leq T$ is a periodic orbit of orbit time $T$.
 To summarize, we have the following proposition.
@@ -250,7 +249,7 @@ Explicitly, we compute that
 \end{equation*}
 Let $\lambda$ be the first eigenvalue of $A$.
 We know that $D = \delta_T$ for some $T$, hence $\lambda = e^T$ and $T \approx 0.96$ is the orbit time for the periodic orbit corresponding to $A$.
-If we continuously act upon $P$ by $\delta_t$ as $0 \leq t \leq T$, we observe a periodic orbit in the space of lattices.
+If we continuously act upon $P$ by $\delta_t$ as $0 \leq t \leq 0.96$, we observe a periodic orbit in the space of lattices.
 This orbit is visualized in Figure~\ref{fig:periodic_orbits_lattice}.
 
 \begin{figure}[h]
@@ -364,7 +363,7 @@ In our case, we're interested in a particular prototypical knot called the \defn
 This is the knot that, when laid on the surface of the torus, crosses the meridian of the torus three times and crosses longitudinal circles twice---as such it is also known as the \defnphrase{$(2, 3)$-torus knot}.
 
 For any knot $K : S^1 \into S^3$, we can study the \defnphrase{knot complement} space $S^3 \wo K$.
-Historically, such spaces have provided useful knot invariants via there fundamental group and interesting examples of 3-manifolds.
+Historically, such spaces have provided useful knot invariants via their fundamental group and interesting examples of 3-manifolds.
 The fundamental group of the trefoil complement happens to be isomorphic to a famous group with a convenient physical interpretation, which we will describe shortly.
 First, we recall the definition of a fundamental group as well as a useful theorem for computing fundamental groups.
 
@@ -377,16 +376,31 @@ First, we recall the definition of a fundamental group as well as a useful theor
 \end{defn}
 
 Morally, two loops in $X$ are homotopic if they can be continuously deformed into one another.
-The fundamental group describes the structure of all paths in $X$ as a group, and does not distinguish between homotopic paths.
+The fundamental group describes the group structure of all in $X$ up to homotopy.
 
 There is no general method for computing the fundamental group of an arbitrary topological space.
 Instead, we rely on a toolkit of methods and theorems that prove useful in different situations.
-One such essential tool is the Seifart Van-Kampen theorem.
+One essential such tool is the Seifart Van-Kampen theorem.
+
+\begin{defn}
+  Let $H$, $G_1$, and $G_2$ be groups with presentations
+  \begin{align*}
+    G_1 &\cong \ang{\alpha_1, \dots, \alpha_m : \rho_1, \dots, \rho_r}, \\
+    G_2 &\cong \ang{\beta_1, \ldots, \beta_n : \sigma_1, \ldots, \sigma_s}, \text{ and } \\
+    H &\cong \ang{\gamma_1, \ldots, \gamma_p : \tau_1, \ldots, \tau_t}.
+  \end{align*}
+  Then if $f_1 : H \to G_1$ and $f_2 : H \to G_2$ are group homeomorphisms, the \defnphrase{amalgamated free product} of $G_1$ and $G_2$ along $H$ is the group with presentation
+  \begin{align*}
+    G_1 \ast_H G_2 \cong \ang{&\alpha_1, \ldots \alpha_m,\, \beta_1, \ldots, \beta_n : \rho_1, \ldots, \rho_r, \\
+    &\sigma_1, \ldots, \sigma_s,\, u_1 = v_1,\ldots, u_p = v_p}
+  \end{align*}
+  where $u_a$ is an expression for $f_1(\gamma_a) \in G_1$ in terms of the generators $\{\alpha_i\}$ and $v_a$ similarly expresses $f_2(\gamma_a) \in G_2$ in terms of $\{\beta_j\}$.
+\end{defn}
 
 \begin{thm}[Seifert-van Kampen Theorem]
-  Let $X$ be a topological space, and suppose that $X = U_1 \cup U_2$ for two open and path-connected subsets $U_1,\ U_2 \subseteq X$.
+  Let $X$ be a topological space, and suppose that $X = U_1 \cup U_2$ for two open and path-connected subsets $U_1,\ U_2 \subseteq X$. 
   In addition, suppose that $U_1 \cap U_2$ is path-connected and nonempty, and let $p \in U_1 \cap U_2$.
-  Then there exists an isomorphism
+  There exists an isomorphism
   \begin{equation*}
     \Phi : \pi_1(U_1, p) \ast_{\pi_1(U_1 \cap U_2,\, p)} \pi_2(U_2, p) \to \pi_1(X, p)
   \end{equation*}
@@ -527,7 +541,7 @@ Define
 \begin{equation*}
   G_k(L) = \sum_{\omega \in L,\ \omega \neq 0} \omega^{-k}.
 \end{equation*}
-When $k \geq 4$, these series converge and are known as \defnphrase{Eisenstein series}.
+When $k \geq 4$, this series converges and is known as an \defnphrase{Eisenstein series}.
 For nondegenerate $L$, these numbers are the parameters in the Weierstrass $\wp_L$-function identity
 \begin{equation*}
   (\wp_L')^2 = 4 \wp_L^3 - 60 G_4(L) \wp_L - 140 G_6(L).
@@ -550,7 +564,7 @@ The image of the degenerate lattices under this map is the intersection of the c
 
 \section{The linking number of periodic orbits in $S^3$}\label{sec:periodic_orbits_in_s3}
 
-We have observed the periodic orbits of a flow in the space of lattices in Section~\ref{subsec:lattice_flow}, and we have just seen that the space of lattices is homeomorphic to the 3-sphere.
+We have observed the periodic orbits of the modular flow in the space of lattices in Section~\ref{subsec:lattice_flow}, and we have just seen that the space of lattices is homeomorphic to the 3-sphere.
 It is now natural to ask: how do these periodic orbits present in the 3-sphere?
 
 The degenerate lattices are sent to the trefoil knot in the 3-sphere, but the periodic orbits of this flow exist entirely within the space of nondegenerate lattices.
@@ -586,7 +600,7 @@ Several examples of such links are shown in Figure~\ref{fig:trefoil_links}.
   \label{fig:trefoil_links}
 \end{figure}
 
-The periodic orbits of the modular flow provide a rich variety of interesting trefoil links.
+The periodic orbits of the modular flow provide a rich variety of trefoil links.
 One classically studied invariant of two-component links is their \defnphrase{linking number}, an integer associated with a particular link. The linking number of a two-component link can be defined computationally as follows:
 
 \begin{enumerate}
@@ -813,7 +827,7 @@ Recall that the \emph{hyperbolic elements} of $\SLZ$ and $\PSLZ$ are those with 
   Since conjugacy is a transitive relation, this means that $A$ is conjugate to the word in $Q$ and $P$ as well.
 \end{proof}
 
-Note that any word in $P$ and $Q$ with $P$ and $Q$ each occurring at least once is a hyperbolic element in $\PSLZ$. Shortly we will see that writing a hyperbolic element $A$ as a $PQ$ word provides insight into the periodic orbit that $A$ defines. First, however, we need understand the connection between $\PSLZ$ and a classic arithmetic object we will call the Rademacher class function. The building block of this function is an infinite series with a rather esoteric summand.
+Note that any word in $P$ and $Q$ with $P$ and $Q$ each occurring at least once is a hyperbolic element in $\PSLZ$. Shortly we will see that writing a hyperbolic element $A$ as a $PQ$ word provides insight into the periodic orbit that $A$ defines. First, however, we need understand the connection between $\PSLZ$ and a classic arithmetic object we call the Rademacher class function. The building block of this function is an infinite series with a rather esoteric summand.
 
 \begin{defn}
   Let $h$ and $k$ be coprime integers with $k \geq 1$.
@@ -859,7 +873,7 @@ Note that any word in $P$ and $Q$ with $P$ and $Q$ each occurring at least once 
   \end{equation*}
 \end{defn}
 
-These functions appear rather intricate when understood by their direct definition. More often though, we are interested in certain properties of these functions instead.
+These functions appear rather intricate when taken by their direct definition. More often though, we are interested in certain properties of these functions instead.
 
 \begin{prop}[Rademacher]
  Suppose $A,\, B \in \PSLZ$ and let $c_M$ be the lower left entry of any matrix $M$.
@@ -911,14 +925,15 @@ Finally, we are ready to understand a main result from Ghys on the periodic orbi
 
 To appreciate this remarkable fact, let's compute the linking number of the modular trefoil link $k_A$ for
 \begin{equation*}
-  A = PQQPQPPPQ = \begin{pmatrix}
+  A = \begin{pmatrix}
     32 & 25 \\ 
     23 & 18
   \end{pmatrix}
 \end{equation*}
 The link $k_A$ is rather intricate, as shown in Figure~\ref{fig:trefoil_link_pqqpqpppq}.
 While we could count colored crossings in this figure to obtain the linking number, we now have a much simpler method of computation.
-According to Corollary~\ref{cor:rademacher_class_function_pq} and Theorem~\ref{thm:ghys}, the linking number of $k_A$ is the number of $P$s minus the number of $Q$s in the $PQ$-decomposition of $A$. 
+As a $PQ$ word, $A = PQQPQPPPQ$.
+Then according to Corollary~\ref{cor:rademacher_class_function_pq} and Theorem~\ref{thm:ghys}, the linking number of $k_A$ is the number of $P$s minus the number of $Q$s in this $PQ$-decomposition of $A$. 
 Thus, the linking number of $k_A$ is $5 - 4 = 1$.
 
 
@@ -950,7 +965,7 @@ Then the \defnphrase{Hausdorff distance $d_H$} between two subsets $A$ and $B$ o
 Intuitively, the Hausdorff distance between two subsets is the smallest amount they must be ``inflated'' in order to contain each other.
 The \defnphrase{Hausdorff metric topology} on $\exp_k X$ is the topology generated by the Hausdorff distance.
 
-The Hausdorff metric topology provides a more instinctual notion of open sets in $\exp_k X$ than the above quotient topology, but results in literature concerning $\exp_k X$ often assume the quotient topology (which has the merit of not requiring metric structure on $X$).
+The Hausdorff metric topology provides a more instinctual notion of open sets in $\exp_k X$ than the above quotient topology, but results in literature concerning $\exp_k X$ often assume the quotient topology (which has the merit of not requiring additional metric structure on $X$).
 For $X$ a metric space, however, it turns out that these two topologies are equivalent.
 Since results in literature concerning $\exp_k X$ are sparse in general, we provide explicit proof of this fact.
 
@@ -1019,7 +1034,7 @@ For our purposes, we will focus on a particular finite subset space, $\exp_3 S^1
 In~\cite{mostovoy2004}, Mostovoy provides a homeomorphism $f : \LS \to \exp_3 S^1$, which we now describe.
 
 The \defnphrase{Voronoi cell} $V(L)$ of a nondegenerate lattice $L$ is the cell in a Voronoi partition of $L$ containing $0$.
-More directly,
+As a set,
 \begin{equation*}
   V(L) = \{ z \in \C : |z| \leq |z - \omega| \text{ for all } \omega \in L \}
 \end{equation*}
@@ -1081,11 +1096,11 @@ Thus we have that
   \pi_1(\exptwothree S^1) = \pi_1(\LS_1) = \pi_1(S^3 \wo K) = B_3
 \end{equation*}
 We now wish to describe the generators $\sigma_1$ and $\sigma_2$ of $B_3$ visually in $\exptwothree S^1$.
-That is, we wish to find path representatives of the homotopy classes $\sigma_1$ and $\sigma_2$.
+That is, we wish to find representatives of the path classes $\sigma_1$ and $\sigma_2$.
 
-In computing the fundamental group of $S^3 \wo K$, we understood the path classes corresponding the generators of a group $\ang{x, y : x^2 = y^3} \cong B_3$.
-The generator $x$ corresponded to a path through the axis of a particular solid torus in $S_3$, while $y$ corresponded to a large loop linking the hole of the torus.
-Explicitly, these are the paths parameterized by $(e^{i \theta}, 0)$ and $(0, e^{i \theta})$ where $\theta \in [0, 2 \pi)$.
+In computing the fundamental group of $S^3 \wo K$, we understood the path classes generating a group $\ang{x, y : x^2 = y^3} \cong B_3$.
+The generator $x$ was a path through the axis of a particular solid torus in $S_3$, while $y$ was a large loop linking the hole of the torus.
+Explicitly, we can parametrize these paths by $(e^{i \theta}, 0)$ and $(0, e^{i \theta})$ where $\theta \in [0, 2 \pi]$.
 Pushing these paths via homeomorphisms $S^3 \to \LS \to \exp_3 S^1$ yields two paths in $\exp_3 S^1$: a ``half twist'' and ``third twist'' of two or three equally spaced points, respectively.
 
 \begin{figure}[t]
@@ -1104,7 +1119,7 @@ Pushing these paths via homeomorphisms $S^3 \to \LS \to \exp_3 S^1$ yields two p
     \centering
     \includegraphics[width=0.9\textwidth]{figures/antipodal_subset_path_2.pdf}
   \end{subfigure}
-  \caption{The knot complement space $S^3 \wo K$ has a fundamental group generated by two loops $x$ and $y$, shown in the left figure as the orange and pink loops, respectively. The trefoil knot $K$ is shown in blue. On the right, we visualize these generators as string cheese diagrams by pushing the generators through the sequence of homeomorphisms from $S^3$ to $\exp_3 S^1$, where they present as a half or third twist of equally space points.}
+  \caption{The knot complement space $S^3 \wo K$ has a fundamental group generated by two loops $x$ and $y$, shown in the left figure as the orange and pink loops, respectively (the pink strand is a loop according to the decomposition of $S^3$ as $S^1 \times D^2 \cup D^2 \times S^1$). The trefoil knot $K$ is shown in blue. On the right, we visualize these generators as string cheese diagrams by pushing the generators through the sequence of homeomorphisms from $S^3$ to $\exp_3 S^1$, where they present as a half or third twist of equally space points.}
   \label{fig:antipodal_point_paths}
 \end{figure}
 
@@ -1113,7 +1128,7 @@ We visualize these paths in Figure~\ref{fig:antipodal_point_paths} using a style
 In a string cheese diagram, the horizontal axis is scaled from 0 to $2\pi$ and opposite edges of the diagram are identified.
 Each horizontal slice of the diagram contains two or three points, and thus represents a point in $\exptwothree S^1$.
 The vertical axis is scaled from the beginning to the end of a loop in $\exptwothree S^1$, which will start and end on the same two or three points (i.e. the same single element of $\exptwothree S^1$).
-The continuity of a path in these diagrams is striking; we see that a path may collapse from three points to two points, or split from two points to three points \` a la ``string cheese''.
+The aesthetic of a continuous path in these diagrams is striking; we see that a path may collapse from three points to two points, or split from two points to three points \` a la ``string cheese''.
 
 A string cheese diagram is most useful for understanding compositions of paths that share a common basepoint, like the elements in a fundamental group.
 The composition of paths in $\pi_1(\exptwothree S^1)$ is computed by simply stacking multiple string cheese diagrams one after another.
@@ -1180,7 +1195,7 @@ The diagrams for the inverses of $\sigma_1$ are $\sigma_2$ are shown in Figure~\
 \end{figure}
 
 The braid group $B_3$ has a single relation, which we saw visualized Figure~\ref{fig:visual_braid_group}.
-We can now visualize this same relation in $\exptwothree S^1$ using our newly found string cheese diagrams.
+We can now visualize this same relation in $\exptwothree S^1$ using via string cheese diagrams.
 The relation is shown in Figure~\ref{fig:braid_relation_exp}.
 
 \begin{figure}[h]
