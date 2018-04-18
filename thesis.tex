@@ -50,6 +50,7 @@
 \newcommand{\Q}{\mathbb{Q}}
 \newcommand{\R}{\mathbb{R}}
 \newcommand{\C}{\mathbb{C}}
+\renewcommand{\H}{\mathbb{H}}
 \newcommand{\LS}{\mathcal{L}}
 \newcommand{\SLZ}{\mathrm{SL}_2{\Z}}
 \newcommand{\GLZ}{\mathrm{GL}_2{\Z}}
@@ -57,6 +58,7 @@
 \newcommand{\PSLZ}{\mathrm{PSL}_2{\Z}}
 \newcommand{\PSLR}{\mathrm{PSL}_2{\R}}
 \newcommand{\RP}{\mathrm{RP}^1}
+\newcommand{\UT}{\mathrm{UT}}
 \newcommand{\exptwothree}{\exp_{\{2,3\}}}
 \renewcommand{\vec}[1]{\mathbf{#1}}
 \DeclareMathOperator{\im}{im}
@@ -342,6 +344,111 @@ The following results establish that this is indeed the case.
   and it is straightforward to observe that they form a bijection.
 \end{proof}
 
+\section{The classical perspective on the modular flow}
+
+Our construction of the modular flow is an non-standard take on a well-known and classically studied dynamical system called \emph{the geodesic flow on the modular surface}.
+Here, we provide a brief sketch of the more classical construction of this system and then motivate the alternative perspective we have just detailed.
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=0.8\linewidth]{figures/geodesics_in_h.pdf}
+  \caption{Example geodesics in $\mathbb{H}$.}
+  \label{fig:geodesics_in_h}
+\end{figure}
+
+Let $\mathbb{H} = \{ x + i y \in \C : y > 0,\ x,\, y \in \R \}$ be the upper half plane.
+There is an action of the \defnphrase{modular group} $\PSLZ = \SLZ / \{ \pm I \}$ on $\mathbb{H}$ defined by
+\begin{align*}
+  \PSLZ \times \mathbb{H} &\to \mathbb{H} \\
+  (\gamma, \tau) &\mapsto \gamma\tau = \frac{a \tau + b}{c \tau + d}
+\end{align*}
+where
+\begin{equation*}
+  \gamma = \begin{pmatrix}
+  a & b \\
+  c & d
+  \end{pmatrix} \in \PSLZ.
+\end{equation*}
+Such a map is called a \defnphrase{linear fractional transform}.
+The \defnphrase{modular surface $\mathcal{M}$} is the quotient of $\mathbb{H}$ by this action of $\PSLZ$.
+More explicitly, $\mathcal{M}$ is the set of orbits $\{ \gamma \tau : \gamma \in \PSLZ \}$ as $\tau$ varies over all of $\mathbb{H}$.
+The subset
+\begin{equation*}
+  \mathcal{F} = \{ \tau \in \mathbb{H} : |\mathrm{Re}(x)| \leq 1/2,\ |\tau| \geq 1 \}
+\end{equation*}
+of $\mathbb{H}$ contains exactly one point from each one of these orbits, and thus provides a convenient geometrical region that represents the modular surface (the region $\mathcal{F}$ is a \defnphrase{fundamental domain} for $\mathcal{M}$).
+In Figure~\ref{fig:tessellation}, we visualize $\mathcal{F}$ along with its image under several elements of $\PSLZ$.
+For a more thorough treatment of $\mathbb{H}$, $\PSLZ$, and $\mathcal{F}$, see \cite{katok1992}.
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=0.8\linewidth]{figures/tessellation.pdf}
+  \caption{The elements of $\mathcal{M}$ are orbits of $\mathbb{H}$ under the action of $\PSLZ$. Every orbit has exactly one representative in the shaded region $\mathcal{F}$. The image of $\mathcal{F}$ by various elements of the modular group (in terms of the modular group generators $S$ and $T$) are shown alongside $\mathcal{F}$. These translates are called \defnphrase{faces} in a \defnphrase{tessellation} of $\mathbb{H}$ by its fundamental domain.}
+  \label{fig:tessellation}
+\end{figure}
+
+Recall that an \defnphrase{$n$-dimensional manifold} is a generalization of $n$-dimensional Euclidean space; some small neighborhood of every point on a manifold looks locally like $n$-dimensional Euclidean space.
+A \defnphrase{geodesic path} is the generalization of a straight line in Euclidean space to $n$-dimensional manifold spaces---the quickest way between two points across the surface of a manifold is via a geodesic path, just as the quickest way between two points in Euclidean space is via a straight line.
+The prototypical example of a geodesic is a curved arc across the surface of the 2-sphere.
+In $\H$, geodesics under the Poincar\'e metric
+\begin{equation*}
+  ds = \frac{\sqrt{dx^2 + dy^2}}{y},
+\end{equation*}
+consist of straight vertical lines originating at the $x$-axis, and half-circles that meet the $x$-axis at right angles (see Figure~\ref{fig:geodesics_in_h}).
+
+Now, suppose that $M$ is a manifold.
+Given a point $p \in M$ and a direction $v$ in the space tangent to $M$ at $p$, the \defnphrase{geodesic flow on a $M$} can be simply described as the flow along the geodesic in $M$ that points in the direction of $v$.
+A \defnphrase{closed orbit of the geodesic flow} is a geodesic that returns to its initial position pointing in the same initial direction $v$.
+
+The physical interpretation of the geodesic flow is to think of a particle moving on a manifold $M$ subject to no constraints other than that it must stay on $M$.
+Many fundamental equations in physics, such as the Euler equations of motion of a rigid body or the Euler equations of fluid dynamics of an inviscid incompressible fluid, are examples of the geodesic flow on particular manifolds \cite{tao} \cite{arnold66}.
+
+For manifolds satisfying some additional conditions (\defnphrase{Riemannian manifolds}), one may define the unit tangent bundle.
+The \defnphrase{unit tangent bundle $\UT(M)$ of a manifold $M$} consists of pairs $(p, v)$, where $p \in M$ and $v$ is a unit tangent vector to $M$ at $p$. 
+There exists a natural projection $\pi : (p, v) \mapsto p$ mapping $UT(M)$ onto $M$.
+
+The space of nontrivial lattices up to homothety $\LS_1$ is isomorphic to the unit tangent bundle for the modular surface $\mathcal{M}$.
+Thus every lattice $L \in \LS_1$ implicitly describes a point in $\mathcal{M}$ and a unit tangent direction---all the data needed to define the geodesic flow on $\mathcal{M}$!
+When we study the ``modular flow'', we are really studying the lift of the geodesic flow on $\mathcal{M}$ into the tangent space $\mathrm{UT}(M)$.
+If we project an orbit of the modular flow  back down into $\mathcal{M}$, we recover an orbit of the geodesic flow on $\mathcal{M}$.
+
+Suppose $L \in \LS_1$ is a lattice generated by $\omega_1$ and $\omega_2$ such that $\omega_1,\, \omega_2 \in \H$ and the angle between $\omega_1$ and $\omega_2$ is positive and less than 180 degrees.
+Then the map $L \mapsto \omega_1 / \omega_2$ is a projection from $\LS_1 = \UT(\mathcal{M})$ to $\mathcal{M}$ (see \cite[6-13]{silverman1994}).
+The projection onto $\mathcal{M}$ of several orbits of the modular flow in $\LS_1$ are visualized in Figure~\ref{fig:modular_surface_orbits}.
+
+\begin{figure}[t]
+  \centering
+  \begin{subfigure}[t]{0.4\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{figures/modular_surface_orbit_pppqq.pdf}
+    \caption*{$A = \begin{pmatrix}7 & 3 \\ 2 & 1\end{pmatrix}$}
+  \end{subfigure}
+  \hspace{3mm}
+  \begin{subfigure}[t]{0.4\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{figures/modular_surface_orbit_ppppq.pdf}
+    \caption*{$A = \begin{pmatrix}5 & 4 \\ 1 & 1\end{pmatrix}$}
+  \end{subfigure}
+  \caption{Periodic orbits of modular flow corresponding to matrices $A \in \SLZ$, projected down into $\mathcal{M}$ and visualized in the fundamental domain $\mathcal{F}$. In $\mathcal{F}$, the right and left vertical boundaries are identified, and the right and left bottom circular boundaries are identified.}
+  \label{fig:modular_surface_orbits}
+\end{figure}
+
+The idea to consider a lift of the geodesic flow on $\mathcal{M}$ rather than the geodesic flow on $\mathcal{M}$ itself is a recent and novel contribution from Ghys in \cite{ghys2007}.
+In addition to being homeomorphic to $\LS_1$, the unit tangent bundle of $\mathcal{M}$ is homeomorphic to the knot complement of the trefoil knot $S^3 \wo K$, as we shall see in Section~\ref{sec:lattice_to_s3}.
+Thus Ghys studies the periodic orbits of the geodesic flow \emph{as knots}, and obtains an interesting result relating a simple algebraic invariant of these knots back to the modular group $\PSLZ$.
+We summarize this result in Section~\ref{sec:periodic_orbits_in_s3}.
+A third space, $\exp_{\{2,3\}} S^1$, is homeomorphic to the unit tangent bundle of $\mathcal{M}$ as well.
+In Chapter~\ref{chap:finite_subsets}, we use this third space to analyze homotopy classes of periodic orbits in each space homeomorphic to the unit tangent bundle.
+
+To summarize, the rest of this document is concerned with the modular flow in the upper row of the following diagram:
+
+\begin{center}
+  \begin{tikzcd}
+    \exp_{\{2,3\}} S^1 \ar[r, "\cong", leftrightarrow] & \LS_1 \ar[d, "\pi"] & S^3 \wo K \ar[l, "\cong"', leftrightarrow] \\
+    & \mathcal{M} &
+  \end{tikzcd}
+\end{center}
+
 \chapter{The 3-sphere and the trefoil complement}\label{sec:three_sphere}
 
 The \defnphrase{3-sphere} is the set of complex tuples
@@ -498,7 +605,7 @@ The isomorphism $\pi_1(S^3 \wo K) \to B_3$ is given by sending generators
 \end{equation}
 This group appears in many different contexts: it is the mapping class group of the thrice-punctured disk, the universal central extension of $\PSLZ$, and so forth.
 It also has a convenient visual interpretation, where the generators $\sigma_1$ and $\sigma_2$ are depicted and composed as in Figure~\ref{fig:visual_braid_group}.
-We will return to this visual interpretation in Section~\ref{sec:finite_subsets}, where we decompose the path class of various loops in $\exptwothree S^1 \cong S^3 \wo K$ as visual generators of $B_3$. 
+We will return to this visual interpretation in Chapter~\ref{chap:finite_subsets}, where we decompose the path class of various loops in $\exptwothree S^1 \cong S^3 \wo K$ as visual generators of $B_3$. 
 
 \vspace{1em}
 \begin{figure}[h]
@@ -530,7 +637,7 @@ We will return to this visual interpretation in Section~\ref{sec:finite_subsets}
   \label{fig:visual_braid_group}
 \end{figure}
 
-\section{From $\LS$ to $S^3$}\label{subsec:lattice_to_s3}
+\section{From $\LS$ to $S^3$}\label{sec:lattice_to_s3}
 
 At first glance, the space of two-dimensional lattices up to homothety and the three-dimensional sphere may seem quite different.
 It turns out that they are indeed homeomorphic.
@@ -944,7 +1051,7 @@ Thus, the linking number of $k_A$ is $5 - 4 = 1$.
   \label{fig:trefoil_link_pqqpqpppq}
 \end{figure}
 
-\chapter{Finite subsets of the circle}\label{sec:finite_subsets}
+\chapter{Finite subsets of the circle}\label{chap:finite_subsets}
 
 We now arrive at our third homeomorphic space, the set of all subsets of $S^1$ with at most 3 points.
 In general, we denote the set of all nonempty subsets with at most $k$ points of a space X as $\exp_k X$, and refer to it as a \defnphrase{finite subset space}.
@@ -1448,7 +1555,7 @@ It's difficult to print a movie onto a piece of paper, so we show a static adapt
 
 We now have a program capable of realizing the periodic orbits of a dynamical system in the space of lattices.
 In the homeomorphic space $S^3$, these periodic orbits appear as links with the trefoil.
-In this section, we will code the homeomorphism from $\LS$ to $S^3$ described in Section~\ref{subsec:lattice_to_s3}, and use it to visualize links with the trefoil.
+In this section, we will code the homeomorphism from $\LS$ to $S^3$ described in Section~\ref{sec:lattice_to_s3}, and use it to visualize links with the trefoil.
 
 The homeomorphism $\LS$ $S^3$ sends a lattice $L$ to a rescaled version of the complex tuple $(G_4(L),\, G_6(L))$, where
 \begin{equation*}
@@ -1499,7 +1606,7 @@ latticeToS3[l_] := Module[{gTuple, t},
   {t^-4, t^-6} * gTuple
 ];
 \end{minted}
-As discussed in Section~\ref{subsec:lattice_to_s3}, all degenerate lattices in $\LS$ present as a trefoil know when viewed in $S^3$.
+As discussed in Section~\ref{sec:lattice_to_s3}, all degenerate lattices in $\LS$ present as a trefoil know when viewed in $S^3$.
 We can see this via our coded homeomorphism as follows.
 First, we define a function that will help us parameterize a path through all degenerate lattices.
 \begin{minted}[breaklines, fontsize=\small]{Mathematica}
