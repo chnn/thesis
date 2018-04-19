@@ -221,7 +221,7 @@ Then
 \begin{align*}
   \delta_{T}P(\Z^2) &= PAP^{-1} P(\Z^2) \\
   &= PA(\Z^2) \\
-  &= P(\Z^2) && \text{(since $A \in \SLZ$).}
+  &= P(\Z^2) && \text{(see Lemma~\ref{lemma:m_is_integer}).}
 \end{align*}
 Thus the image of $P(\Z^2)$ by $\delta_t$ as $0 \leq t \leq T$ is a periodic orbit of orbit time $T$.
 To summarize, we have the following proposition.
@@ -266,19 +266,23 @@ But does every periodic orbit arise from an element of $\SLZ$?
 The following results establish that this is indeed the case.
 
 \begin{lemma}\label{lemma:m_is_integer}
-  Suppose that $X,\, Y \in \SLR$ generate the same nondegenerate lattice.
-  Then there exists some $A \in \SLZ$ such that $X = YA$.
+  Matrices $X$ and $Y$ in $\SLR$ generate the same lattice if and only if $X = YA$ for some $A \in \SLZ$.
   In particular, if $X$ generates the square lattice, then $X \in \SLZ$.
 \end{lemma}
 
 \begin{proof}
-  A lattice consists of all integer linear combinations of its generators.
-  Since $X$ and $Y$ generate the same lattice, we know that there exists some integer matrix $A$ such that $X = YA$.
+  Suppose that $X$ and $Y$ generate the same lattice.
+  Since a lattice consists of all integer linear combinations of its generators, we know that there exists some integer matrix $A$ such that $X = YA$.
   Because $X$ and $Y$ are in $\SLR$, we also know that $\det(X) = \det(Y) = 1$. Then
   \begin{equation*}
     1 = \det(X) = \det(YA) = \det(Y)\det(A) = 1 \cdot \det(A)
   \end{equation*}
   and so $\det(A) = 1$ and $A \in \SLZ$.
+
+  To show the converse, suppose instead that $X = YA$ for some $A \in \SLZ$.
+  Then each column of $X$ is in $Y(\Z^2)$, thus $X(\Z^2) \subseteq Y(\Z^2)$.
+  In addition, $Y = XA^{-1}$ and $A^{-1} \in \SLZ$, so similarly we have that $Y(\Z^2) \subseteq X(\Z^2)$.
+
   If $X$ generates the square lattice, then $X(\Z^2) = I(\Z^2)$, and so $X = IA = A \in \SLZ$.
 \end{proof}
 
