@@ -112,7 +112,7 @@
 \markboth{Introduction}{Introduction}
 
 The 3-sphere, the space of nontrivial lattices, and 1 to 3 point subsets of the circle---each of these spaces possesses a unique and rich structure.
-Remarkably, they are also homeomorphic, providing multiple perspectives of phenomenon occurring in each space individually.
+Remarkably, they are also homeomorphic, providing multiple perspectives of phenomenoa occurring in each space individually.
 
 In this document, we examine the modular flow and its periodic orbits in the space of nontrivial lattices.
 This is a dynamical system whose periodic orbits can be described in terms of hyperbolic elements of the modular group, $\PSLZ$.
@@ -138,11 +138,11 @@ where $B$ is some real $2 \times 2$ matrix.
 We call $B$ a \defnphrase{basis} for the lattice and the columns of $B$ the \defnphrase{generators} of the lattice.
 
 If $B$ is the 0 matrix, then $B(\Z^2)$ is the \defnphrase{zero lattice} consisting of the single point at the origin.
-If the columns of $B$ are linearly dependent, then we say that $B(\Z^2)$ is a \defnphrase{degenerate lattice}.
-Otherwise, if the columns are linearly independent, then $B(\Z^2)$ is a \defnphrase{nondegenerate lattice} or \defnphrase{full rank lattice}.
+If the columns of $B$ are linearly dependent but not both 0, then we say that $B(\Z^2)$ is a \defnphrase{degenerate lattice}.
+Otherwise, if the columns are linearly independent, then $B(\Z^2)$ s a \defnphrase{nondegenerate lattice} or \defnphrase{full rank lattice}.
 A lattice of each type is shown in Figure~\ref{fig:three_types_of_lattices}.
 
-Two lattices $L$ and $L'$ are \defnphrase{homothetic} if they are rescaled versions of each other, i.e. if $L' = tL = \{t x : x \in L\}$ for some fixed $t \in \R$.
+Two lattices $L$ and $L'$ are \defnphrase{homothetic} if they are rescaled versions of each other, i.e. if $L' = tL = \{t x : x \in L\}$ for some fixed nonzero $t \in \R$.
 We denote the space of all nontrivial lattices modulo the homothety relation as $\LS = \LS_0 \cup \LS_1$, where $\LS_0$ and $\LS_1$ are the degenerate and nondegenerate lattices, respectively.
 
 Some authors use slightly different conventions to describe lattices.
@@ -185,7 +185,7 @@ Left multiplication of each point in a nondegenerate lattice by
     0 & \exp(-t)
   \end{pmatrix}
 \end{equation}
-produces another close by nondegenerate lattice.
+produces another nondegenerate lattice.
 As the time variable $t$ increases continuously, we obtain a flow in $\LS_1$ known as \defnphrase{the modular flow}.
   
 Note that as $t$ increases, each individual point in the lattice moves towards $\pm \infty$ along a hyperbolic path, yet the lattice as a whole may move back to its original position.
@@ -251,13 +251,13 @@ Explicitly, we compute that
 \end{equation*}
 Let $\lambda$ be the first eigenvalue of $A$.
 We know that $D = \delta_T$ for some $T$, hence $\lambda = e^T$ and $T \approx 0.96$ is the orbit time for the periodic orbit corresponding to $A$.
-If we continuously act upon $P$ by $\delta_t$ as $0 \leq t \leq 0.96$, we observe a periodic orbit in the space of lattices.
+If we continuously act upon $P$ by $\delta_t$ as $0 \leq t \leq T$, we observe a periodic orbit in the space of lattices.
 This orbit is visualized in Figure~\ref{fig:periodic_orbits_lattice}.
 
 \begin{figure}[h]
   \centering
   \includegraphics[width=0.8\linewidth]{figures/periodic_orbits_lattice.pdf}
-  \caption{A periodic orbit of the modular flow in the space of lattices. As each point in the lattice given by $P$ is acted upon by $\delta_t$, it moves on a hyperbolic path towards infinity. Here, the path of each point is depicted by a sequence of points with shrinking radii. At $t \approx 0.96$, we have that $\delta_t P(\Z^2) = P(\Z^2)$.}
+  \caption{A periodic orbit of the modular flow in the space of lattices. As each point in the lattice given by $P$ is acted upon by $\delta_t$, it moves on a hyperbolic path towards infinity. Here, the path of each point is depicted by a sequence of points with shrinking radii. At $T \approx 0.96$, we have that $\delta_T P(\Z^2) = P(\Z^2)$.}
   \label{fig:periodic_orbits_lattice}
 \end{figure}
 
@@ -297,7 +297,7 @@ The following results establish that this is indeed the case.
   \end{equation*}
   but also
   \begin{equation*}
-    (PB^{-1})(\Z^2) = PB^{-1} (\Z^2) = P(\Z^2).
+    (PB^{-1})(\Z^2) = P(B^{-1} (\Z^2)) = P(\Z^2).
   \end{equation*}
   Hence the element $BAB^{-1} \in \SLZ$ defines a periodic orbit with the same orbit time and same initial lattice $P(\Z^2)$, i.e. the same periodic orbit as $A$.
 
@@ -453,6 +453,8 @@ To summarize, the rest of this document is concerned with the modular flow in th
 
 \chapter{The 3-sphere and the trefoil complement}\label{sec:three_sphere}
 
+\section{The fundamental group of the trefoil complement}
+
 The \defnphrase{3-sphere} is the set of complex tuples
 \begin{equation*}
   S^3 = \{ (u, v) \in \C : |u|^2 + |v|^2 = 1 \}
@@ -485,7 +487,7 @@ First, we recall the definition of a fundamental group as well as a useful theor
 \end{defn}
 
 Morally, two loops in $X$ are homotopic if they can be continuously deformed into one another.
-The fundamental group describes the group structure of all in $X$ up to homotopy.
+The fundamental group describes the group structure of all based loops in $X$ up to homotopy.
 
 There is no general method for computing the fundamental group of an arbitrary topological space.
 Instead, we rely on a toolkit of methods and theorems that prove useful in different situations.
@@ -498,7 +500,7 @@ One essential such tool is the Seifart Van-Kampen theorem.
     G_2 &\cong \ang{\beta_1, \ldots, \beta_n : \sigma_1, \ldots, \sigma_s}, \text{ and } \\
     H &\cong \ang{\gamma_1, \ldots, \gamma_p : \tau_1, \ldots, \tau_t}.
   \end{align*}
-  Then if $f_1 : H \to G_1$ and $f_2 : H \to G_2$ are group homeomorphisms, the \defnphrase{amalgamated free product} of $G_1$ and $G_2$ along $H$ is the group with presentation
+  Then if $f_1 : H \to G_1$ and $f_2 : H \to G_2$ are group homomorphisms, the \defnphrase{amalgamated free product} of $G_1$ and $G_2$ along $H$ is the group with presentation
   \begin{align*}
     G_1 \ast_H G_2 \cong \ang{&\alpha_1, \ldots \alpha_m,\, \beta_1, \ldots, \beta_n : \rho_1, \ldots, \rho_r, \\
     &\sigma_1, \ldots, \sigma_s,\, u_1 = v_1,\ldots, u_p = v_p}
@@ -546,7 +548,7 @@ For additional details, see~\cite[47--49]{hatcher2002} and~\cite[153--154]{still
   \begin{figure}[h]
     \centering
     \includegraphics[width=0.7\textwidth]{figures/fundamental_group_flat.pdf}
-    \caption{The region $L$ is the torus with a thin tubular neighborhood of the trefoil $N$ removed. Here, $N$ is depicted in white and $L$ is shaded in gray on the flat torus. While still respecting the appropriate edge identifications, the pieces of the torus can be rearranged to form an annulus. The generator $\ell$ of this annulus is shown in blue.}
+    \caption{The region $L$ is the torus with a thin tubular neighborhood of the trefoil $N$ removed. Here, $N$ is depicted in white and $L$ is shaded in gray on the flat torus. While still respecting the appropriate edge identifications, the pieces of the torus can be rearranged to form an annulus. The generator $\ell$ of $\pi_1$ of this annulus is shown in blue.}
     \label{fig:flat_annulus}
   \end{figure}
 
@@ -562,7 +564,7 @@ For additional details, see~\cite[47--49]{hatcher2002} and~\cite[153--154]{still
   \begin{equation*}
     \ell \simeq y^3.
   \end{equation*}
-  Now, we can expand $X$ and $Y$ slightly to open sets $X' \supseteq X$ and $Y' \supseteq$ such that $X' \cap Y'$ is an open neighborhood of $L$ and $X' \cup Y' = \R^3 \wo K$ (see Figure~\ref{fig:fundamental_group_side}).
+  Now, we can expand $X$ and $Y$ slightly to open sets $X' \supseteq X$ and $Y' \supseteq Y$ such that $X' \cap Y'$ is an open neighborhood of $L$ and $X' \cup Y' = \R^3 \wo K$ (see Figure~\ref{fig:fundamental_group_side}).
   Then, applying Van Kampen, we have that
   \begin{equation*}
     \pi_1(\R^3 \wo K) = \ang{x, y : x^2 = y^3}.
@@ -714,7 +716,7 @@ One classically studied invariant of two-component links is their \defnphrase{li
 
 \begin{enumerate}
   \item Color the components of the link red and blue, respectively, and give each component an orientation.
-  \item Project the colored, oriented link onto the plane. Any projection will do.
+  \item Project the colored, oriented link onto the plane. Any regular projection will do.
   \item Assign each crossing of a red strand over blue strand a number, either $1$ or $-1$ according to the diagram in Figure~\ref{fig:linking_number}.
   \item Sum the integers at all crossings to obtain the linking number.
 \end{enumerate}
@@ -742,7 +744,7 @@ To understand this function and subsequent result, we first need to understand a
 First, we will look at the basic building block of each group---their generators.
 
 \begin{prop}
-  $\SLZ$ is generated by the matrices
+  The group $\SLZ$ is generated by the matrices
   \begin{equation*}
     S = \begin{pmatrix}
       0 & -1 \\
@@ -826,11 +828,11 @@ First, we will look at the basic building block of each group---their generators
 \end{proof}
 
 \begin{defn}
-  The \defnphrase{modular group} $\PSLZ$ is $\SLZ / \{ \pm \Id \}$.
+  The \defnphrase{modular group} $\PSLZ$ is $\SLZ / \{ \pm I \}$.
 \end{defn}
 
 \begin{prop}\label{prop:pslgenerators}
-  $\PSLZ = \ang{S, T} = \ang{U,V} = \ang{P,Q}$, where
+  The group $\PSLZ = \ang{S, T} = \ang{U,V} = \ang{P,Q}$, where
   \begin{equation*}
     U = \begin{pmatrix}
       0 & 1 \\
@@ -936,7 +938,7 @@ Recall that the \emph{hyperbolic elements} of $\SLZ$ and $\PSLZ$ are those with 
   Since conjugacy is a transitive relation, this means that $A$ is conjugate to the word in $Q$ and $P$ as well.
 \end{proof}
 
-Note that any word in $P$ and $Q$ with $P$ and $Q$ each occurring at least once is a hyperbolic element in $\PSLZ$. Shortly we will see that writing a hyperbolic element $A$ as a $PQ$ word provides insight into the periodic orbit that $A$ defines. First, however, we need understand the connection between $\PSLZ$ and a classic arithmetic object we call the Rademacher class function. The building block of this function is an infinite series with a rather esoteric summand.
+Note that any word in $P$ and $Q$ with $P$ and $Q$ each occurring at least once is a hyperbolic element in $\PSLZ$. Shortly we will see that writing a hyperbolic element $A$ as a $PQ$ word provides insight into the periodic orbit that $A$ defines. First, however, we need to understand the connection between $\PSLZ$ and a classic arithmetic object we call the Rademacher class function. The building block of this function is an infinite series with a rather esoteric summand.
 
 \begin{defn}
   Let $h$ and $k$ be coprime integers with $k \geq 1$.
@@ -957,7 +959,7 @@ Note that any word in $P$ and $Q$ with $P$ and $Q$ each occurring at least once 
 \begin{figure}[h]
   \centering
   \includegraphics[width=0.8\linewidth]{figures/sawtooth.pdf}
-  \caption{The sawtooth function $\sawtooth{x}$ for $-3 \leq x \leq 3$.}
+  \caption{The sawtooth function $\sawtooth{x}$ for $-2 \leq x \leq 2$.}
   \label{fig:sawtooth}
 \end{figure}
 
@@ -1008,6 +1010,7 @@ It is perhaps surprising that a function built out of such intractable objects s
   \begin{equation*}
     \Psi(A) = \sum_{i=1}^n \varepsilon_i
   \end{equation*}
+  In particular, $\Psi$ is constant on conjugacy classes.
 \end{prop}
 
 \begin{proof}
@@ -1055,7 +1058,9 @@ Thus, the linking number of $k_A$ is $5 - 4 = 1$.
 
 \chapter{Finite subsets of the circle}\label{chap:finite_subsets}
 
-We now arrive at our third homeomorphic space, the set of all subsets of $S^1$ with at most 3 points.
+\section{Topologizing $\exp_k X$}
+
+We now arrive at our third homeomorphic space, the set of all nonempty subsets of $S^1$ with at most 3 points.
 In general, we denote the set of all nonempty subsets with at most $k$ points of a space X as $\exp_k X$, and refer to it as a \defnphrase{finite subset space}.
 Such a space can be given the topology induced by the quotient map
 \begin{gather*}
@@ -1316,7 +1321,7 @@ The relation is shown in Figure~\ref{fig:braid_relation_exp}.
 
 \section{Diagrammatic decompositions of hyperbolic subset loops}
 
-Previously we saw that the periodic orbits of a dynamic system in $\LS_1$ were in bijection with conjugacy classes of hyperbolic elements in $\SLZ$, and that each conjugacy class determined a modular knot in $S^3 \wo K$.
+Previously we saw that the periodic orbits of a dynamical system in $\LS_1$ were in bijection with conjugacy classes of hyperbolic elements in $\SLZ$, and that each conjugacy class determined a modular knot in $S^3 \wo K$.
 We can also examine these periodic orbits as loops in $\exptwothree S^1$ via the homeomorphism $\LS \to \exp_3 S^1$.
 Several such loops are shown in Figure~\ref{fig:subset_loop_examples}; it may be interesting to compare them to the knots in $S^3 \wo K$ produced by the same hyperbolic matrices in Figure~\ref{fig:trefoil_links}.
 When viewed in $\exptwothree S^1$, we call these periodic orbits \defnphrase{hyperbolic subset loops}.
@@ -1368,8 +1373,8 @@ However, this computation was achieved via the sprawling and opaque machinery of
 Decomposing string cheese diagrams provides us with our concrete examples of braids and their corresponding modular trefoil links.
 What can we now say about modular trefoil links as braids?
 
-The braid word $\beta_A$ for a modular trefoil link $k_A$ seems mimics the $PQ$ decomposition of $A$ closely.
-For example, $A = PQQ$ is $\sigma_2 \sigma_2 \sigma_1^{-1}$ as a braid, while $A  = PQQ$ is $\sigma_2 \sigma_2 \sigma_2 \sigma_1^{-1}$.
+The braid word $\beta_A$ for a modular trefoil link $k_A$ mimics the $PQ$ decomposition of $A$ closely.
+For example, $A = PQQ$ is $\sigma_2 \sigma_2 \sigma_1^{-1}$ as a braid, while $A  = PQQQ$ is $\sigma_2 \sigma_2 \sigma_2 \sigma_1^{-1}$.
 Notice that every character in the $PQ$ word has exactly one matching character in the braid word.
 These matchings vary throughout the different example braids---sometimes $Q$ corresponds to $\sigma_1$ in a braid word, but other times it corresponds to $\sigma_2$---but for each individual $(k_A, \beta_A)$ pairing there is some one-to-one correspondence between characters $P$ and $Q$ in $A$ and characters $\sigma_i^{\pm 1}$ in $\beta_A$.
 
@@ -1559,7 +1564,7 @@ We now have a program capable of realizing the periodic orbits of a dynamical sy
 In the homeomorphic space $S^3$, these periodic orbits appear as links with the trefoil.
 In this section, we will code the homeomorphism from $\LS$ to $S^3$ described in Section~\ref{sec:lattice_to_s3}, and use it to visualize links with the trefoil.
 
-The homeomorphism $\LS$ $S^3$ sends a lattice $L$ to a rescaled version of the complex tuple $(G_4(L),\, G_6(L))$, where
+The homeomorphism $\LS \to S^3$ sends a lattice $L$ to a rescaled version of the complex tuple $(G_4(L),\, G_6(L))$, where
 \begin{equation*}
   G_k(L) = \sum_{\omega \in L,\ \omega \neq 0} \omega^{-k}
 \end{equation*}
@@ -1608,7 +1613,7 @@ latticeToS3[l_] := Module[{gTuple, t},
   {t^-4, t^-6} * gTuple
 ];
 \end{minted}
-As discussed in Section~\ref{sec:lattice_to_s3}, all degenerate lattices in $\LS$ present as a trefoil know when viewed in $S^3$.
+As discussed in Section~\ref{sec:lattice_to_s3}, all degenerate lattices in $\LS$ present as a trefoil when viewed in $S^3$.
 We can see this via our coded homeomorphism as follows.
 First, we define a function that will help us parameterize a path through all degenerate lattices.
 \begin{minted}[breaklines, fontsize=\small]{Mathematica}
@@ -1642,7 +1647,7 @@ Briefly, we recall the steps of the homeomorphism for a nondegenerate lattice $L
   \item Select a single cell in the Voronoi partition of $L$
   \item Select any vertex of that cell, and translate the entire lattice so that this vertex is at the origin
   \item Consider the two or three lines connecting the vertex to the next closest points in the lattice
-  \item These lines define two or three points in $\mathrm{RP}^1$, which is homeomorphic to $S^3$
+  \item These lines define two or three points in $\mathrm{RP}^1$, which is homeomorphic to $S^1$
 \end{enumerate}
 We quite literally translate this process into a Mathematica procedure as follows:
 \begin{minted}[breaklines, fontsize=\small]{Mathematica}
@@ -1658,11 +1663,11 @@ nondegenToExpS1[{w1_, w2_}] := Module[{points, d, cell, vertex, sorted, isRectan
 ];
 \end{minted}
 Here we have used a few utility functions which define the homeomorphism between $\mathrm{RP}^1$ and $S^1$.
-\mintinline{Mathematica}|r2ToRad| gives the angle between a vector in $\R^2$ and the positive $x$-axis:
+The function \mintinline{Mathematica}|r2ToRad| gives the angle between a vector in $\R^2$ and the positive $x$-axis:
 \begin{minted}[breaklines, fontsize=\small]{Mathematica}
 r2ToRad[p_] := Complex @@ p // Arg;
 \end{minted}
-\mintinline{Mathematica}|radOnHalfCircle| and \mintinline{Mathematica}|halfToFullCircle| are then used to translate this angle approriately to $S^1$:
+The functions \mintinline{Mathematica}|radOnHalfCircle| and \mintinline{Mathematica}|halfToFullCircle| are then used to translate this angle approriately to $S^1$:
 \begin{minted}[breaklines, fontsize=\small]{Mathematica}
 radOnHalfCircle[rad_] := If[rad >= Pi, Pi - rad, rad];
 
@@ -1670,9 +1675,9 @@ halfToFullCircle[rad_] := Rescale[rad, {0, Pi}, {0, 2 Pi}];
 \end{minted}
 For the degenerate lattice case, the homeomorphism $\LS \to \exp_3 S^1$ is more straightforward.
 A degenerate lattice defines a line through the origin via either of its generators \mintinline{Mathematica}|c|.
-We take the line orthogonal to this as our point in $\mathrm{RP}^1$, and then translate that to $\exp_3 S^1$ as before.
+We take the line in $\mathrm{RP}^1$ and translate it to $\exp_3 S^1$ as before.
 \begin{minted}[breaklines, fontsize=\small]{Mathematica}
-degenToExpS1[c_] := {(Arg[c] - Pi / 2) // radOnHalfCircle // halfToFullCircle};
+degenToExpS1[c_] := {Arg[c] // radOnHalfCircle // halfToFullCircle};
 \end{minted}
 Now we can simply connect the degenerate and nondegenerate cases as before by branching on the \mintinline{Mathematica}|isDegen| function:
 \begin{minted}[breaklines, fontsize=\small]{Mathematica}
