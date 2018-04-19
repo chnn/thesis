@@ -346,7 +346,7 @@ The following results establish that this is indeed the case.
 
 \section{The classical perspective on the modular flow}
 
-Our construction of the modular flow is an non-standard take on a well-known and classically studied dynamical system called \emph{the geodesic flow on the modular surface}.
+Our construction of the modular flow is a non-standard take on a well-known and classically studied dynamical system called \emph{the geodesic flow on the modular surface}.
 Here, we provide a brief sketch of the more classical construction of this system and then motivate the alternative perspective we have just detailed.
 
 \begin{figure}[h]
@@ -376,7 +376,8 @@ The subset
 \begin{equation*}
   \mathcal{F} = \{ \tau \in \mathbb{H} : |\mathrm{Re}(x)| \leq 1/2,\ |\tau| \geq 1 \}
 \end{equation*}
-of $\mathbb{H}$ contains exactly one point from each one of these orbits, and thus provides a convenient geometrical region that represents the modular surface (the region $\mathcal{F}$ is a \defnphrase{fundamental domain} for $\mathcal{M}$).
+of $\mathbb{H}$ contains exactly one point from each one of these orbits (except on its boundary), and thus provides a convenient geometrical region that represents the modular surface (the region $\mathcal{F}$ is a \defnphrase{fundamental domain} for $\mathcal{M}$).
+The right and left vertical boundary of $\mathcal{F}$ are identified by the action of $\PSLZ$, as well as the right and left bottom circular boundary.
 In Figure~\ref{fig:tessellation}, we visualize $\mathcal{F}$ along with its image under several elements of $\PSLZ$.
 For a more thorough treatment of $\mathbb{H}$, $\PSLZ$, and $\mathcal{F}$, see \cite{katok1992}.
 
@@ -388,7 +389,8 @@ For a more thorough treatment of $\mathbb{H}$, $\PSLZ$, and $\mathcal{F}$, see \
 \end{figure}
 
 Recall that an \defnphrase{$n$-dimensional manifold} is a generalization of $n$-dimensional Euclidean space; some small neighborhood of every point on a manifold looks locally like $n$-dimensional Euclidean space.
-A \defnphrase{geodesic path} is the generalization of a straight line in Euclidean space to $n$-dimensional manifold spaces---the quickest way between two points across the surface of a manifold is via a geodesic path, just as the quickest way between two points in Euclidean space is via a straight line.
+A \defnphrase{Riemannian manifold} is a smooth and real manifold $M$ equipped with an Riemannian inner product on the tangent space $T_pM$ for each point $p$ in $M$.
+A \defnphrase{geodesic path} is the generalization of a straight line in Euclidean space to Riemannian manifolds---the quickest way between two points across the surface of a manifold is via a geodesic path, just as the quickest way between two points in Euclidean space is via a straight line.
 The prototypical example of a geodesic is a curved arc across the surface of the 2-sphere.
 In $\H$, geodesics under the Poincar\'e metric
 \begin{equation*}
@@ -396,21 +398,21 @@ In $\H$, geodesics under the Poincar\'e metric
 \end{equation*}
 consist of straight vertical lines originating at the $x$-axis, and half-circles that meet the $x$-axis at right angles (see Figure~\ref{fig:geodesics_in_h}).
 
-Now, suppose that $M$ is a manifold.
-Given a point $p \in M$ and a direction $v$ in the space tangent to $M$ at $p$, the \defnphrase{geodesic flow on a $M$} can be simply described as the flow along the geodesic in $M$ that points in the direction of $v$.
+Now, suppose that $M$ is a Riemannian manifold.
+Given a point $p \in M$ and a direction $v$ in the space tangent to $M$ at $p$, the \defnphrase{geodesic flow on $M$} through $p$ in the direction of $v$ can be simply described as the flow along the geodesic in $M$ that points in the direction of $v$.
 A \defnphrase{closed orbit of the geodesic flow} is a geodesic that returns to its initial position pointing in the same initial direction $v$.
 
 The physical interpretation of the geodesic flow is to think of a particle moving on a manifold $M$ subject to no constraints other than that it must stay on $M$.
 Many fundamental equations in physics, such as the Euler equations of motion of a rigid body or the Euler equations of fluid dynamics of an inviscid incompressible fluid, are examples of the geodesic flow on particular manifolds \cite{tao} \cite{arnold66}.
 
-For manifolds satisfying some additional conditions (\defnphrase{Riemannian manifolds}), one may define the unit tangent bundle.
+For Riemannian manifolds, one may also define the unit tangent bundle.
 The \defnphrase{unit tangent bundle $\UT(M)$ of a manifold $M$} consists of pairs $(p, v)$, where $p \in M$ and $v$ is a unit tangent vector to $M$ at $p$. 
 There exists a natural projection $\pi : (p, v) \mapsto p$ mapping $UT(M)$ onto $M$.
 
-The space of nontrivial lattices up to homothety $\LS_1$ is isomorphic to the unit tangent bundle for the modular surface $\mathcal{M}$.
-Thus every lattice $L \in \LS_1$ implicitly describes a point in $\mathcal{M}$ and a unit tangent direction---all the data needed to define the geodesic flow on $\mathcal{M}$!
+The space of nontrivial lattices up to homothety $\LS_1$ is isomorphic to the unit tangent bundle for the modular surface $\mathcal{M}$ \cite[9]{silverman1994}.
+Thus every lattice $L \in \LS_1$ implicitly describes a point in $\mathcal{M}$ and a unit tangent direction---all the data needed to define the geodesic flow on $\mathcal{M}$.
 When we study the ``modular flow'', we are really studying the lift of the geodesic flow on $\mathcal{M}$ into the tangent space $\mathrm{UT}(M)$.
-If we project an orbit of the modular flow  back down into $\mathcal{M}$, we recover an orbit of the geodesic flow on $\mathcal{M}$.
+If we project an orbit of the modular flow  back down into $\mathcal{M}$, we recover a (rescaled) orbit of the geodesic flow on $\mathcal{M}$.
 
 Suppose $L \in \LS_1$ is a lattice generated by $\omega_1$ and $\omega_2$ such that $\omega_1,\, \omega_2 \in \H$ and the angle between $\omega_1$ and $\omega_2$ is positive and less than 180 degrees.
 Then the map $L \mapsto \omega_1 / \omega_2$ is a projection from $\LS_1 = \UT(\mathcal{M})$ to $\mathcal{M}$ (see \cite[6-13]{silverman1994}).
