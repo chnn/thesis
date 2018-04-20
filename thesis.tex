@@ -1389,7 +1389,6 @@ Did we make subtle and arbitrary choices in the decomposition process that affec
 Or does the sign of the braid group generators reflect the orientation of the modular trefoil link?
 Or yet still, are some of these braid words equivalent? We leave these questions for further study.
 
-
 \begin{figure}[p]
   \centering
   \begin{subfigure}[t]{0.24\linewidth}
@@ -1467,10 +1466,43 @@ Or yet still, are some of these braid words equivalent? We leave these questions
   \label{fig:subset_loop_decompositions_table}
 \end{figure}
 
-
 \section{The linking number of finite subset loops}
 
-\TODO{Motivate and describe conjecture.}
+Pushing modular knots into $\exptwothree S^1$ enables the decomposition of their path classes as braid words.
+More generally, it also provides a rich variety of modular knots examples that can be studied in a new setting.
+Can we recover any of the known results about modular knots from the perspective of $\exp_{2,3} S^1$?
+We conclude this chapter with a conjecture concerning the linking number of hyperbolic subset loops.
+
+Every point along a hyperbolic subset loop is a two- or three-pointed subset of $S^1$.
+In a string cheese diagram, the two-pointed subsets of the loop are easily identified and appear only a finite number of times.
+At each of these two-pointed subsets, an incoming fork and outgoing fork are visible.
+Furthermore, the incoming strand to the outgoing fork has an orientation; it is either approaching from the left or right side of the diagram (see Figure~\ref{fig:subset_loop_forks}). 
+If the incoming strand to the outgoing fork approaches from the left in a string cheese diagram, we call the outgoing fork a \defnphrase{left fork}.
+Otherwise, the outgoing fork is a \defnphrase{right fork}.
+
+\begin{figure}[h]
+  \centering
+  \begin{subfigure}[t]{0.31\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{figures/subset_loop_forks_ppqq.pdf}
+    \caption*{$A = PPQQ$}
+  \end{subfigure}
+  \hspace{5mm}
+  \begin{subfigure}[t]{0.31\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{figures/subset_loop_forks_pqqq.pdf}
+    \caption*{$A = PQQQ$}
+  \end{subfigure}
+  \caption{Two string cheese diagrams corresponding to the modular knot $k_A$ where $A \in \SLZ$. The outgoing forks in each diagram are highlighted. If the incoming strand to an outgoing fork approaches from the left, we call the fork a \defnphrase{left fork} (highlighted in blue). Otherwise, it is a \defnphrase{right fork} (highlighted in purple). We conjecture that the linking number of a modular knot $k_A$ is the number of left forks minus the number of right forks in a string cheese diagram for $k_A$.}
+  \label{fig:subset_loop_forks}
+\end{figure}
+
+\begin{conj}
+  Let $m$ and $n$ be the number of left and right forks, respectively, in a string cheese diagram of a modular knot $k_A$.
+  Then the linking number of $k_A$ is $m - n$.
+\end{conj}
+
+
 
 \newpage
 \appendix
