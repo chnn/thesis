@@ -862,7 +862,7 @@ First, we will look at the basic building block of each group---their generators
 \begin{proof}
   The group $\PSLZ$ is all integer matrices $A$ such that $\det A = 1$, subject to the identification $A = -A$.
   Since $\SLZ = \ang{S,T}$ and any such $A$ is in $\SLZ$, $S$ and $T$ generate $\PSLZ$ as well.
-  In $\PSLZ$, we also have that $U = S$, $V = (TSS)^{-1}$, $P = TSS$, and $Q = TST$.
+  In $\PSLZ$, we also have that $S = U = P^{-1}QP^{-1}$ and $T = VU = P$.
   Thus $\PSLZ = \ang{S,T} = \ang{U,V} = \ang{P,Q}$.
 \end{proof}
 
