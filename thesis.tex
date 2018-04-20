@@ -129,7 +129,7 @@ This document will proceed by examining each homeomorphic space in turn.
 
 \chapter{The space of lattices}
 
-First, we recall some basic definitions.
+First, we recall some necessary definitions.
 A \defnphrase{lattice in $\R^2$} is a set
 \begin{equation*}
   B(\Z^2) = \{ B x : x \in \Z^2 \}
@@ -186,7 +186,7 @@ Left multiplication of each point in a nondegenerate lattice by
   \end{pmatrix}
 \end{equation}
 produces another nondegenerate lattice.
-As the time variable $t$ increases continuously, we obtain a flow in $\LS_1$ known as \defnphrase{the modular flow}.
+As the time variable $t$ increases continuously, we obtain a flow in $\LS_1$ known as \defnphrase{the modular flow} \cite{ghys2007} \cite{touristguide} \cite{ncatcafe}.
   
 Note that as $t$ increases, each individual point in the lattice moves towards $\pm \infty$ along a hyperbolic path, yet the lattice as a whole may move back to its original position.
 Thus we can study the periodic orbits of this flow. 
@@ -353,12 +353,13 @@ The following results establish that this is indeed the case.
 Our construction of the modular flow is a non-standard take on a well-known and classically studied dynamical system called \emph{the geodesic flow on the modular surface}.
 Here, we provide a brief sketch of the more classical construction of this system and then motivate the alternative perspective we have just detailed.
 
-\begin{figure}[h]
+\begin{figure}[b!]
   \centering
-  \includegraphics[width=0.8\linewidth]{figures/geodesics_in_h.pdf}
-  \caption{Example geodesics in $\mathbb{H}$.}
-  \label{fig:geodesics_in_h}
+  \includegraphics[width=0.8\linewidth]{figures/tessellation.pdf}
+  \caption{The elements of $\mathcal{M}$ are orbits of $\mathbb{H}$ under the action of $\PSLZ$. Every orbit has exactly one representative in the shaded region $\mathcal{F}$. The image of $\mathcal{F}$ by various elements of the modular group (in terms of the modular group generators $S$ and $T$) are shown alongside $\mathcal{F}$. These translates are called \defnphrase{faces} in a \defnphrase{tessellation} of $\mathbb{H}$ by its fundamental domain.}
+  \label{fig:tessellation}
 \end{figure}
+
 
 Let $\mathbb{H} = \{ x + i y \in \C : y > 0,\ x,\, y \in \R \}$ be the upper half plane.
 There is an action of the \defnphrase{modular group} $\PSLZ = \SLZ / \{ \pm I \}$ on $\mathbb{H}$ defined by
@@ -385,13 +386,6 @@ The right and left vertical boundary of $\mathcal{F}$ are identified by the acti
 In Figure~\ref{fig:tessellation}, we visualize $\mathcal{F}$ along with its image under several elements of $\PSLZ$.
 For a more thorough treatment of $\mathbb{H}$, $\PSLZ$, and $\mathcal{F}$, see \cite{katok1992}.
 
-\begin{figure}[h]
-  \centering
-  \includegraphics[width=0.8\linewidth]{figures/tessellation.pdf}
-  \caption{The elements of $\mathcal{M}$ are orbits of $\mathbb{H}$ under the action of $\PSLZ$. Every orbit has exactly one representative in the shaded region $\mathcal{F}$. The image of $\mathcal{F}$ by various elements of the modular group (in terms of the modular group generators $S$ and $T$) are shown alongside $\mathcal{F}$. These translates are called \defnphrase{faces} in a \defnphrase{tessellation} of $\mathbb{H}$ by its fundamental domain.}
-  \label{fig:tessellation}
-\end{figure}
-
 Recall that an \defnphrase{$n$-dimensional manifold} is a generalization of $n$-dimensional Euclidean space; some small neighborhood of every point on a manifold looks locally like $n$-dimensional Euclidean space.
 A \defnphrase{Riemannian manifold} is a smooth and real manifold $M$ equipped with an Riemannian inner product on the tangent space $T_pM$ for each point $p$ in $M$.
 A \defnphrase{geodesic path} is the generalization of a straight line in Euclidean space to Riemannian manifolds---the quickest way between two points across the surface of a manifold is via a geodesic path, just as the quickest way between two points in Euclidean space is via a straight line.
@@ -401,6 +395,13 @@ In $\H$, geodesics under the Poincar\'e metric
   ds = \frac{\sqrt{dx^2 + dy^2}}{y},
 \end{equation*}
 consist of straight vertical lines originating at the $x$-axis, and half-circles that meet the $x$-axis at right angles (see Figure~\ref{fig:geodesics_in_h}).
+
+\begin{figure}[t]
+  \centering
+  \includegraphics[width=0.6\linewidth]{figures/geodesics_in_h.pdf}
+  \caption{Example geodesics in $\mathbb{H}$.}
+  \label{fig:geodesics_in_h}
+\end{figure}
 
 Now, suppose that $M$ is a Riemannian manifold.
 Given a point $p \in M$ and a direction $v$ in the space tangent to $M$ at $p$, the \defnphrase{geodesic flow on $M$} through $p$ in the direction of $v$ can be simply described as the flow along the geodesic in $M$ that points in the direction of $v$.
