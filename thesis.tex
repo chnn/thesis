@@ -926,21 +926,21 @@ Recall that the \emph{hyperbolic elements} of $\SLZ$ and $\PSLZ$ are those with 
     M = UV^{\varepsilon_1} UV^{\varepsilon_2} \cdots UV^{\varepsilon_n}
   \end{equation*}
   where $\varepsilon_i \in \{-1, 1\}$ for $1 \leq i \leq n$.
-  Then $A$ is conjugate to the word in $Q$ and $P$ where $Q$ replaces all occurrences of $UV^1$ and $P$ replaces all occurrences of $UV^{-1}$ in $M$.
+  Then $A$ is conjugate to the word in $P$ and $Q$ where $P$ replaces all occurrences of $UV^1$ and $Q$ replaces all occurrences of $UV^{-1}$ in $M$.
   This word is called a \defnphrase{$PQ$ decomposition of the conjugacy class of $A$}.
 \end{cor}
 
 \begin{proof}
-  Let 
-  \begin{equation*}
-    X = \begin{pmatrix}
-      -1 & 0 \\
-      0 & 1
-    \end{pmatrix}.
-  \end{equation*}
-  Then $UV = XQX^{-1}$ and $UV^{-1} = XPX^{-1}$, so $UV$ is conjugate to $Q$ and $UV^{-1}$ is conjugate to $P$. 
-  By replacing all $UV$ and $UV^{-1}$ in $UV^{\varepsilon_1} UV^{\varepsilon_2} \cdots UV^{\varepsilon_n}$ with $XQX^{-1}$ and $XPX^{-1}$ then simplifying the result, we see that $M$ is conjugate by $X$ to a word in $Q$ and $P$.
-  Since conjugacy is a transitive relation, this means that $A$ is conjugate to the word in $Q$ and $P$ as well.
+  Observe that $UV = P^{-1}QP^{-1}P$ and $UV^{-1} = P^{-1}QP^{-1}P^{-1}QP^{-1}P^{-1}$ are conjugate to $P$ and $Q$.
+  In fact, they are both conjugate by $U$.
+  Let $w_i$ be the appropriate representation of $UV^{\varepsilon_i}$ in terms of $P$ and $Q$.
+  Then
+  \begin{align*}
+    UV^{\varepsilon_1} UV^{\varepsilon_2} \cdots UV^{\varepsilon_n} = w_1 w_2 \cdots w_n = w_1 U^{-1} U w_2 U^{-1} U \cdots w_n
+    &.
+  \end{align*}
+  which is conjugate to a matrix $U w_1 U^{-1} U w_2 U^{-1} U \cdots w_n U^{-1}$.
+  This matrix is equivalent to rewriting $UV^{\varepsilon_1} UV^{\varepsilon_2} \cdots UV^{\varepsilon_n}$ by replacing all $UV^1$ with $P$ and all $UV^{-1}$ with $Q$.
 \end{proof}
 
 Note that any word in $P$ and $Q$ with $P$ and $Q$ each occurring at least once is a hyperbolic element in $\PSLZ$. Shortly we will see that writing a hyperbolic element $A$ as a $PQ$ word provides insight into the periodic orbit that $A$ defines. First, however, we need to understand the connection between $\PSLZ$ and a classic arithmetic object we call the Rademacher class function. The building block of this function is an infinite series with a rather esoteric summand.
