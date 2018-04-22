@@ -685,7 +685,7 @@ It is now natural to ask: how do these periodic orbits present in the 3-sphere?
 
 The degenerate lattices are sent to the trefoil knot in the 3-sphere, but the periodic orbits of this flow exist entirely within the space of nondegenerate lattices.
 Thus we can say that in the 3-sphere, a periodic orbit of the modular flow in the space of lattices determines a link with the trefoil knot.
-Since each periodic flow is associated with some hyperbolic $A \in \SLZ$, we will call the corresponding trefoil link $k_A$ a \defnphrase{modular trefoil link} following after~\cite{ghys2007}.
+Since each periodic flow is associated with some hyperbolic $A \in \SLZ$ we call the corresponding trefoil link $k_A$ a \defnphrase{modular trefoil link} or \defnphrase{modular knot}, following after~\cite{ghys2007}.
 Several examples of such links are shown in Figure~\ref{fig:trefoil_links}.
 
 \begin{figure}[h!]
@@ -836,7 +836,9 @@ First, we will look at the basic building block of each group---their generators
   The \defnphrase{modular group} $\PSLZ$ is $\SLZ / \{ \pm I \}$.
 \end{defn}
 
-\begin{prop}\label{prop:pslgenerators}
+Given the generators of a group, we can of course write down every element in the group as a word in those generators. We now describe more precisely the structure of elements of $\PSLZ$ as generator words.
+
+\begin{lemma}\label{lemma:pslgenerators}
   The group $\PSLZ = \ang{S, T} = \ang{U,V} = \ang{P,Q}$, where
   \begin{equation*}
     U = \begin{pmatrix}
@@ -857,16 +859,14 @@ First, we will look at the basic building block of each group---their generators
     \end{pmatrix}
   \end{equation*}
   and $S$ and $T$ are as before.
-\end{prop}
+\end{lemma}
 
 \begin{proof}
   The group $\PSLZ$ is all integer matrices $A$ such that $\det A = 1$, subject to the identification $A = -A$.
-  Since $\SLZ = \ang{S,T}$ and any such $A$ is in $\SLZ$, $S$ and $T$ generate $\PSLZ$ as well.
+  Since $\SLZ = \ang{S,T}$ and any such $A$ is in $\SLZ$, we have that $S$ and $T$ generate $\PSLZ$ as well.
   In $\PSLZ$, we also have that $S = U = P^{-1}QP^{-1}$ and $T = VU = P$.
   Thus $\PSLZ = \ang{S,T} = \ang{U,V} = \ang{P,Q}$.
 \end{proof}
-
-Given the generators of a group, we can of course write down every element in the group as a word in those generators. We now describe more precisely the structure of elements of $\PSLZ$ as generator words.
 
 \begin{prop}\label{prop:reducedform}
   Any element of $\PSLZ$ can be written in shortest form as
@@ -901,8 +901,57 @@ Given the generators of a group, we can of course write down every element in th
 
 The representation in \eqref{eq:pslreducedform} ends up being unique; for details see \cite[12]{rankin1977modular}.
 
-Now, recall that the hyperbolic elements of $\SLZ$ and $\PSLZ$ are those with trace greater than 2, and that we are interested in the hyperbolic elements because the conjugacy class of such an element defines a periodic orbit of the modular flow.
+Now, recall that the hyperbolic elements of $\SLZ$ and $\PSLZ$ are those with trace greater than 2, and that we are interested in the hyperbolic elements because the conjugacy classes of hyperbolic elements are in bijection with the periodic orbits of the modular flow.
 A result of Rademacher can help us say more about the generator words of hyperbolic elements in particular.
+
+\begin{lemma}\label{lemma:tr_is_conj_invariant}
+  Let $A, B \in \PSLZ$.
+  If $\tr A \neq \tr B$, then $A$ is not conjugate to $B$.
+\end{lemma}
+
+\begin{proof}
+  Let
+  \begin{equation*}
+    A = \begin{pmatrix}
+      a_1 & a_2 \\
+      a_3 & a_4
+    \end{pmatrix}, \quad B = \begin{pmatrix}
+      b_1 & b_2 \\
+      b_3 & b_4
+    \end{pmatrix}, \quad \text{and} \quad C = \begin{pmatrix}
+      c_1 & c_2 \\
+      c_3 & c_4
+    \end{pmatrix}
+  \end{equation*}
+  be elements of $\PSLZ$ such that $\tr A \neq \tr B$.
+  Then
+  \begin{equation*}
+    \begin{array}{l r c l}
+      & B &=& CAC^{-1} \\[0.2em]
+      \iff & \begin{pmatrix}
+        b_1 & b_2 \\
+        b_3 & b_4
+      \end{pmatrix} &=&
+      \begin{pmatrix}
+        c_1 & c_2 \\
+        c_3 & c_4
+      \end{pmatrix}
+      \begin{pmatrix}
+        a_1 & a_2 \\
+        a_3 & a_4
+      \end{pmatrix}
+      \begin{pmatrix}
+        c_4 & -c_2 \\
+        -c_3 & c_1
+      \end{pmatrix} \\[1em]
+      \iff & b_1 + b_4 &=& (a_1 + a_4)(c_1 c_4 - c_2 c_3) \\[0.2em]
+      \iff & b_1 + b_4 &=& (a_1 + a_4)\det(C) \\[0.2em]
+      \iff & b_1 + b_4 &=& (a_1 + a_4)\\[0.2em]
+      \iff & \tr B &=& \tr A.
+    \end{array}
+  \end{equation*}
+  Thus $A$ is not conjugate to $B$.
+\end{proof}
 
 \begin{prop}[Rademacher]
   Let $A \in \PSLZ$.
@@ -922,6 +971,9 @@ A result of Rademacher can help us say more about the generator words of hyperbo
 \begin{proof}
   See~\cite[56--57]{rademacher1972}.
 \end{proof}
+
+By Lemma~\ref{lemma:tr_is_conj_invariant}, we know that any conjugacy class of a hyperbolic element in $\PSLZ$ has a $UV$ decomposition.
+Since $\PSLZ = \ang{U,\, V} = \ang{P,\, Q}$, we can decompose elements of $\PSLZ$ using $P$ and $Q$ instead, which ends up being slightly neater.
 
 \vspace{0.5em}  % <3 LaTeX
 \begin{cor}\label{prop:pq_decomposition}
@@ -1035,7 +1087,7 @@ It is perhaps surprising that a function built out of such intractable objects s
 \end{cor}
 
 \begin{proof}
-  This follows from Proposition~\ref{prop:rademacher_class_sum} in light of Proposition~\ref{prop:pq_decomposition}.
+  This follows from Proposition~\ref{prop:rademacher_class_sum} in light of Corollary~\ref{prop:pq_decomposition}.
 \end{proof}
 
 Finally, we are ready to understand a main result from Ghys on the periodic orbits of the modular flow.
