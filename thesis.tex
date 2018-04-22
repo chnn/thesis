@@ -869,8 +869,8 @@ First, we will look at the basic building block of each group---their generators
 Given the generators of a group, we can of course write down every element in the group as a word in those generators. We now describe more precisely the structure of elements of $\PSLZ$ as generator words.
 
 \begin{prop}\label{prop:reducedform}
-  Any element of $\PSLZ$ can be written uniquely as
-  \begin{equation}
+  Any element of $\PSLZ$ can be written in shortest form as
+  \begin{equation}\label{eq:pslreducedform}
     V^{\varepsilon_0} U V^{\varepsilon_1} U \cdots V^{\varepsilon_{n}} U V^{\varepsilon_{n+1}}
   \end{equation}
   where $\varepsilon_0, \varepsilon_{n+1} \in \{-1,0,1\}$ and $\varepsilon_i \in \{-1,1\}$ for $1 \leq i \leq n$.
@@ -878,7 +878,7 @@ Given the generators of a group, we can of course write down every element in th
 
 \begin{proof}
   Let $A \in \PSLZ$.
-  Since $\PSLZ = \ang{U,V}$, we have that $A$ can be written uniquely in shortest form as
+  Since $\PSLZ = \ang{U,V}$, we have that $A$ can be written in shortest form as
   \begin{equation*}
     V^{\varepsilon_0} U^{\varepsilon_1} V^{\varepsilon_2} \cdots U^{\varepsilon_{n}} V^{\varepsilon_{n+1}}
   \end{equation*}
@@ -899,10 +899,14 @@ Given the generators of a group, we can of course write down every element in th
   where $\varepsilon_i = \pm 1$ for $1 \leq i \leq n$, the desired result.
 \end{proof}
 
-Recall that the \emph{hyperbolic elements} of $\SLZ$ and $\PSLZ$ are those with trace greater than 2, and that we are interested in the hyperbolic elements because the conjugacy class of such an element defines a periodic orbit of the modular flow. A result of Rademacher can help us say more about the generator words of hyperbolic elements in particular.
+The representation in \eqref{eq:pslreducedform} ends up being unique; for details see \cite[12]{rankin1977modular}.
+
+Now, recall that the hyperbolic elements of $\SLZ$ and $\PSLZ$ are those with trace greater than 2, and that we are interested in the hyperbolic elements because the conjugacy class of such an element defines a periodic orbit of the modular flow.
+A result of Rademacher can help us say more about the generator words of hyperbolic elements in particular.
 
 \begin{prop}[Rademacher]
-  Any matrix $A \in \PSLZ$ is conjugate to a matrix either of the form
+  Let $A \in \PSLZ$.
+  The conjugacy class of $A$ has a shortest representative either of the form
   \begin{equation}\label{eq:uvform_elliptic}
     \text{$U$, $V$, or $V^{-1}$}
   \end{equation}
@@ -911,8 +915,8 @@ Recall that the \emph{hyperbolic elements} of $\SLZ$ and $\PSLZ$ are those with 
     U V^{\varepsilon_1} U V^{\varepsilon_2} \cdots V^{\varepsilon_{n}}
   \end{equation}
   where $\varepsilon_i \in \{-1,\, 1\}$ for $1 \leq i \leq n$.
-  Furthermore, any cyclic permutation of the factors in \eqref{eq:uvform} remains in the conjugacy class of $A$.
-  Thus we call the form \eqref{eq:uvform} a \defnphrase{$UV$ decomposition of the conjugacy class of $A$}.
+  Any cyclic permutation of the factors in such a representation remains in the same conjugacy class, thus these representatives are considered only up to cyclic permutation.
+  We call the form \eqref{eq:uvform} a \defnphrase{$UV$ decomposition of the conjugacy class of $A$}.
 \end{prop}
 
 \begin{proof}
