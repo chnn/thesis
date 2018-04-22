@@ -868,13 +868,13 @@ Given the generators of a group, we can of course write down every element in th
   Thus $\PSLZ = \ang{S,T} = \ang{U,V} = \ang{P,Q}$.
 \end{proof}
 
-\begin{prop}\label{prop:reducedform}
+\begin{lemma}
   Any element of $\PSLZ$ can be written in shortest form as
   \begin{equation}\label{eq:pslreducedform}
     V^{\varepsilon_0} U V^{\varepsilon_1} U \cdots V^{\varepsilon_{n}} U V^{\varepsilon_{n+1}}
   \end{equation}
   where $\varepsilon_0, \varepsilon_{n+1} \in \{-1,0,1\}$ and $\varepsilon_i \in \{-1,1\}$ for $1 \leq i \leq n$.
-\end{prop}
+\end{lemma}
 
 \begin{proof}
   Let $A \in \PSLZ$.
@@ -923,12 +923,12 @@ A result of Rademacher can help us say more about the generator words of hyperbo
       c_3 & c_4
     \end{pmatrix}
   \end{equation*}
-  be elements of $\PSLZ$ such that $\tr A \neq \tr B$.
+  be elements of $\PSLZ$ such that $\tr A \neq \tr B$, and assume for the sake of contradiction that $A$ is conjugate to $B$ by $C$.
   Then
   \begin{equation*}
     \begin{array}{l r c l}
       & B &=& CAC^{-1} \\[0.2em]
-      \iff & \begin{pmatrix}
+      \implies & \begin{pmatrix}
         b_1 & b_2 \\
         b_3 & b_4
       \end{pmatrix} &=&
@@ -944,13 +944,13 @@ A result of Rademacher can help us say more about the generator words of hyperbo
         c_4 & -c_2 \\
         -c_3 & c_1
       \end{pmatrix} \\[1em]
-      \iff & b_1 + b_4 &=& (a_1 + a_4)(c_1 c_4 - c_2 c_3) \\[0.2em]
-      \iff & b_1 + b_4 &=& (a_1 + a_4)\det(C) \\[0.2em]
-      \iff & b_1 + b_4 &=& (a_1 + a_4)\\[0.2em]
-      \iff & \tr B &=& \tr A.
+      \implies & b_1 + b_4 &=& (a_1 + a_4)(c_1 c_4 - c_2 c_3) \\[0.2em]
+      \implies & b_1 + b_4 &=& (a_1 + a_4)\det(C) \\[0.2em]
+      \implies & b_1 + b_4 &=& (a_1 + a_4)\\[0.2em]
+      \implies & \tr B &=& \tr A.
     \end{array}
   \end{equation*}
-  Thus $A$ is not conjugate to $B$.
+  Thus we have a contradiction, and so $A$ is not conjugate to $B$.
 \end{proof}
 
 \begin{prop}[Rademacher]
