@@ -1558,7 +1558,12 @@ Otherwise, the outgoing fork is a \defnphrase{right fork}.
   Then the linking number of $k_A$ is $m - n$.
 \end{conj}
 
-
+This conjecture is motivated empirically by a large set of string cheese diagrams for which the statement holds true.
+Recall that every conjugacy class of a hyperbolic element of $\PSLZ$ has a $PQ$-decomposition (Corollary~\ref{prop:pq_decomposition}), and that the trace of a matrix in $\PSLZ$ is an invariant of its conjugacy class (Lemma~\ref{lemma:tr_is_conj_invariant}).
+It's readily verified that multiplication by $P$ or $Q$ increases the trace of a hyperbolic $PQ$ word.
+Thus to enumerate the conjugacy classes of hyperbolic elements of $\PSLZ$, we can enumerate words in $P$ and $Q$ (taking care to omit words containing cycles and starting with $PQ$).
+In Appendix~\ref{sec:coding_ls_to_exp}, we supply a computer program that outputs a string cheese diagram given a $PQ$ word.
+We produced 28 string cheese diagrams for $PQ$ words corresponding to 28 unique conjugacy classes of elements in $\PSLZ$ and verified the conjecture in each case  by applying Theorem~\ref{thm:ghys} to the $PQ$ words and by visually inspecting the diagrams.
 
 \newpage
 \appendix
@@ -1732,7 +1737,7 @@ We can view them alongside the trefoil with the following function, which genera
 \end{minted}
 This function produces the visualizations in Figure~\ref{fig:trefoil_links}.
 
-\section{Coding the homeomorphism from $\LS \to \exp_3 S^1$}
+\section{Coding the homeomorphism from $\LS \to \exp_3 S^1$}\label{sec:coding_ls_to_exp}
 
 The homeomorphism from $\LS$ to $\exp_3 S^1$ described in Section~\ref{subsec:lattice_to_exp} is already algorithmic in nature.
 Briefly, we recall the steps of the homeomorphism for a nondegenerate lattice $L$:
