@@ -15,11 +15,19 @@
 \usepackage{minted}
 \usepackage[noend]{algpseudocode}
 
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=black,
+    citecolor=black,
+    urlcolor=black
+}
+
 \usepackage{caption}
 \usepackage{subcaption}
 \captionsetup[subfigure]{format=hang}
 
-\usepackage[backend=biber, style=numeric]{biblatex}
+\usepackage[backend=biber, style=alphabetic, sorting=anyt]{biblatex}
 \addbibresource{thesis.bib}
 
 \theoremstyle{definition}
@@ -186,7 +194,7 @@ Left multiplication of each point in a nondegenerate lattice by
   \end{pmatrix}
 \end{equation}
 produces another nondegenerate lattice.
-As the time variable $t$ increases continuously, we obtain a flow in $\LS_1$ known as \defnphrase{the modular flow} \cite{ghys2007} \cite{touristguide} \cite{ncatcafe}.
+As the time variable $t$ increases continuously, we obtain a flow in $\LS_1$ known as \defnphrase{the modular flow} \cite{ghys2007, touristguide, ncatcafe}.
   
 Note that as $t$ increases, each individual point in the lattice moves towards $\pm \infty$ along a hyperbolic path, yet the lattice as a whole may move back to its original position.
 Thus we can study the periodic orbits of this flow. 
@@ -408,7 +416,7 @@ Given a point $p \in M$ and a direction $v$ in the space tangent to $M$ at $p$, 
 A \defnphrase{closed orbit of the geodesic flow} is a geodesic that returns to its initial position pointing in the same initial direction $v$.
 
 The physical interpretation of the geodesic flow is to think of a particle moving on a manifold $M$ subject to no constraints other than that it must stay on $M$.
-Many fundamental equations in physics, such as the Euler equations of motion of a rigid body or the Euler equations of fluid dynamics of an inviscid incompressible fluid, are examples of the geodesic flow on particular manifolds \cite{tao} \cite{arnold66}.
+Many fundamental equations in physics, such as the Euler equations of motion of a rigid body or the Euler equations of fluid dynamics of an inviscid incompressible fluid, are examples of the geodesic flow on particular manifolds \cite{arnold66, tao}.
 
 For Riemannian manifolds, one may also define the unit tangent bundle.
 The \defnphrase{unit tangent bundle $\UT(M)$ of a manifold $M$} consists of pairs $(p, v)$, where $p \in M$ and $v$ is a unit tangent vector to $M$ at $p$. 
@@ -1583,7 +1591,7 @@ We can, however, use computers to generate intuition and to suggest what purely 
 The results in this document were explored and understood via computer programming.
 What follows now is a ``literate programming'' description of the relevant Mathematica programs~\cite{knuth1992}.
 Some knowledge of Mathematica programming is assumed.
-These programs and other digital supplements to this thesis will be made available on the Reed Electronic Thesis Archive~\cite{thesisarchive} as well as on GitHub~\cite{github}.
+These programs and other digital supplements to this thesis will be made available on the Reed Electronic Thesis Archive\footnote{\url{https://rdc.reed.edu/c/etheses/home/}} as well as on GitHub\footnote{\url{https://github.com/chnn}}.
 
 \newpage
 
