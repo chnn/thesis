@@ -149,7 +149,7 @@ Additionally, we provide a conjecture for determining the linking number of a tr
 
 This document will proceed by examining each homeomorphic space in turn.
 
-\chapter{The space of lattices}
+\chapter{The Space of Lattices}
 
 First, we recall some necessary definitions.
 A \defnphrase{lattice in $\R^2$} is a set
@@ -197,7 +197,7 @@ For our purposes, we will switch between these two interpretations of $\LS_1$ qu
   \label{fig:three_types_of_lattices}
 \end{figure}
 
-\section{The modular flow of lattices}\label{subsec:lattice_flow}
+\section{The Modular Flow of Lattices}\label{subsec:lattice_flow}
 
 We now describe a dynamical flow in the space of nondegenerate lattices.
 Left multiplication of each point in a nondegenerate lattice by
@@ -370,7 +370,7 @@ The following results establish that this is indeed the case.
   and it is straightforward to observe that they form a bijection.
 \end{proof}
 
-\section{The classical perspective on the modular flow}
+\section{The Classical Perspective on the Modular Flow}
 
 Our construction of the modular flow is a non-standard take on a well-known and classically studied dynamical system called \emph{the geodesic flow on the modular surface}.
 Here, we provide a brief sketch of the more classical construction of this system and then motivate the alternative perspective we have just detailed.
@@ -478,9 +478,9 @@ To summarize, the rest of this document is concerned with the modular flow in th
   \end{tikzcd}
 \end{center}
 
-\chapter{The 3-sphere and the trefoil complement}\label{sec:three_sphere}
+\chapter{The 3-sphere and the Trefoil Complement}\label{sec:three_sphere}
 
-\section{The fundamental group of the trefoil complement}
+\section{The Fundamental Group of the Trefoil Complement}
 
 The \defnphrase{3-sphere} is the set of complex tuples
 \begin{equation*}
@@ -700,7 +700,7 @@ Then the map $L \mapsto (G_4(L'),\, G_6(L'))$ lands in $S^3$, and we have the de
 
 The image of the degenerate lattices under this map is the intersection of the curve $20u^3 - 49v^2 = 0$ with the 3-sphere. For any $a \in \R$, it happens that the intersection of complex curve $u^3 + av^2 = 0$ with the 3-sphere is a trefoil knot \cite[4]{milnor1968}. Thus, the image of degenerate lattices under the homeomorphism is the trefoil shown in Figure~\ref{fig:trefoil}.
 
-\section{The linking number of periodic orbits in $S^3$}\label{sec:periodic_orbits_in_s3}
+\section{The Linking Number of Periodic Orbits in $S^3$}\label{sec:periodic_orbits_in_s3}
 
 We have observed the periodic orbits of the modular flow in the space of lattices in Section~\ref{subsec:lattice_flow}, and we have just seen that the space of lattices is homeomorphic to the 3-sphere.
 It is now natural to ask: how do these periodic orbits present in the 3-sphere?
@@ -1149,7 +1149,7 @@ Thus, the linking number of $k_A$ is $5 - 4 = 1$.
   \label{fig:trefoil_link_pqqpqpppq}
 \end{figure}
 
-\chapter{Finite subsets of the circle}\label{chap:finite_subsets}
+\chapter{Finite Subsets of the Circle}\label{chap:finite_subsets}
 
 \section{Topologizing $\exp_k X$}
 
@@ -1292,7 +1292,7 @@ Several steps of the homeomorphism for nondegenerate $L$ are shown in Figure~\re
   \label{fig:homeomorphism_to_subset}
 \end{figure}
 
-\section{Visualizing the generators of $B_3$ in $\exptwothree S^1$}
+\section{Visualizing the Generators of $B_3$ in $\exptwothree S^1$}
 
 Observe that the homeomorphism $f : \LS = \LS_0 \cup \LS_1 \to \exp_3 S^1$ sends the subspace $\LS_0 $ to $\exp_1 S^3$ and the subspace $\LS_1$ to the 2 and 3 point elements of $\exp_3 S^1$.
 We will denote this subspace of 2 and 3 point elements as $\exptwothree S^1$.
@@ -1412,7 +1412,7 @@ The relation is shown in Figure~\ref{fig:braid_relation_exp}.
   \label{fig:braid_relation_exp}
 \end{figure}
 
-\section{Diagrammatic decompositions of hyperbolic subset loops}
+\section{Diagrammatic Decompositions of Hyperbolic Subset Loops}
 
 Previously we saw that the periodic orbits of a dynamical system in $\LS_1$ were in bijection with conjugacy classes of hyperbolic elements in $\SLZ$, and that each conjugacy class determined a modular knot in $S^3 \wo K$.
 We can also examine these periodic orbits as loops in $\exptwothree S^1$ via the homeomorphism $\LS \to \exp_3 S^1$.
@@ -1555,7 +1555,7 @@ Or yet still, are some of these braid words equivalent? These questions remain o
 \end{figure}
 
 \vspace{-1em}
-\section{The linking number of finite subset loops}
+\section{The Linking Number of Finite Subset Loops}
 
 Pushing modular knots into $\exptwothree S^1$ enables the decomposition of their path classes as braid words.
 More generally, it also provides a rich variety of modular knots examples that can be studied in a new setting.
@@ -1604,7 +1604,7 @@ We provide these diagrams in Appendix~\ref{chap:data}.
 \newpage
 \appendix
 
-\chapter{Computational exploration of homeomorphisms}
+\chapter{Computational Exploration of Homeomorphisms}
 
 Steve Jobs believed that a computer is a ``bicycle for the mind''\cite{krainin1990}.
 We can't tell computers what to think, but we can employ them to make our own thinking more efficient.
@@ -1623,7 +1623,7 @@ These programs and other digital supplements to this thesis will be made availab
 
 \newpage
 
-\section{Visualizing a dynamic system in the space of lattices}
+\section{Visualizing a Dynamical System in the Space of Lattices}
 
 A lattice is uniquely defined by its generators, a pair of complex numbers.
 This suggests we can encode lattices programmatically in a simple manner as \texttt{\{w1, w2\}}, where \texttt{w1} and \texttt{w2} are the complex generators. 
@@ -1693,7 +1693,7 @@ visualizeLatticeLoop[ls_] := ListAnimate[ListPlot[latticePoints[#, 100], PlotRan
 \end{minted}
 It's difficult to print a movie onto a piece of paper, so we show a static adaptation of this animation in Figure~\ref{fig:periodic_orbits_lattice}.
 
-\section{Coding the homeomorphism from $\LS \to S^3$}
+\section{Coding the Homeomorphism from $\LS \to S^3$}
 
 We now have a program capable of realizing the periodic orbits of a dynamical system in the space of lattices.
 In the homeomorphic space $S^3$, these periodic orbits appear as links with the trefoil.
@@ -1774,7 +1774,7 @@ We can view them alongside the trefoil with the following function, which genera
 \end{minted}
 This function produces the visualizations in Figure~\ref{fig:trefoil_links}.
 
-\section{Coding the homeomorphism from $\LS \to \exp_3 S^1$}\label{sec:coding_ls_to_exp}
+\section{Coding the Homeomorphism from $\LS \to \exp_3 S^1$}\label{sec:coding_ls_to_exp}
 
 The homeomorphism from $\LS$ to $\exp_3 S^1$ described in Section~\ref{subsec:lattice_to_exp} is already algorithmic in nature.
 Briefly, we recall the steps of the homeomorphism for a nondegenerate lattice $L$:
