@@ -1005,16 +1005,26 @@ Since $\PSLZ = \ang{U,\, V} = \ang{P,\, Q}$, we can decompose elements of $\PSLZ
 \end{cor}
 
 \begin{proof}
-  Observe that $UV = P^{-1}QP^{-1}P$ and $UV^{-1} = P^{-1}QP^{-1}P^{-1}QP^{-1}P^{-1}$ are conjugate to $P$ and $Q$.
-  In fact, they are both conjugate by $U$.
-  Let $w_i$ be the appropriate representation of $UV^{\varepsilon_i}$ in terms of $P$ and $Q$.
+  One can check that
+  \begin{gather}
+    UV = P^{-1}QPQ^{-1}P\label{eq:uv_as_pq} \\
+    UV^{-1} = P^{-1}QP^{-1}P^{-1}QP^{-1}P^{-1}\label{eq:uv_inv_as_pq}
+  \end{gather}
+  and also that
+  \begin{gather}
+    P = U (P^{-1}QPQ^{-1}P) U^{-1}\label{eq:p_conj_to_uv} \\
+    Q = U (P^{-1}QP^{-1}P^{-1}QP^{-1}P^{-1}) U^{-1}\label{eq:q_conj_to_uv_inv}.
+  \end{gather}
+  Let $w_i$ be the $PQ$ word in either \eqref{eq:uv_as_pq} or \eqref{eq:uv_inv_as_pq}, depending on whether $\varepsilon_i$ is 1 or $-1$, respectively.
   Then
   \begin{align*}
-    UV^{\varepsilon_1} UV^{\varepsilon_2} \cdots UV^{\varepsilon_n} = w_1 w_2 \cdots w_n = w_1 U^{-1} U w_2 U^{-1} U \cdots w_n
-    &.
+    UV^{\varepsilon_1} UV^{\varepsilon_2} \cdots UV^{\varepsilon_n} \, =\, w_1 w_2 \cdots w_n\, =\, w_1\, U^{-1} U\, w_2\, U^{-1} U\, \cdots \, w_{n - 1}\, U^{-1} U\, w_n,
   \end{align*}
-  which is conjugate to a matrix $U w_1 U^{-1} U w_2 U^{-1} U \cdots w_n U^{-1}$.
-  This matrix is equivalent to rewriting $UV^{\varepsilon_1} UV^{\varepsilon_2} \cdots UV^{\varepsilon_n}$ by replacing all $UV^1$ with $P$ and all $UV^{-1}$ with $Q$.
+  which is conjugate to a matrix
+  \begin{align*}
+    U (w_1\, U^{-1} U\, w_2\, U^{-1} U\, \cdots \, w_{n - 1}\, U^{-1} U\, w_n) U^{-1} = (U w_1 U^{-1}) (U w_2 U^{-1}) \cdots (U w_n U^{-1}).
+  \end{align*}
+  Then by \eqref{eq:p_conj_to_uv} and \eqref{eq:q_conj_to_uv_inv}, this matrix is equivalent to replacing all $UV$ with $P$ and all $UV^{-1}$ with $Q$ in the expression $UV^{\varepsilon_1} UV^{\varepsilon_2} \cdots UV^{\varepsilon_n}$.
 \end{proof}
 
 Note that any word in $P$ and $Q$ with $P$ and $Q$ each occurring at least once is a hyperbolic element in $\PSLZ$. Shortly we will see that writing a hyperbolic element $A$ as a $PQ$ word provides insight into the periodic orbit that $A$ defines. First, however, we need to understand the connection between $\PSLZ$ and a classic arithmetic object we call the Rademacher class function. The building block of this function is an infinite series with a rather esoteric summand.
