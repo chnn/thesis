@@ -20,7 +20,9 @@
     colorlinks=true,
     linkcolor=black,
     citecolor=black,
-    urlcolor=black
+    urlcolor=black,
+    linkbordercolor=0 0 0,
+    menubordercolor=0 0 0
 }
 
 \usepackage{caption}
@@ -102,7 +104,9 @@
 \frontmatter
 \pagestyle{empty}
 
-% \chapter*{Acknowledgements}
+\chapter*{Acknowledgements}
+
+To do.
 
 \setlength{\parskip}{0.2em}
 \tableofcontents
@@ -130,7 +134,7 @@ We finish with a conjecture relating these diagrams to the results of Ghys.
 \markboth{Introduction}{Introduction}
 
 The 3-sphere, the space of nontrivial lattices, and 1 to 3 point subsets of the circle---each of these spaces possesses a unique and rich structure.
-Remarkably, they are also homeomorphic, providing multiple perspectives of phenomenoa occurring in each space individually.
+Remarkably, they are also homeomorphic, providing multiple perspectives of phenomena occurring in each space individually.
 
 In this document, we examine the modular flow and its periodic orbits in the space of nontrivial lattices.
 This is a dynamical system whose periodic orbits can be described in terms of hyperbolic elements of the modular group, $\PSLZ$.
@@ -1582,7 +1586,7 @@ Otherwise, the outgoing fork is a \defnphrase{right fork}.
   \label{fig:subset_loop_forks}
 \end{figure}
 
-\begin{conj}
+\begin{conj}\label{conj:forking_number}
   Let $m$ and $n$ be the number of left and right forks, respectively, in a string cheese diagram of a modular knot $k_A$.
   Then the linking number of $k_A$ is $m - n$.
 \end{conj}
@@ -1594,7 +1598,8 @@ Recall that every conjugacy class of a hyperbolic element of $\PSLZ$ has a $PQ$-
 It's readily verified that multiplication by $P$ or $Q$ increases the trace of a hyperbolic $PQ$ word.
 Thus to enumerate the conjugacy classes of hyperbolic elements of $\PSLZ$, we can enumerate words in $P$ and $Q$ (taking care to omit words containing cycles and starting with $PQ$).
 In Appendix~\ref{sec:coding_ls_to_exp}, we supply a computer program that outputs a string cheese diagram given a $PQ$ word.
-We produced 28 string cheese diagrams for $PQ$ words corresponding to 28 unique conjugacy classes of elements in $\PSLZ$ and verified the conjecture in each case  by applying Theorem~\ref{thm:ghys} to the $PQ$ words and by visually inspecting the diagrams.
+We produced 32 string cheese diagrams for $PQ$ words corresponding to 32 unique conjugacy classes of elements in $\PSLZ$ and verified the conjecture in each case  by applying Theorem~\ref{thm:ghys} to the $PQ$ words and by visually inspecting the diagrams.
+We provide these diagrams in Appendix~\ref{chap:data}.
 
 \newpage
 \appendix
@@ -1842,6 +1847,207 @@ flatViz[xs_] := Module[{zipped, split, points},
 ];
 \end{minted}
 This method produces the subset loop visualizations shown in Figure~\ref{fig:subset_loop_examples}.
+
+\chapter{Supplemental Data}\label{chap:data}
+
+The following 32 string cheese diagrams are provided in support of Conjecture~\ref{conj:forking_number}. 
+
+\begin{figure}[b!]
+  \centering
+  \begin{subfigure}[t]{0.24\textwidth}
+    \includegraphics[width=\textwidth]{figures/string_cheese_appendix/pq.pdf}
+    \caption*{$PQ$}
+    \vspace{5mm}
+  \end{subfigure}
+  \hfill
+  \begin{subfigure}[t]{0.24\textwidth}
+    \includegraphics[width=\textwidth]{figures/string_cheese_appendix/pqp.pdf}
+    \caption*{$PQP$}
+    \vspace{5mm}
+  \end{subfigure}
+  \hfill
+  \begin{subfigure}[t]{0.24\textwidth}
+    \includegraphics[width=\textwidth]{figures/string_cheese_appendix/pqpp.pdf}
+    \caption*{$PQPP$}
+    \vspace{5mm}
+  \end{subfigure}
+  \hfill
+  \begin{subfigure}[t]{0.24\textwidth}
+    \includegraphics[width=\textwidth]{figures/string_cheese_appendix/pqppp.pdf}
+    \caption*{$PQPPP$}
+    \vspace{5mm}
+  \end{subfigure}
+  \begin{subfigure}[t]{0.24\textwidth}
+    \includegraphics[width=\textwidth]{figures/string_cheese_appendix/pqpppp.pdf}
+    \caption*{$PQPPPP$}
+    \vspace{5mm}
+  \end{subfigure}
+  \hfill
+  \begin{subfigure}[t]{0.24\textwidth}
+    \includegraphics[width=\textwidth]{figures/string_cheese_appendix/pqpppq.pdf}
+    \caption*{$PQPPPQ$}
+    \vspace{5mm}
+  \end{subfigure}
+  \hfill
+  \begin{subfigure}[t]{0.24\textwidth}
+    \includegraphics[width=\textwidth]{figures/string_cheese_appendix/pqppq.pdf}
+    \caption*{$PQPPQ$}
+    \vspace{5mm}
+  \end{subfigure}
+  \hfill
+  \begin{subfigure}[t]{0.24\textwidth}
+    \includegraphics[width=\textwidth]{figures/string_cheese_appendix/pqppqp.pdf}
+    \caption*{$PQPPQP$}
+    \vspace{5mm}
+  \end{subfigure}
+\end{figure}
+
+\begin{figure}[h]
+  \centering
+  \begin{subfigure}[t]{0.24\textwidth}
+    \includegraphics[width=\textwidth]{figures/string_cheese_appendix/pqppqq.pdf}
+    \caption*{$PQPPQQ$}
+    \vspace{5mm}
+  \end{subfigure}
+  \hfill
+  \begin{subfigure}[t]{0.24\textwidth}
+    \includegraphics[width=\textwidth]{figures/string_cheese_appendix/pqpqp.pdf}
+    \caption*{$PQPQP$}
+    \vspace{5mm}
+  \end{subfigure}
+  \hfill
+  \begin{subfigure}[t]{0.24\textwidth}
+    \includegraphics[width=\textwidth]{figures/string_cheese_appendix/pqpqpp.pdf}
+    \caption*{$PQPQPP$}
+    \vspace{5mm}
+  \end{subfigure}
+  \hfill
+  \begin{subfigure}[t]{0.24\textwidth}
+    \includegraphics[width=\textwidth]{figures/string_cheese_appendix/pqpqq.pdf}
+    \caption*{$PQPQQ$}
+    \vspace{5mm}
+  \end{subfigure}
+  \begin{subfigure}[t]{0.24\textwidth}
+    \includegraphics[width=\textwidth]{figures/string_cheese_appendix/pqpqqp.pdf}
+    \caption*{$PQPQQP$}
+    \vspace{5mm}
+  \end{subfigure}
+  \hfill
+  \begin{subfigure}[t]{0.24\textwidth}
+    \includegraphics[width=\textwidth]{figures/string_cheese_appendix/pqpqqq.pdf}
+    \caption*{$PQPQQQ$}
+    \vspace{5mm}
+  \end{subfigure}
+  \hfill
+  \begin{subfigure}[t]{0.24\textwidth}
+    \includegraphics[width=\textwidth]{figures/string_cheese_appendix/pqpqqqp.pdf}
+    \caption*{$PQPQQQP$}
+    \vspace{5mm}
+  \end{subfigure}
+  \hfill
+  \begin{subfigure}[t]{0.24\textwidth}
+    \includegraphics[width=\textwidth]{figures/string_cheese_appendix/pqpqqqq.pdf}
+    \caption*{$PQPQQQQ$}
+    \vspace{5mm}
+  \end{subfigure}
+  \begin{subfigure}[t]{0.24\textwidth}
+    \includegraphics[width=\textwidth]{figures/string_cheese_appendix/pqq.pdf}
+    \caption*{$PQQ$}
+    \vspace{5mm}
+  \end{subfigure}
+  \hfill
+  \begin{subfigure}[t]{0.24\textwidth}
+    \includegraphics[width=\textwidth]{figures/string_cheese_appendix/pqqp.pdf}
+    \caption*{$PQQP$}
+    \vspace{5mm}
+  \end{subfigure}
+  \hfill
+  \begin{subfigure}[t]{0.24\textwidth}
+    \includegraphics[width=\textwidth]{figures/string_cheese_appendix/pqqpp.pdf}
+    \caption*{$PQQPP$}
+    \vspace{5mm}
+  \end{subfigure}
+  \hfill
+  \begin{subfigure}[t]{0.24\textwidth}
+    \includegraphics[width=\textwidth]{figures/string_cheese_appendix/pqqppp.pdf}
+    \caption*{$PQQPPP$}
+    \vspace{5mm}
+  \end{subfigure}
+\end{figure}
+
+\begin{figure}[h]
+  \centering
+  \begin{subfigure}[t]{0.24\textwidth}
+    \includegraphics[width=\textwidth]{figures/string_cheese_appendix/pqqppq.pdf}
+    \caption*{$PQQPPQ$}
+    \vspace{5mm}
+  \end{subfigure}
+  \hfill
+  \begin{subfigure}[t]{0.24\textwidth}
+    \includegraphics[width=\textwidth]{figures/string_cheese_appendix/pqqpq.pdf}
+    \caption*{$PQQPQ$}
+    \vspace{5mm}
+  \end{subfigure}
+  \hfill
+  \begin{subfigure}[t]{0.24\textwidth}
+    \includegraphics[width=\textwidth]{figures/string_cheese_appendix/pqqpqp.pdf}
+    \caption*{$PQQPQP$}
+    \vspace{5mm}
+  \end{subfigure}
+  \hfill
+  \begin{subfigure}[t]{0.24\textwidth}
+    \includegraphics[width=\textwidth]{figures/string_cheese_appendix/pqqpqpp.pdf}
+    \caption*{$PQQPQPP$}
+    \vspace{5mm}
+  \end{subfigure}
+  \begin{subfigure}[t]{0.24\textwidth}
+    \includegraphics[width=\textwidth]{figures/string_cheese_appendix/pqqpqpq.pdf}
+    \caption*{$PQQPQPQ$}
+    \vspace{5mm}
+  \end{subfigure}
+  \hfill
+  \begin{subfigure}[t]{0.24\textwidth}
+    \includegraphics[width=\textwidth]{figures/string_cheese_appendix/pqqq.pdf}
+    \caption*{$PQQQ$}
+    \vspace{5mm}
+  \end{subfigure}
+  \hfill
+  \begin{subfigure}[t]{0.24\textwidth}
+    \includegraphics[width=\textwidth]{figures/string_cheese_appendix/pqqqp.pdf}
+    \caption*{$PQQQP$}
+    \vspace{5mm}
+  \end{subfigure}
+  \hfill
+  \begin{subfigure}[t]{0.24\textwidth}
+    \includegraphics[width=\textwidth]{figures/string_cheese_appendix/pqqqpp.pdf}
+    \caption*{$PQQQPP$}
+    \vspace{5mm}
+  \end{subfigure}
+  \begin{subfigure}[t]{0.24\textwidth}
+    \includegraphics[width=\textwidth]{figures/string_cheese_appendix/pqqqpq.pdf}
+    \caption*{$PQQQPQ$}
+    \vspace{5mm}
+  \end{subfigure}
+  \hfill
+  \begin{subfigure}[t]{0.24\textwidth}
+    \includegraphics[width=\textwidth]{figures/string_cheese_appendix/pqqqq.pdf}
+    \caption*{$PQQQQ$}
+    \vspace{5mm}
+  \end{subfigure}
+  \hfill
+  \begin{subfigure}[t]{0.24\textwidth}
+    \includegraphics[width=\textwidth]{figures/string_cheese_appendix/pqqqqp.pdf}
+    \caption*{$PQQQQP$}
+    \vspace{5mm}
+  \end{subfigure}
+  \hfill
+  \begin{subfigure}[t]{0.24\textwidth}
+    \includegraphics[width=\textwidth]{figures/string_cheese_appendix/pqqqqq.pdf}
+    \caption*{$PQQQQQ$}
+    \vspace{5mm}
+  \end{subfigure}
+\end{figure}
+
 
 \printbibliography[heading=bibintoc]
 
