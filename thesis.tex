@@ -216,20 +216,21 @@ Left multiplication of each point in a nondegenerate lattice by
     0 & \exp(-t)
   \end{pmatrix}
 \end{equation}
-produces another nondegenerate lattice ($t \in \R^+$).
+produces another nondegenerate lattice (where $t \in \R^+$).
 As the time variable $t$ increases continuously, we obtain a flow in $\LS_1$ known as \defnphrase{the modular flow} \cite{ghys2007, touristguide, ncatcafe}.
   
 Note that as $t$ increases, each individual point in the lattice moves towards $\pm \infty$ along a hyperbolic path, yet the lattice as a whole may move back to its original position.
 Thus we can study the periodic orbits of this flow. 
 
 These periodic orbits can be described succinctly via a particular type of matrix.
-Recall that that the special linear group $\SLZ$ is the set of $2 \times 2$ matrices with integer entries and determinant 1.
+Recall that that the \defnphrase{special linear group $\SLZ$} is the set of $2 \times 2$ matrices with integer entries and determinant 1.
+The \defnphrase{projective special linear group $\PSLZ$} is $\SLZ / \{\pm I\}$.
 We say that a matrix
 \begin{equation*}
   A = \begin{pmatrix}
     a & b \\
     c & d
-  \end{pmatrix} \in \SLZ
+  \end{pmatrix} \in \PSLZ
 \end{equation*}
 is \defnphrase{hyperbolic} if $|a + d| > 2$.
 Hyperbolic matrices are diagonalizable over the real numbers, so we can find a real $2 \times 2$ matrix $P$ such that
@@ -240,7 +241,8 @@ Hyperbolic matrices are diagonalizable over the real numbers, so we can find a r
   \end{pmatrix}
 \end{equation*}
 where $\lambda_1$ and $\lambda_2$ are the eigenvalues of $A$.
-In fact, since $\det(A) = 1$ and the product of eigenvalues of a matrix is equal to its determinant, we can find $P$ such that
+Since $A = -A$ in $\PSLZ$, we can assume that $\lambda_1$ is positive.
+Then since $\det(A) = 1$ and the product of eigenvalues of a matrix is equal to its determinant, we can find $P$ such that
 \begin{equation*}
   PAP^{-1} = \begin{pmatrix}
     \exp(T) & 0 \\
@@ -258,7 +260,7 @@ Thus the image of $P(\Z^2)$ by $\delta_t$ as $0 \leq t \leq T$ is a periodic orb
 To summarize, we have the following proposition.
 
 \begin{prop}\label{prop:hyperbolic_defines_flow}
-  Every hyperbolic element in $\SLZ$ defines a periodic orbit of the modular flow.
+  Every hyperbolic element in $\PSLZ$ defines a periodic orbit of the modular flow.
 \end{prop}
 
 For a concrete example of these periodic orbits, consider the hyperbolic matrix
@@ -267,7 +269,7 @@ For a concrete example of these periodic orbits, consider the hyperbolic matrix
     2 & 1 \\
     1 & 1
   \end{pmatrix}
-  \in \SLZ
+  \in \PSLZ
 \end{equation*}
 The eigenvalues of $A$ yield a diagonal matrix $D$ such that $PAP^{-1} = D$, where $P$ is the matrix whose columns are the eigenvectors of $A$.
 Explicitly, we compute that
@@ -292,40 +294,40 @@ This orbit is visualized in Figure~\ref{fig:periodic_orbits_lattice}.
   \label{fig:periodic_orbits_lattice}
 \end{figure}
 
-It is convenient to label a periodic orbit of the modular flow by the matrix $A \in \SLZ$ that produced it.
-But does every periodic orbit arise from an element of $\SLZ$?
+It is convenient to label a periodic orbit of the modular flow by the matrix $A \in \PSLZ$ that produced it.
+But does every periodic orbit arise from an element of $\PSLZ$?
 The following results establish that this is indeed the case.
 
 \begin{lemma}\label{lemma:m_is_integer}
-  Matrices $X$ and $Y$ in $\SLR$ generate the same lattice if and only if $X = YA$ for some $A \in \SLZ$.
-  In particular, if $X$ generates the square lattice, then $X \in \SLZ$.
+  Matrices $X$ and $Y$ in $\PSLR$ generate the same lattice if and only if $X = YA$ for some $A \in \PSLZ$.
+  In particular, if $X$ generates the square lattice, then $X \in \PSLZ$.
 \end{lemma}
 
 \begin{proof}
   Suppose that $X$ and $Y$ generate the same lattice.
   Since a lattice consists of all integer linear combinations of its generators, we know that there exists some integer matrix $A$ such that $X = YA$.
-  Because $X$ and $Y$ are in $\SLR$, we also know that $\det(X) = \det(Y) = 1$. Then
+  Because $X$ and $Y$ are in $\PSLR$, we also know that $\det(X) = \det(Y) = 1$. Then
   \begin{equation*}
     1 = \det(X) = \det(YA) = \det(Y)\det(A) = 1 \cdot \det(A)
   \end{equation*}
-  and so $\det(A) = 1$ and $A \in \SLZ$.
+  and so $\det(A) = 1$ and $A \in \PSLZ$.
 
-  To show the converse, suppose instead that $X = YA$ for some $A \in \SLZ$.
+  To show the converse, suppose instead that $X = YA$ for some $A \in \PSLZ$.
   Then each column of $X$ is in $Y(\Z^2)$, thus $X(\Z^2) \subseteq Y(\Z^2)$.
-  In addition, $Y = XA^{-1}$ and $A^{-1} \in \SLZ$, so similarly we have that $Y(\Z^2) \subseteq X(\Z^2)$.
+  In addition, $Y = XA^{-1}$ and $A^{-1} \in \PSLZ$, so similarly we have that $Y(\Z^2) \subseteq X(\Z^2)$.
 
-  If $X$ generates the square lattice, then $X(\Z^2) = I(\Z^2)$, and so $X = IA = A \in \SLZ$.
+  If $X$ generates the square lattice, then $X(\Z^2) = I(\Z^2)$, and so $X = IA = A \in \PSLZ$.
 \end{proof}
 
 \begin{prop}
-  The periodic orbits of the modular flow are in bijection with conjugacy classes of elements of $\SLZ$.
+  The periodic orbits of the modular flow are in bijection with conjugacy classes of elements of $\PSLZ$.
 \end{prop}
 
 \begin{proof}
-  Given a matrix $A \in \SLZ$, we have already shown how to construct a periodic orbit of the modular flow.
-  It remains to be shown that any element in the conjugacy class of $A$ produces the same periodic orbit, and that any periodic orbit of the modular flow defines the conjugacy class of some hyperbolic element in $\SLZ$.
-  Let $P \in \SLR$ such that $PAP^{-1} = \delta_t$ for some $t \in \R$, so that $\delta_t P(\Z^2) = P(\Z^2)$.
-  Also suppose that $B \in \SLZ$ as well, so that $BAB^{-1}$ is in the conjugacy class of $A$.
+  Given a matrix $A \in \PSLZ$, we have already shown how to construct a periodic orbit of the modular flow.
+  It remains to be shown that any element in the conjugacy class of $A$ produces the same periodic orbit, and that any periodic orbit of the modular flow defines the conjugacy class of some hyperbolic element in $\PSLZ$.
+  Let $P \in \PSLR$ such that $PAP^{-1} = \delta_t$ for some $t \in \R$, so that $\delta_t P(\Z^2) = P(\Z^2)$.
+  Also suppose that $B \in \PSLZ$ as well, so that $BAB^{-1}$ is in the conjugacy class of $A$.
   Then
   \begin{equation*}
     (PB^{-1}) BAB^{-1} (PB^{-1})^{-1} = PAP^{-1} = \delta_t
@@ -334,23 +336,23 @@ The following results establish that this is indeed the case.
   \begin{equation*}
     (PB^{-1})(\Z^2) = P(B^{-1} (\Z^2)) = P(\Z^2).
   \end{equation*}
-  Hence the element $BAB^{-1} \in \SLZ$ defines a periodic orbit with the same orbit time and same initial lattice $P(\Z^2)$, i.e. the same periodic orbit as $A$.
+  Hence the element $BAB^{-1} \in \PSLZ$ defines a periodic orbit with the same orbit time and same initial lattice $P(\Z^2)$, i.e. the same periodic orbit as $A$.
 
   Now, suppose instead that we are given a periodic orbit of the modular flow.
-  We wish to show that it corresponds to the conjugacy class of some hyperbolic element in $\SLZ$.
-  The periodic orbit can be described by some $M \in \SLR$ and $t \in \R$ where $\delta_t M(\Z^2) = M(\Z^2)$
+  We wish to show that it corresponds to the conjugacy class of some hyperbolic element in $\PSLZ$.
+  The periodic orbit can be described by some $M \in \PSLR$ and $t \in \R$ where $\delta_t M(\Z^2) = M(\Z^2)$
   Observe that if $A = M^{-1} \delta_t M$, then
   \begin{equation*}
     A(\Z^2) = M^{-1} \delta_t M (\Z^2) = M^{-1} M (\Z^2) = \Z^2.
   \end{equation*}
-  Thus by Lemma~\ref{lemma:m_is_integer}, $A \in \SLZ$.
+  Thus by Lemma~\ref{lemma:m_is_integer}, $A \in \PSLZ$.
   Note, however, that our choice of $M$ was not unique.
-  Let $N \in \SLR$ be such that $M(\Z^2) = N(\Z^2)$.
-  Then again by the lemma, we have that $N = MB$ for some $B \in \SLZ$, so
+  Let $N \in \PSLR$ be such that $M(\Z^2) = N(\Z^2)$.
+  Then again by the lemma, we have that $N = MB$ for some $B \in \PSLZ$, so
   \begin{equation*}
     N^{-1} \delta_t N = (MB)^{-1} \delta_t (MB) = B^{-1} M^{-1} \delta_t M B = B^{-1} A B.
   \end{equation*}
-  Hence every periodic orbit defines a conjugacy class of some element $A \in \SLZ$.
+  Hence every periodic orbit defines a conjugacy class of some element $A \in \PSLZ$.
   We now show that $A$ is hyperbolic by computing its trace directly.
   Since $MAM^{-1} = \delta_t$ and trace is invariant under conjugation, we have that 
   \begin{align*}
@@ -367,7 +369,7 @@ The following results establish that this is indeed the case.
     \left\lbrace
     \begin{array}{c}
       \text{conjugacy classes of} \\
-      \text{hyperbolic } A \in \SLZ
+      \text{hyperbolic } A \in \PSLZ
     \end{array}
     \right\rbrace \rightleftarrows \left\lbrace
     \begin{array}{c}
@@ -467,7 +469,7 @@ The projection onto $\mathcal{M}$ of several orbits of the modular flow in $\LS_
     \includegraphics[width=\textwidth]{figures/modular_surface_orbit_ppppq.pdf}
     \caption*{$A = \begin{pmatrix}5 & 4 \\ 1 & 1\end{pmatrix}$}
   \end{subfigure}
-  \caption{Periodic orbits of modular flow corresponding to matrices $A \in \SLZ$, projected down into $\mathcal{M}$ and visualized in the fundamental domain $\mathcal{F}$. In $\mathcal{F}$, the right and left vertical boundaries are identified, and the right and left bottom circular boundaries are identified.}
+  \caption{Periodic orbits of modular flow corresponding to matrices $A \in \PSLZ$, projected down into $\mathcal{M}$ and visualized in the fundamental domain $\mathcal{F}$. In $\mathcal{F}$, the right and left vertical boundaries are identified, and the right and left bottom circular boundaries are identified.}
   \label{fig:modular_surface_orbits}
 \end{figure}
 
@@ -716,7 +718,7 @@ It is now natural to ask: how do these periodic orbits present in the 3-sphere?
 
 The degenerate lattices are sent to the trefoil knot in the 3-sphere, but the periodic orbits of this flow exist entirely within the space of nondegenerate lattices.
 Thus we can say that in the 3-sphere, a periodic orbit of the modular flow in the space of lattices determines a link with the trefoil knot.
-Since each periodic flow is associated with some hyperbolic $A \in \SLZ$ we call the corresponding trefoil link $k_A$ a \defnphrase{modular trefoil link} or \defnphrase{modular knot}, following after~\cite{ghys2007}.
+Since each periodic flow is associated with some hyperbolic $A \in \PSLZ$ we call the corresponding trefoil link $k_A$ a \defnphrase{modular trefoil link} or \defnphrase{modular knot}, following after~\cite{ghys2007}.
 Several examples of such links are shown in Figure~\ref{fig:trefoil_links}.
 
 \begin{figure}[h!]
@@ -743,7 +745,7 @@ Several examples of such links are shown in Figure~\ref{fig:trefoil_links}.
     \includegraphics[width=\textwidth]{figures/trefoil_link_43_163_67_254.png}
     \caption*{$A = \begin{pmatrix}43 & 163\\ 67 & 254\end{pmatrix}$}
   \end{subfigure}
-  \caption{A matrix $A \in \SLZ$ determines a periodic orbit of a flow in $\LS$, which in turn determines a modular trefoil link $k_A$ in $S^3$. Here, we visualize $k_A$ for several values of $A$.}
+  \caption{A matrix $A \in \PSLZ$ determines a periodic orbit of a flow in $\LS$, which in turn determines a modular trefoil link $k_A$ in $S^3$. Here, we visualize $k_A$ for several values of $A$.}
   \label{fig:trefoil_links}
 \end{figure}
 
@@ -863,10 +865,6 @@ First, we will look at the basic building block of each group---their generators
   The reverse inclusion is apparent.
 \end{proof}
 
-\begin{defn}
-  The \defnphrase{modular group} $\PSLZ$ is $\SLZ / \{ \pm I \}$.
-\end{defn}
-
 Given the generators of a group, we can of course write down every element in the group as a word in those generators. We now describe more precisely the structure of elements of $\PSLZ$ as generator words.
 
 \begin{lemma}\label{lemma:pslgenerators}
@@ -932,7 +930,7 @@ Given the generators of a group, we can of course write down every element in th
 
 The representation in \eqref{eq:pslreducedform} ends up being unique; for details see \cite[12]{rankin1977modular}.
 
-Now, recall that the hyperbolic elements of $\SLZ$ and $\PSLZ$ are those with trace greater than 2, and that we are interested in the hyperbolic elements because the conjugacy classes of hyperbolic elements are in bijection with the periodic orbits of the modular flow.
+Now, recall that the hyperbolic elements of $\PSLZ$ are those with trace greater than 2, and that we are interested in the hyperbolic elements because the conjugacy classes of hyperbolic elements are in bijection with the periodic orbits of the modular flow.
 A result of Rademacher can help us say more about the generator words of hyperbolic elements in particular.
 
 \begin{lemma}\label{lemma:tr_is_conj_invariant}
@@ -1423,7 +1421,7 @@ The relation is shown in Figure~\ref{fig:braid_relation_exp}.
 
 \section{Diagrammatic Decompositions of Hyperbolic Subset Loops}
 
-Previously we saw that the periodic orbits of a dynamical system in $\LS_1$ were in bijection with conjugacy classes of hyperbolic elements in $\SLZ$, and that each conjugacy class determined a modular knot in $S^3 \wo K$.
+Previously we saw that the periodic orbits of a dynamical system in $\LS_1$ were in bijection with conjugacy classes of hyperbolic elements in $\PSLZ$, and that each conjugacy class determined a modular knot in $S^3 \wo K$.
 We can also examine these periodic orbits as loops in $\exptwothree S^1$ via the homeomorphism $\LS \to \exp_3 S^1$.
 Several such loops are shown in Figure~\ref{fig:subset_loop_examples}; it may be interesting to compare them to the knots in $S^3 \wo K$ produced by the same hyperbolic matrices in Figure~\ref{fig:trefoil_links}.
 When viewed in $\exptwothree S^1$, we call these periodic orbits \defnphrase{hyperbolic subset loops}.
@@ -1447,7 +1445,7 @@ When viewed in $\exptwothree S^1$, we call these periodic orbits \defnphrase{hyp
     \includegraphics[width=\textwidth]{figures/subset_loop_pqqq_4_1_3_1.pdf}
     \caption*{$A = \begin{pmatrix}4 & 1 \\ 3 & 1\end{pmatrix}$}
   \end{subfigure}
-  \caption{Conjugacy classes of hyperbolic $A \in \SLZ$ are in bijection with period orbits of a dynamical system in $\LS$. These periodic orbits can be examined as loops in $\exptwothree S^1 \approx \LS_1$. Here, several loops are shown in $\exptwothree S^1$ for various values of $A \in \SLZ$.}
+  \caption{Conjugacy classes of hyperbolic $A \in \PSLZ$ are in bijection with period orbits of a dynamical system in $\LS$. These periodic orbits can be examined as loops in $\exptwothree S^1 \approx \LS_1$. Here, several loops are shown in $\exptwothree S^1$ for various values of $A \in \PSLZ$.}
   \label{fig:subset_loop_examples}
 \end{figure}
 
@@ -1480,7 +1478,7 @@ For example, $A = PQQ$ is $\sigma_2 \sigma_2 \sigma_1^{-1}$ as a braid, while $A
 Notice that every character in the $PQ$ word has exactly one matching character in the braid word.
 These matchings vary throughout the different example braids---sometimes $Q$ corresponds to $\sigma_1$ in a braid word, but other times it corresponds to $\sigma_2$---but for each individual $(k_A, \beta_A)$ pairing there is some one-to-one correspondence between characters $P$ and $Q$ in $A$ and characters $\sigma_i^{\pm 1}$ in $\beta_A$.
 
-There may still exist a map between $\SLZ$ and $B_3$ that utilizes $PQ$ decompositions of elements in $\SLZ$.
+There may still exist a map between $\PSLZ$ and $B_3$ that utilizes $PQ$ decompositions of elements in $\PSLZ$.
 Every braid $\beta_A$ for a modular trefoil link $k_A$ was obtained via a decomposition of the string cheese diagram for $k_A$. 
 Did we make subtle and arbitrary choices in the decomposition process that affects whether $P$ maps to $\sigma_2^{-1}$ or $\sigma_1^{-1}$, and whether $Q$ maps to $\sigma_1$ or $\sigma_2$?
 Or does the sign of the braid group generators reflect the orientation of the modular trefoil link?
@@ -1591,7 +1589,7 @@ Otherwise, the outgoing fork is a \defnphrase{right fork}.
     \includegraphics[width=\textwidth]{figures/subset_loop_forks_pqqq.pdf}
     \caption*{$A = PQQQ$}
   \end{subfigure}
-  \caption{Two string cheese diagrams corresponding to the modular knot $k_A$ where $A \in \SLZ$. The outgoing forks in each diagram are highlighted. If the incoming strand to an outgoing fork approaches from the left, we call the fork a \defnphrase{left fork} (highlighted in blue). Otherwise, it is a \defnphrase{right fork} (highlighted in purple). We conjecture that the linking number of a modular knot $k_A$ is the number of left forks minus the number of right forks in a string cheese diagram for $k_A$.}
+  \caption{Two string cheese diagrams corresponding to the modular knot $k_A$ where $A \in \PSLZ$. The outgoing forks in each diagram are highlighted. If the incoming strand to an outgoing fork approaches from the left, we call the fork a \defnphrase{left fork} (highlighted in blue). Otherwise, it is a \defnphrase{right fork} (highlighted in purple). We conjecture that the linking number of a modular knot $k_A$ is the number of left forks minus the number of right forks in a string cheese diagram for $k_A$.}
   \label{fig:subset_loop_forks}
 \end{figure}
 
@@ -1648,7 +1646,7 @@ mtxToLattice[m_] := (Complex @@ #)& /@ Transpose[m];
 \end{minted}
 These are just simple accessors to get data representing a lattice into a convenient shape.
 We can now describe the dynamical system of Proposition~\ref{prop:hyperbolic_defines_flow}.
-Suppose that $A \in \SLZ$, and let $P$ such that $PAP^{-1} = \delta_t$, where $\delta_t$ is defined as in \eqref{eq:delta_t}.
+Suppose that $A \in \PSLZ$, and let $P$ such that $PAP^{-1} = \delta_t$, where $\delta_t$ is defined as in \eqref{eq:delta_t}.
 Then $P$ is a matrix whose columns are the eigenvectors of $A$, thus we can compute the lattice corresponding to $P$ with the function 
 \begin{minted}[breaklines, fontsize=\small]{Mathematica}
 latticeForModularMtx[a_] := a // Eigenvectors // N // Transpose // Inverse // mtxToLattice;
@@ -1673,7 +1671,7 @@ In Mathematica, we do so with the following function:
 orbitTimeForModularMtx[m_] := m // Eigenvalues // N // First // Abs // Log;
 \end{minted}
 
-With the appropriate matrix $P$ corresponding to some $A \in \SLZ$ and the orbit time readily available, we can now encode the path of a periodic orbit in the space of lattices.
+With the appropriate matrix $P$ corresponding to some $A \in \PSLZ$ and the orbit time readily available, we can now encode the path of a periodic orbit in the space of lattices.
 First, we define a quick utility function for $\delta_t$:
 \begin{minted}[breaklines, fontsize=\small]{Mathematica}
 deltaT[t_] := {{E^t, 0}, {0, E^-t}} // N;
